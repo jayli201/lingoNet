@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sign Up">
+
+  <title>Sign Up</title>
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/welcome.css" />
+  <link rel="stylesheet" href="../css/content.css" />
+  <link rel="stylesheet" href="../css/theme.css" />
+  <style>
+    label {
+      display: block
+    }
+
+    .feedback {
+      font-style: italic;
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-container">
+    <div class="content-wrap">
+      <div id="header"></div>
+      <br />
+
+      <div class="form">
+        <h1 class="display-4">Sign Up</h1>
+        <form id="fm-login" name="SignUpForm" action="../pages/postfeed.html" method="post"
+          onsubmit="return validateInput()">
+          <div class="form-group">
+            <label>Email: </label>
+            <input type="text" id="email" class="form-control" placeholder="Enter your email" autofocus required />
+            <span class="feedback" id="email_msg"></span>
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label>Password: </label>
+            <div id="pwd-msg" class="feedback"></div>
+            <input type="password" id="pwd" class="form-control" placeholder="Enter your password" required />
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label>Name: </label>
+            <input type="text" id="name" class="form-control" placeholder="Enter your name" required />
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label>Age: </label>
+            <input type="text" id="age" class="form-control" placeholder="Enter your age" required />
+            <span class="feedback" id="age_msg"></span>
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label>Phone Number: </label>
+            <input type="text" id="phone" class="form-control" placeholder="Enter your phone number" autofocus
+              required />
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label>Language of Profiency: </label>
+            <input type="text" id="language" class="form-control" placeholder="Enter your language of profiency"
+              autofocus required />
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label>Target Language: </label>
+            <input type="text" id="target_language" class="form-control" placeholder="Enter your target language"
+              autofocus required />
+          </div>
+          <br />
+
+          <input type="submit" value="Sign Up" class="btn btn-purple" />
+        </form>
+      </div>
+      <br />
+      <div id="footer"></div>
+    </div>
+  </div>
+
+  <script src="../layout/welcome_layout.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"></script>
+
+  <script>
+    function isInt(str) {
+      var val = parseInt(str);
+      return (val > 0);
+    }
+
+    function checkPattern(str) {
+      // test if user input matches the standard email pattern		
+      var pattern = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$");
+      var match_test = pattern.test(str);
+      return match_test;
+    }
+
+    function validateInput() {
+      var number_error = 0;
+
+      // email validation
+      var email = document.getElementById("email");
+      if (!checkPattern(email.value)) {
+        number_error++;
+        document.getElementById("email").value = email.value;
+        document.getElementById("email_msg").innerHTML = "Email must be valid.";
+      } else
+        document.getElementById("email_msg").innerHTML = "";
+
+      // age validation - integer and at least 13 years old
+      var age = document.getElementById("age");
+      if (!isInt(age.value)) {
+        number_error++;
+        document.getElementById("age").value = age.value;
+        document.getElementById("age_msg").innerHTML = "Age must be an integer.";
+      } else if (age.value < 13) {
+        number_error++;
+        document.getElementById("age").value = age.value;
+        document.getElementById("age_msg").innerHTML = "You must be at least 13 years old.";
+      }
+      else
+        document.getElementById("age_msg").innerHTML = "";
+
+      // if there is an error, don't submit the form
+      if (number_error > 0) {
+        return false;
+      }
+      else
+        return true;
+    }
+  </script>
+
+</body>
+
+</html>
