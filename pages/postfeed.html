@@ -23,6 +23,21 @@
 
       <div class="content">
         <h1 class="display-4">Postfeed</h1>
+
+        <div class="form">
+          <form id="fm-login" action="../pages/postfeed.html" method="post" onsubmit="return getSearchResults()">
+            <!-- <label>Search: </label> -->
+            <input type="text" id="search" class="form-control" autofocus required />
+            <div>
+                <div id="search_msg" class="feedback"></div>
+                
+                <br />
+                <input type="submit" value="Search" class="btn btn-purple" />
+            </div>
+          
+          </form>
+        </div>
+        <br />
      
         <div class="card-deck">
           <div class="card" style="width: 18rem;">
@@ -203,6 +218,9 @@
     crossorigin="anonymous"></script>
 
   <script>
+    function getSearchResults() {
+      alert("hi");
+    }
   </script>
 
 </body>
