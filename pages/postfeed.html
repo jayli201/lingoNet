@@ -25,16 +25,16 @@
         <h1 class="display-4">Postfeed</h1>
 
         <div class="form">
-          <form id="fm-login" action="../pages/postfeed.html" method="post" onsubmit="return getSearchResults()">
-            <!-- <label>Search: </label> -->
-            <input type="text" id="search" class="form-control" autofocus required />
-            <div>
-                <div id="search_msg" class="feedback"></div>
-                
-                <br />
-                <input type="submit" value="Search" class="btn btn-purple" />
+          <form id="search_form" method="post" onsubmit="getSearchResults()">
+            <!-- <input type="text" id="search_input" class="form-control" autofocus /> -->
+              
+            <div class="input-group">
+              <input style="margin-right: 1em;"type="text" id="search_input" class="form-control" autofocus />
+              <span class="input-group-btn">
+                <input  type="submit" value="Search" class="btn btn-purple" />
+              </span>
             </div>
-          
+              
           </form>
         </div>
         <br />
@@ -197,9 +197,6 @@
           </div>
         </div>
         
-        
-
-
       </div>
 
       <br />
@@ -208,7 +205,7 @@
   </div>
 
   <script src="../layout/layout.js"></script>
-  <script src="postfeed.js"></script>
+  <!-- <script src="postfeed.js"></script> -->
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -219,7 +216,9 @@
 
   <script>
     function getSearchResults() {
-      alert("hi");
+      // alert(document.getElementById("search_input").value);
+      search_input = document.getElementById("search_input").value;
+      console.log(search_input);
     }
   </script>
 
