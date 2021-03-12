@@ -180,8 +180,8 @@
         document.getElementById("email_msg").innerHTML = "";
 
       // password validation - both passwords have to match
-      var pwd1 = document.getElementById("pwd").value;
-      var pwd2 = document.getElementById("confirm_pwd").value;
+      var pwd1 = document.getElementById("pwd").value.trim();
+      var pwd2 = document.getElementById("confirm_pwd").value.trim();
 
       if (pwd1 !== pwd2) {
         number_error++;
