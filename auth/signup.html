@@ -155,12 +155,12 @@
       }, false);
     }());
 
-    function isInt(str) {
+    isInt = (str) => {
       var val = parseInt(str);
       return (val > 0);
     }
 
-    function checkPattern(str) {
+    checkPattern = (str) => {
       // test if user input matches the standard email pattern		
       var pattern = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$");
       var match_test = pattern.test(str);
