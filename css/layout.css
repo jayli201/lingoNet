@@ -1,0 +1,17 @@
+.navbar {
+    background: #6b359d
+}
+
+.nav-link {
+    margin-right: 1em;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.header {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}

@@ -1,6 +1,9 @@
-/* the following is to override bootstrap's theme colors */
-/* used from https://lingtalfi.com/bootstrap4-color-generator# */
+/* Title: Bootstrap 4 Color Utility Generator
+* Author: Ling
+* Date: 2019-05-23
+* Availability: https://lingtalfi.com/bootstrap4-color-generator# */
 
+/* the following is to override bootstrap's theme colors to be purple*/
 .form-control:focus {
     border-color: #b994db;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #cfb7e6;

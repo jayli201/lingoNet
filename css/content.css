@@ -1,3 +1,36 @@
+/* Pages are generally set up like this:
+<div class="page-container"> --> goes around everything
+    <div class="content-wrap"> --> sets up footer height
+        <div id="header"></div> --> include general header from layout folder
+        <div class="content" OR class="form"> --> sets margins
+            // actual content of page
+        </div>
+        <div id="footer"></div> --> include general footer from layout folder
+    </div>
+</div>
+*/
+
+/* goes around everything on page */
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+  
+/* sets bottom padding that is the height of the footer */
+.content-wrap {
+    padding-bottom: 6rem;    
+}
+  
+/* footer sticks to the bottom and uses .content-wrap's padding-bottom height */
+.footer {
+    padding: 20px 0px 20px 0px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 6rem;            
+    background-color: darkgray;
+}
+
 .form {
     margin-left: 18%;
     margin-right: 18%;
@@ -12,3 +45,27 @@
 .title {
     text-align: center;
 }
+
+.feedback {
+    font-style: italic;
+    color: red;
+}
+
+@media only screen and (max-width: 768px) {
+    h1 {
+        line-height: 1.1em;
+    } 
+    .description .display-1 {
+        font-size: 4rem;
+    }
+    .description .display-4 {
+        font-size: 2rem;
+    }
+    .description p {
+        font-size: 1rem;
+        line-height: 1em;
+    }
+    .content .display-4 {
+        font-size: 3rem;
+    }
+} 

@@ -1,21 +1,3 @@
-.navbar {
-    background: #6b359d
-}
-
-.nav-link {
-    margin-right: 1em;
-}
-
-.navbar-collapse {
-    justify-content: flex-end;
-}
-
-.header {
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
 .description {
     display: flex;
     flex-direction: column;
@@ -31,27 +13,6 @@
 .description p {
     color: black;
     font-size: 1.8rem;     
-}
-
-/* goes around everything on page */
-.page-container {
-    position: relative;
-    min-height: 100vh;
-}
-  
-/* bottom padding that is the height of the footer */
-.content-wrap {
-    padding-bottom: 6rem;    
-}
-  
-/* footer sticks to the bottom and uses .content-wrap's padding-bottom height */
-.footer {
-    padding: 20px 0px 20px 0px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 6rem;            
-    background-color: darkgray;
 }
 
 @media only screen and (max-width: 768px) {
