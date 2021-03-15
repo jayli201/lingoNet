@@ -203,15 +203,15 @@
 
     // populate pendingFriends
     const person1 = {
-      firstName: "Rebecca",
-      lastName: "Zhou",
+      firstName: "Pending F1",
+      lastName: "Pending L1",
       canSpeak: ["English", "Chinese"],
       wantToSpeak: ["Korean"]
     };
 
     const person2 = {
-      firstName: 'John',
-      lastName: 'Doe',
+      firstName: 'Pending F2',
+      lastName: 'Pending L2',
       canSpeak: ["English", "Chinese"],
       wantToSpeak: ["Korean"]
     };
@@ -223,13 +223,9 @@
     pendingFriends.forEach((friend) => {
       var firstName = friend.firstName;
       var lastName = friend.lastName;
-      console.log(firstName);
+      console.log(friend);
       return friend;
     })
-
-
-
-
 
 
     function acceptFriendRequest() {
@@ -237,7 +233,7 @@
     }
 
     function deleteFriendRequest() {
-
+      console.log("deleted")
     }
 
   </script>
