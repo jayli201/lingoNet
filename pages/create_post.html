@@ -44,14 +44,21 @@
           <div class="form-group">
             <label>What You're Looking For: </label>
             <textarea id="introduction" class="form-control" rows="5"
-              placeholder="What are you looking for in a language partner?"></textarea>
+              placeholder="What are you looking for in a language partner?" required></textarea>
           </div>
           <br />
 
           <div class="form-group">
             <label>Why You?</label>
             <textarea id="introduction" class="form-control" rows="5"
-              placeholder="How are you a great language partner?"></textarea>
+              placeholder="How are you a great language partner?" required></textarea>
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label>Phone Number: </label>
+            <input type="text" id="phone" class="form-control" placeholder="Enter your phone number" required />
+            <span class="feedback" id="phone_msg"></span>
           </div>
           <br />
 
@@ -73,6 +80,30 @@
     crossorigin="anonymous"></script>
 
   <script>
+    isInt = (str) => {
+      var val = parseInt(str);
+      return (val > 0);
+    }
+
+    function validateInput() {
+      var number_error = 0;
+
+      // phone validation - integer
+      var phone = document.getElementById("phone");
+      if (!isInt(phone.value)) {
+        number_error++;
+        document.getElementById("phone").value = phone.value;
+        document.getElementById("phone_msg").innerHTML = "Phone must be an integer.";
+      } else
+        document.getElementById("phone_msg").innerHTML = "";
+
+      // if there is an error, don't submit the form
+      if (number_error > 0) {
+        return false;
+      }
+      else
+        return true;
+    }
   </script>
 
 </body>

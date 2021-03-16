@@ -79,24 +79,16 @@
           <br />
 
           <div class="form-group">
-            <label>Phone Number: </label>
-            <input type="text" id="phone" class="form-control" placeholder="Enter your phone number" autofocus
-              required />
-            <span class="feedback" id="phone_msg"></span>
-          </div>
-          <br />
-
-          <div class="form-group">
             <label>Language of Profiency: </label>
             <input type="text" id="language" class="form-control" placeholder="Enter your language of profiency"
-              autofocus required />
+              required />
           </div>
           <br />
 
           <div class="form-group">
             <label>Target Language: </label>
             <input type="text" id="target_language" class="form-control" placeholder="Enter your target language"
-              autofocus required />
+              required />
           </div>
           <br />
           <input type="submit" value="Sign Up" class="btn btn-purple" />
@@ -201,15 +193,6 @@
       }
       else
         document.getElementById("age_msg").innerHTML = "";
-
-      // phone validation - integer
-      var phone = document.getElementById("phone");
-      if (!isInt(phone.value)) {
-        number_error++;
-        document.getElementById("phone").value = age.value;
-        document.getElementById("phone_msg").innerHTML = "Phone must be an integer.";
-      } else
-        document.getElementById("phone_msg").innerHTML = "";
 
       // if there is an error, don't submit the form
       if (number_error > 0) {
