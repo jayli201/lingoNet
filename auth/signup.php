@@ -5,7 +5,16 @@
 * Code version: 4.6.0
 * Availability: https://getbootstrap.com/
 ***************************************************************************************/ -->
+<?php
+require("../db/connectdb.php");
+// require("auth_sql.php");
 
+if (isset($_POST['action'])) {
+  if (!empty($_POST['action']) && ($_POST['action'] == 'Sign Up')) {
+    $error = cookSignUp($_POST['username'], $_POST['email'], $_POST['password'], $_POST['firstName'], $_POST['lastName'], 1, $_POST['area']);
+  }
+}
+?>
 <!doctype html>
 <html>
 
@@ -17,8 +26,7 @@
 
   <title>Sign Up</title>
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/layout.css" />
   <link rel="stylesheet" href="../css/content.css" />
   <link rel="stylesheet" href="../css/theme.css" />
@@ -32,8 +40,7 @@
 
       <div class="form">
         <h1 class="display-4">Sign Up</h1>
-        <form id="fm-login" name="SignUpForm" action="../pages/postfeed.html" method="post"
-          onsubmit="return validateInput()">
+        <form id="fm-login" name="SignUpForm" action="../pages/postfeed.html" method="post" onsubmit="return validateInput()">
           <div class="form-group">
             <label>Email: </label>
             <input type="text" id="email" class="form-control" placeholder="Enter your email" autofocus required />
@@ -54,8 +61,7 @@
           <div class="form-group">
             <label>Confirm Password: </label>
             <div id="pwd-confirm-msg" class="feedback"></div>
-            <input type="password" id="confirm_pwd" class="form-control" placeholder="Re-enter your password"
-              required />
+            <input type="password" id="confirm_pwd" class="form-control" placeholder="Re-enter your password" required />
           </div>
           <div class="form-group">
             <input type="checkbox" id="showConfirmPwd" /> Show password
@@ -80,15 +86,13 @@
 
           <div class="form-group">
             <label>Language of Profiency: </label>
-            <input type="text" id="language" class="form-control" placeholder="Enter your language of profiency"
-              required />
+            <input type="text" id="language" class="form-control" placeholder="Enter your language of profiency" required />
           </div>
           <br />
 
           <div class="form-group">
             <label>Target Language: </label>
-            <input type="text" id="target_language" class="form-control" placeholder="Enter your target language"
-              required />
+            <input type="text" id="target_language" class="form-control" placeholder="Enter your target language" required />
           </div>
           <br />
           <input type="submit" value="Sign Up" class="btn btn-purple" />
@@ -101,16 +105,12 @@
   </div>
 
   <script src="../layout/welcome_layout.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
   <script>
     // runs as soon as this code is reached
-    (function () {
+    (function() {
       var pwd = document.getElementById("pwd");
       var showPwd = document.getElementById("showPwd");
 
@@ -118,7 +118,7 @@
       var showConfirmPwd = document.getElementById("showConfirmPwd");
 
       // when "show password" is checked
-      showPwd.addEventListener("change", function () {
+      showPwd.addEventListener("change", function() {
         try {
           // change to indicate user wants to see the password
           if (showPwd.checked)
@@ -132,7 +132,7 @@
       }, false);
 
       // when "show password" is checked
-      showConfirmPwd.addEventListener("change", function () {
+      showConfirmPwd.addEventListener("change", function() {
         try {
           // change to indicate user wants to see the password
           if (showConfirmPwd.checked)
@@ -190,15 +190,13 @@
         number_error++;
         document.getElementById("age").value = age.value;
         document.getElementById("age_msg").innerHTML = "You must be at least 13 years old.";
-      }
-      else
+      } else
         document.getElementById("age_msg").innerHTML = "";
 
       // if there is an error, don't submit the form
       if (number_error > 0) {
         return false;
-      }
-      else
+      } else
         return true;
     }
   </script>
