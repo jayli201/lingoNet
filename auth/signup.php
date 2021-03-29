@@ -108,9 +108,11 @@ if (isset($_POST['action'])) {
             <label>Target Language: </label>
             <input type="text" name="target" id="target" class="form-control" placeholder="Enter your target language" required />
           </div>
+
+          <div class="feedback"><?php echo $error; ?></div>
           <br />
-          <div><?php echo $error; ?></div>
-          <input type="submit" id="action" name="action" value="Sign Up" class="btn btn-purple" />
+
+          <input type="submit" name="action" id="action" value="Sign Up" class="btn btn-purple" />
         </form>
       </div>
 
