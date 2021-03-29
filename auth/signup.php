@@ -79,29 +79,29 @@ if (isset($_POST['action'])) {
           </div>
           <br />
 
-          <div class="form-group">
-            <label>First Name: </label>
-            <input type="text" name="firstName" id="firstName" class="form-control" placeholder="Enter your first name" required />
+          <div class="row">
+            <div class="col">
+              <label>First Name: </label>
+              <input type="text" name="firstName" id="firstName" class="form-control" required />
+            </div>
+            <div class="col">
+              <label>Last Name: </label>
+              <input type="text" name="lastName" id="lastName" class="form-control" required />
+            </div>
           </div>
           <br />
 
-          <div class="form-group">
-            <label>Last Name: </label>
-            <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Enter your last name" required />
-          </div>
-          <br />
-
-          <div class="form-group">
-            <label>Phone Number: </label>
-            <input type="text" name="phone" id="phone" class="form-control" placeholder="Enter your phone number" required />
-            <span class="feedback" id="phone_msg"></span>
-          </div>
-          <br />
-
-          <div class="form-group">
-            <label>Age: </label>
-            <input type="text" name="age" id="age" class="form-control" placeholder="Enter your age" required />
-            <span class="feedback" id="age_msg"></span>
+          <div class="row">
+            <div class="col">
+              <label>Phone Number: </label>
+              <input type="text" name="phone" id="phone" class="form-control" required />
+              <span class="feedback" id="phone_msg"></span>
+            </div>
+            <div class="col">
+              <label>Age: </label>
+              <input type="text" name="age" id="age" class="form-control" required />
+              <span class="feedback" id="age_msg"></span>
+            </div>
           </div>
           <br />
 
