@@ -46,18 +46,22 @@ function signUpCont($email, $pwd, $firstName, $lastName, $age, $phone, $native, 
 
   // add native languages into db
   foreach ($native as $item) {
-    $native_stmt = $db->prepare("INSERT INTO native(email, native) VALUES (?, ?)");
-    $native_stmt->bind_param("ss", $email, $item);
-    $native_stmt->execute();
-    $native_stmt->close();
+    if (!empty($item)) {
+      $native_stmt = $db->prepare("INSERT INTO native(email, native) VALUES (?, ?)");
+      $native_stmt->bind_param("ss", $email, $item);
+      $native_stmt->execute();
+      $native_stmt->close();
+    }
   }
 
   // add target languages into db
   foreach ($target as $item) {
-    $target_stmt = $db->prepare("INSERT INTO target(email, target) VALUES (?, ?)");
-    $target_stmt->bind_param("ss", $email, $item);
-    $target_stmt->execute();
-    $target_stmt->close();
+    if (!empty($item)) {
+      $target_stmt = $db->prepare("INSERT INTO target(email, target) VALUES (?, ?)");
+      $target_stmt->bind_param("ss", $email, $item);
+      $target_stmt->execute();
+      $target_stmt->close();
+    }
   }
 
   header("Location: ../pages/postfeed.php");

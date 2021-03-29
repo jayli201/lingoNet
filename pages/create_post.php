@@ -76,7 +76,7 @@ if (isset($_POST['action'])) {
             <textarea name="whyYou" id="whyYou" class="form-control" rows="5" placeholder="How are you a great language partner?" required></textarea>
           </div>
 
-          <input type="submit" name="action" id="action" value="Post!" class="btn btn-purple" />
+          <input type="submit" name="action" id="action" value="Post!" class="btn btn-lg btn-purple" />
         </form>
       </div>
 
