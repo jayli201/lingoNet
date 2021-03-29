@@ -30,34 +30,16 @@
       <div id="header"></div>
       <br />
 
-      <div>
-        <div class="description">
-          <h1 class="display-1">Welcome to LingoNet!</h1>
-          <p>Find a language partner, practice with native speakers and make friends!</p>
-          <p>
-            <a class="btn btn-purple btn-lg" href="signup.php" role="button">Sign Up Now</a>
+      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2 text-center bg-light">
+        <div class="col-md-5 p-lg-3 mx-auto my-5">
+          <h1 class="display-2" style="color: #6b359d;">Welcome to LingoNet!</h1>
+          <p class="lead font-weight-normal">Find a language partner, practice with native speakers and make
+            friends!
           </p>
+          <a class="btn btn-purple btn-lg" href="signup.php" role="button">Sign Up Now</a>
         </div>
-        <hr class="my-4">
-
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <h3>1. Sign Up</h3>
-              <p>Sign up as a new user and fill out your profile!</p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <h3>2. Introductory Post</h3>
-              <p>Introduce yourself to your fellow language learners!</p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <h3>3. Make Friends</h3>
-              <p>Send friend requests to other language learners.</p>
-              <p>Accept friend requests.</p>
-              <p>Once you become friends, you'll be able to see their contact information!</p>
-            </div>
-          </div>
-        </div>
+        <div class="product-device box-shadow d-none d-md-block"></div>
+        <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
       </div>
 
       <br />
@@ -68,10 +50,6 @@
   <script src="../layout/welcome_layout.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-
-  <script>
-  </script>
-
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 * Date: 2019-05-23
 * Availability: https://lingtalfi.com/bootstrap4-color-generator# */
 
-/* the following is to override bootstrap's theme colors to be purple*/
+/* the following is to override bootstrap's theme colors to be purple */
 .form-control:focus {
     border-color: #b994db;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #cfb7e6;
@@ -25,7 +25,7 @@
 
 .badge-purple {
     color: #fff;
-    background-color: #6b359d;
+    background-color: #8444c0;
 }
 
 .badge-purple[href]:hover, .badge-purple[href]:focus {
@@ -34,7 +34,7 @@
 }
 
 .bg-purple {
-    background-color: #6b359d !important;
+    background-color: #8444c0 !important;
 }
 
 a.bg-purple:hover, a.bg-purple:focus,
@@ -44,13 +44,13 @@ button.bg-purple:focus {
 }
 
 .border-purple {
-    border-color: #6b359d !important;
+    border-color: #8444c0 !important;
 }
 
 .btn-purple {
     color: #fff;
-    background-color: #6b359d;
-    border-color: #6b359d;
+    background-color: #8444c0;
+    border-color: #8444c0;
 }
 
 .btn-purple:hover {
@@ -65,8 +65,8 @@ button.bg-purple:focus {
 
 .btn-purple.disabled, .btn-purple:disabled {
     color: #fff;
-    background-color: #6b359d;
-    border-color: #6b359d;
+    background-color: #8444c0;
+    border-color: #8444c0;
 }
 
 .btn-purple:not(:disabled):not(.disabled):active, .btn-purple:not(:disabled):not(.disabled).active, .show > .btn-purple.dropdown-toggle {
@@ -80,15 +80,15 @@ button.bg-purple:focus {
 }
 
 .btn-outline-purple {
-    color: #6b359d;
+    color: #8444c0;
     background-color: transparent;
-    border-color: #6b359d;
+    border-color: #8444c0;
 }
 
 .btn-outline-purple:hover {
     color: #fff;
-    background-color: #6b359d;
-    border-color: #6b359d;
+    background-color: #8444c0;
+    border-color: #8444c0;
 }
 
 .btn-outline-purple:focus, .btn-outline-purple.focus {
@@ -96,14 +96,14 @@ button.bg-purple:focus {
 }
 
 .btn-outline-purple.disabled, .btn-outline-purple:disabled {
-    color: #6b359d;
+    color: #8444c0;
     background-color: transparent;
 }
 
 .btn-outline-purple:not(:disabled):not(.disabled):active, .btn-outline-purple:not(:disabled):not(.disabled).active, .show > .btn-outline-purple.dropdown-toggle {
     color: #fff;
-    background-color: #6b359d;
-    border-color: #6b359d;
+    background-color: #8444c0;
+    border-color: #8444c0;
 }
 
 .btn-outline-purple:not(:disabled):not(.disabled):active:focus, .btn-outline-purple:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-purple.dropdown-toggle:focus {
@@ -142,7 +142,7 @@ button.bg-purple:focus {
 }
 
 .text-purple {
-    color: #6b359d !important;
+    color: #8444c0 !important;
 }
 
 a.text-purple:hover, a.text-purple:focus {

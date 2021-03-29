@@ -1,32 +1,45 @@
-.description {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    text-align: center;
-}
+/* Title: Bootstrap Example of Custom Components
+* Author: Bootstrap
+* Availability: https://getbootstrap.com/docs/4.0/examples/product/ */
 
-.description .display-1 {
-    color: #6b359d;
+.container {
+    max-width: 900px;
 }
-
-.description p {
-    color: black;
-    font-size: 1.8rem;     
+  
+/* dummy devices */
+.product-device {
+    position: absolute;
+    right: 10%;
+    bottom: -30%;
+    width: 300px;
+    height: 540px;
+    background-color: #8860ad;
+    border-radius: 21px;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+  
+.product-device::before {
+    position: absolute;
+    top: 10%;
+    right: 10px;
+    bottom: 10%;
+    left: 10px;
+    content: "";
+    background-color: #ddcfeb;
+    border-radius: 5px;
+}
+  
+.product-device-2 {
+    top: -25%;
+    right: auto;
+    bottom: 0;
+    left: 5%;
+    background-color: #8a828d;
 }
 
 @media only screen and (max-width: 768px) {
-    h1 {
-        line-height: 1.1em;
-    } 
-    .description .display-1 {
+    .display-2 {
         font-size: 4rem;
-    }
-    .description .display-4 {
-        font-size: 2rem;
-    }
-    .description p {
-        font-size: 1rem;
-        line-height: 1em;
     }
 } 
