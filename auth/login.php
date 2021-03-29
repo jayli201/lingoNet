@@ -41,6 +41,13 @@ if (isset($_POST['action'])) {
 
       <div class="form">
         <h1 class="display-4">Login</h1>
+        <br />
+
+        <div class="feedback">
+          <?php echo $error; ?>
+        </div>
+        <br />
+
         <form id="fm-login" action="" method="post" onsubmit="return validateInput()">
           <div class="form-group">
             <label>Email: </label>
@@ -57,9 +64,6 @@ if (isset($_POST['action'])) {
               <input type="checkbox" id="showPwd" /> Show password
             </div>
           </div>
-
-          <div class="feedback"><?php echo $error; ?></div>
-          <br />
 
           <input type="submit" name="action" id="action" value="Login" class="btn btn-purple" />
         </form>

@@ -13,8 +13,6 @@ if (isset($_POST['action'])) {
     $error = createPost($_SESSION['email'], $_POST['introduction'], $_POST['lookingFor'], $_POST['whyYou']);
   }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -37,9 +35,12 @@ if (isset($_POST['action'])) {
 <body>
   <?php
   // if user has not logged in, then redirect
-  // otherwise, display content 
   if (!isset($_SESSION['email'])) {
     header("Location: ../auth/welcome.php");
+    // if user already has a introductory post, then redirect to profile
+  } else if (postExists($_SESSION['email'])) {
+    header("Location: ../pages/profile.php");
+    // otherwise, display content 
   } else
   ?>
 
@@ -50,6 +51,12 @@ if (isset($_POST['action'])) {
 
       <div class="form">
         <h1 class="display-4">Your Introductory Post</h1>
+        <br />
+
+        <div class="feedback">
+          <?php echo $error; ?>
+        </div>
+        <br />
 
         <form id="fm-login" name="Post" action="" method="post" onsubmit="return validateInput()">
           <div class="form-group">
@@ -68,9 +75,6 @@ if (isset($_POST['action'])) {
             <label>Why You?</label>
             <textarea name="whyYou" id="whyYou" class="form-control" rows="5" placeholder="How are you a great language partner?" required></textarea>
           </div>
-
-          <div class="feedback"><?php echo $error; ?></div>
-          <br />
 
           <input type="submit" name="action" id="action" value="Post!" class="btn btn-purple" />
         </form>

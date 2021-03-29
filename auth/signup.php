@@ -41,6 +41,13 @@ if (isset($_POST['action'])) {
 
       <div class="form">
         <h1 class="display-4">Sign Up</h1>
+        <br />
+
+        <div class="feedback">
+          <?php echo $error; ?>
+        </div>
+        <br />
+
         <form id="fm-login" name="SignUpForm" action="" method="post" onsubmit="return validateInput()">
           <div class="form-group">
             <label>Email: </label>
@@ -108,8 +115,6 @@ if (isset($_POST['action'])) {
             <label>Target Language: </label>
             <input type="text" name="target" id="target" class="form-control" placeholder="Enter your target language" required />
           </div>
-
-          <div class="feedback"><?php echo $error; ?></div>
           <br />
 
           <input type="submit" name="action" id="action" value="Sign Up" class="btn btn-purple" />
