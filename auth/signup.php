@@ -7,14 +7,15 @@
 ***************************************************************************************/ -->
 <?php
 require("../db/connectdb.php");
-// require("auth_sql.php");
+require("../sql/signup_sql.php");
 
 if (isset($_POST['action'])) {
   if (!empty($_POST['action']) && ($_POST['action'] == 'Sign Up')) {
-    $error = cookSignUp($_POST['username'], $_POST['email'], $_POST['password'], $_POST['firstName'], $_POST['lastName'], 1, $_POST['area']);
+    $error = signUp($_POST['email'], $_POST['password'], $_POST['firstName'], $_POST['lastName'], $_POST['age'], $_POST['phone']);
   }
 }
 ?>
+
 <!doctype html>
 <html>
 
@@ -40,10 +41,10 @@ if (isset($_POST['action'])) {
 
       <div class="form">
         <h1 class="display-4">Sign Up</h1>
-        <form id="fm-login" name="SignUpForm" action="../pages/postfeed.html" method="post" onsubmit="return validateInput()">
+        <form id="fm-login" name="SignUpForm" action="<?php $_SERVER['PHP_SELF'] ?>" method="post" onsubmit="return validateInput()">
           <div class="form-group">
             <label>Email: </label>
-            <input type="text" id="email" class="form-control" placeholder="Enter your email" autofocus required />
+            <input type="text" name="email" id="email" class="form-control" placeholder="Enter your email" autofocus required />
             <span class="feedback" id="email_msg"></span>
           </div>
           <br />
@@ -51,7 +52,7 @@ if (isset($_POST['action'])) {
           <div class="form-group">
             <label>Password: </label>
             <div id="pwd-msg" class="feedback"></div>
-            <input type="password" id="pwd" class="form-control" placeholder="Enter your password" required />
+            <input type="password" name="pwd" id="pwd" class="form-control" placeholder="Enter your password" required />
           </div>
           <div class="form-group">
             <input type="checkbox" id="showPwd" /> Show password
@@ -61,7 +62,7 @@ if (isset($_POST['action'])) {
           <div class="form-group">
             <label>Confirm Password: </label>
             <div id="pwd-confirm-msg" class="feedback"></div>
-            <input type="password" id="confirm_pwd" class="form-control" placeholder="Re-enter your password" required />
+            <input type="password" name="confirm_pwd" id="confirm_pwd" class="form-control" placeholder="Re-enter your password" required />
           </div>
           <div class="form-group">
             <input type="checkbox" id="showConfirmPwd" /> Show password
@@ -72,30 +73,44 @@ if (isset($_POST['action'])) {
           <br />
 
           <div class="form-group">
-            <label>Name: </label>
-            <input type="text" id="name" class="form-control" placeholder="Enter your name" required />
+            <label>First Name: </label>
+            <input type="text" name="firstName" id="firstName" class="form-control" placeholder="Enter your first name" required />
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label>Last Name: </label>
+            <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Enter your last name" required />
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label>Phone Number: </label>
+            <input type="text" name="phone" id="phone" class="form-control" placeholder="Enter your phone number" required />
+            <span class="feedback" id="phone_msg"></span>
           </div>
           <br />
 
           <div class="form-group">
             <label>Age: </label>
-            <input type="text" id="age" class="form-control" placeholder="Enter your age" required />
+            <input type="text" name="age" id="age" class="form-control" placeholder="Enter your age" required />
             <span class="feedback" id="age_msg"></span>
           </div>
           <br />
 
           <div class="form-group">
             <label>Language of Profiency: </label>
-            <input type="text" id="language" class="form-control" placeholder="Enter your language of profiency" required />
+            <input type="text" name="native" id="native" class="form-control" placeholder="Enter your language of profiency" required />
           </div>
           <br />
 
           <div class="form-group">
             <label>Target Language: </label>
-            <input type="text" id="target_language" class="form-control" placeholder="Enter your target language" required />
+            <input type="text" name="target" id="target" class="form-control" placeholder="Enter your target language" required />
           </div>
           <br />
-          <input type="submit" value="Sign Up" class="btn btn-purple" />
+          <div><?php echo $error; ?></div>
+          <input type="submit" id="action" name="action" value="Sign Up" class="btn btn-purple" />
         </form>
       </div>
 
@@ -103,6 +118,13 @@ if (isset($_POST['action'])) {
       <div id="footer"></div>
     </div>
   </div>
+
+  <?php
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $_SESSION['email'] = $_POST['email'];
+    header('Location: ../pages/postfeed.php');
+  }
+  ?>
 
   <script src="../layout/welcome_layout.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -179,6 +201,15 @@ if (isset($_POST['action'])) {
         document.getElementById("pwd_msg").innerHTML = "Passwords do not match.";
       } else
         document.getElementById("pwd_msg").innerHTML = "";
+
+      // phone validation - integer
+      var phone = document.getElementById("phone");
+      if (!isInt(phone.value)) {
+        number_error++;
+        document.getElementById("phone").value = phone.value;
+        document.getElementById("phone_msg").innerHTML = "Phone must be an integer.";
+      } else
+        document.getElementById("phone_msg").innerHTML = "";
 
       // age validation - integer and at least 13 years old
       var age = document.getElementById("age");
