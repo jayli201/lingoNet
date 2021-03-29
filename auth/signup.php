@@ -10,7 +10,7 @@ require("../db/connectdb.php");
 require("../sql/signup_sql.php");
 
 if (isset($_POST['action'])) {
-  if (!empty($_POST['action']) && ($_POST['action'] == 'Sign Up')) {
+  if (!empty($_POST['action']) && ($_POST['action'] == 'Next')) {
     $error = signUp($_POST['email'], $_POST['pwd'], $_POST['firstName'], $_POST['lastName'], $_POST['age'], $_POST['phone'], $_POST['native'], $_POST['target']);
   }
 }
@@ -105,19 +105,7 @@ if (isset($_POST['action'])) {
           </div>
           <br />
 
-          <div class="form-group">
-            <label>Language of Profiency: </label>
-            <input type="text" name="native" id="native" class="form-control" placeholder="Enter your language of profiency" required />
-          </div>
-          <br />
-
-          <div class="form-group">
-            <label>Target Language: </label>
-            <input type="text" name="target" id="target" class="form-control" placeholder="Enter your target language" required />
-          </div>
-          <br />
-
-          <input type="submit" name="action" id="action" value="Sign Up" class="btn btn-purple" />
+          <input type="submit" name="action" id="action" value="Next" class="btn btn-lg btn-purple" />
         </form>
       </div>
 

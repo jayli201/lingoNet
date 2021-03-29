@@ -65,7 +65,7 @@ if (isset($_POST['action'])) {
             </div>
           </div>
 
-          <input type="submit" name="action" id="action" value="Login" class="btn btn-purple" />
+          <input type="submit" name="action" id="action" value="Login" class="btn btn-lg btn-purple" />
         </form>
       </div>
     </div>
@@ -102,13 +102,13 @@ if (isset($_POST['action'])) {
         var submitBtn = document.getElementById("action");
         var submitted = false;
         submitBtn.disabled = true;
-        submitBtn.className = "btn btn-purple mt-2";
+        submitBtn.className = "btn btn-lg btn-purple mt-2";
 
         // add an event listener to password - if password has been entered, enable the submit button 
         pwd.addEventListener("input", function() {
           try {
             submitBtn.disabled = false;
-            submitBtn.className = "btn btn-purple";
+            submitBtn.className = "btn btn-lg btn-purple";
           } catch (error) {
             alert("Cannot switch type");
           }
