@@ -11,7 +11,7 @@ require("../sql/signup_sql.php");
 
 if (isset($_POST['action'])) {
   if (!empty($_POST['action']) && ($_POST['action'] == 'Sign Up')) {
-    $error = signUp($_POST['email'], $_POST['password'], $_POST['firstName'], $_POST['lastName'], $_POST['age'], $_POST['phone']);
+    $error = signUp($_POST['email'], $_POST['pwd'], $_POST['firstName'], $_POST['lastName'], $_POST['age'], $_POST['phone']);
   }
 }
 ?>
@@ -41,7 +41,7 @@ if (isset($_POST['action'])) {
 
       <div class="form">
         <h1 class="display-4">Sign Up</h1>
-        <form id="fm-login" name="SignUpForm" action="<?php $_SERVER['PHP_SELF'] ?>" method="post" onsubmit="return validateInput()">
+        <form id="fm-login" name="SignUpForm" action="" method="post" onsubmit="return validateInput()">
           <div class="form-group">
             <label>Email: </label>
             <input type="text" name="email" id="email" class="form-control" placeholder="Enter your email" autofocus required />
@@ -118,13 +118,6 @@ if (isset($_POST['action'])) {
       <div id="footer"></div>
     </div>
   </div>
-
-  <?php
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $_SESSION['email'] = $_POST['email'];
-    header('Location: ../pages/postfeed.php');
-  }
-  ?>
 
   <script src="../layout/welcome_layout.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

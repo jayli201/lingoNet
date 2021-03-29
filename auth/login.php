@@ -51,8 +51,8 @@ require("../db/connectdb.php");
           <input type="submit" id="submit_btn" value="Login" class="btn btn-purple" />
         </form>
       </div>
-      <!-- So far, $_SESSION(<?php echo session_id() ?>) contains <br />
-      <?php foreach ($_SESSION as $k => $v) echo "$k: $v </br>" ?> -->
+      So far, $_SESSION(<?php echo session_id() ?>) contains <br />
+      <?php foreach ($_SESSION as $k => $v) echo "$k: $v </br>" ?>
     </div>
     <br />
     <div id="footer"></div>

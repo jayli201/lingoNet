@@ -189,7 +189,7 @@ require("../db/connectdb.php");
   <?php
     // if user has not logged in, redirect to welcome page
   } else {
-    header("Location: ../auth/welcome.html");
+    header("Location: ../auth/welcome.php");
   }
   ?>
 

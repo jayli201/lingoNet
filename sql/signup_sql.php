@@ -1,12 +1,18 @@
 <?php
 require("../db/connectdb.php");
 
-function signUp($email, $password, $firstName, $lastName, $age, $phone)
+function signUp($email, $pwd, $firstName, $lastName, $age, $phone)
 {
     global $db;
+
     // add user into db
-    $stamt = $db->prepare("INSERT INTO users(email, password, firstName, lastName, age, phone) VALUES (?, ?, ?, ?, ?, ?)");
-    $stamt->bind_param("ssssii", $email, $password, $firstName, $lastName, $age, $phone);
-    $stamt->execute();
-    $stamt->close();
+    $stmt = $db->prepare("INSERT INTO users(email, password, firstName, lastName, age, phone) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssii", $email, $pwd, $firstName, $lastName, $age, $phone);
+    if (!$stmt->execute()) {
+        return "Email already taken. Please try again with a new email.";
+    } else {
+        $_SESSION['email'] = $email;
+        header("Location: ../pages/postfeed.php");
+    }
+    $stmt->close();
 }
