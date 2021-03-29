@@ -69,6 +69,7 @@ if (isset($_POST['action'])) {
         </form>
       </div>
     </div>
+
     <br />
     <div id="footer"></div>
 

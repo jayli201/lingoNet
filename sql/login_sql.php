@@ -19,6 +19,25 @@ function userExists($email)
   }
 }
 
+// check if the hashed password in database matches user input
+function checkPass($email, $password)
+{
+  global $db;
+
+  $query = "SELECT * FROM users WHERE BINARY EMAIL = '" . $email . "'";
+  $result = mysqli_query($db, $query);
+
+  if (mysqli_num_rows($result) > 0) {
+    while ($row = $result->fetch_assoc()) {
+      if (md5($password) == $row['password']) {
+        return $row['password'];
+      } else {
+        return false;
+      }
+    }
+  }
+}
+
 function login($email, $pwd)
 {
   global $db;
@@ -26,26 +45,25 @@ function login($email, $pwd)
   // escape special characters for the username and password
   $email = mysqli_real_escape_string($db, $email);
   $password = mysqli_real_escape_string($db, $pwd);
+  $hashed_pwd = checkPass($email, $password);
 
   if (!userExists($email)) {
     return "Email does not exist in system. Please login with a valid email.";
+  } else if ($hashed_pwd == false) {
+    return "Wrong password. Please reenter your correct password.";
   } else {
-    $query = "SELECT phone FROM users WHERE BINARY email = ? AND BINARY password = ?";
+    $query = "SELECT * FROM users WHERE BINARY email = ? AND password = ?";
     $stmt = $db->prepare($query);
-    $stmt->bind_param("ss", $email, $password);
+    $stmt->bind_param("ss", $email, $hashed_pwd);
     $stmt->execute();
-    $stmt->bind_result($phone);
     $stmt->store_result();
 
     // found an email and password match
     if ($stmt->num_rows() == 1) {
       // fill in session details
       $_SESSION['email'] = $email;
-      $_SESSION['phone'] = $phone;
       // go to mainpage afterwards
       header('Location: ../pages/postfeed.php');
-    } else {
-      return "Wrong password. Please reenter your correct password.";
     }
     $stmt->close();
   }

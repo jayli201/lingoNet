@@ -24,8 +24,10 @@ function signUp($email, $pwd, $firstName, $lastName, $age, $phone)
   if (userExists($email)) {
     return "Email already exists in system. Please sign up with a different email.";
   } else {
+    $hashed_pwd = md5($pwd);
+    echo $hashed_pwd;
     $_SESSION['email'] = $email;
-    $_SESSION['pwd'] = $pwd;
+    $_SESSION['pwd'] = $hashed_pwd;
     $_SESSION['firstName'] = $firstName;
     $_SESSION['lastName'] = $lastName;
     $_SESSION['age'] = $age;
