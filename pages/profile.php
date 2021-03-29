@@ -7,6 +7,7 @@
 ***************************************************************************************/ -->
 <?php
 require("../db/connectdb.php");
+require("../sql/create_post_sql.php")
 ?>
 
 <!DOCTYPE html>
@@ -28,9 +29,13 @@ require("../db/connectdb.php");
 
 <body>
   <?php
-  // if user has logged in, then display 
-  if (isset($_SESSION['email'])) {
+  // if user has not logged in, then redirect
+  // otherwise, display content 
+  if (!isset($_SESSION['email'])) {
+    header("Location: ../auth/welcome.php");
+  } else {
   ?>
+
     <div class="page-container">
       <div class="content-wrap">
         <div id="header"></div>
@@ -75,23 +80,29 @@ require("../db/connectdb.php");
                   </div>
                 </div>
 
-                </br>
+                <br />
+                <hr />
 
-                <div class="card border border-purple">
-                  <div class="card-body">
-                    <h5 class="card-title">
-                      Introductory Post
-                    </h5>
-                    <div>This is my introductory post.</div>
-                    <button class="btn btn-success" role="button">Edit Post</button>
-                    <button class="btn btn-danger" role="button">Delete Post</button>
+                <?php
+                // if user has not created a post yet, then display "create post" button
+                // otherwise, display edit and delete post buttons
+                if (!postExists($_SESSION['email'])) {
+                ?>
+                  <a class="btn btn-purple btn-lg" href="create_post.php" role="button">Create Post</a>
+                <?php } else { ?>
+                  <div class="card border border-purple">
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        Introductory Post
+                      </h5>
+                      <div>This is my introductory post.</div>
+                      <button class="btn btn-success" role="button">Edit Post</button>
+                      <button class="btn btn-danger" role="button">Delete Post</button>
 
+                    </div>
                   </div>
-                </div>
+                <?php } ?>
 
-                </br>
-                <!-- <a class="text-purple" href="create_post.html">Create post</a> -->
-                <a class="btn btn-purple btn-lg" href="create_post.php" role="button">Create Post</a>
               </div>
             </div>
           </div>
@@ -99,14 +110,11 @@ require("../db/connectdb.php");
 
         <br />
         <div id="footer"></div>
+
       </div>
     </div>
-  <?php
-    // if user has not logged in, redirect to welcome page
-  } else {
-    header("Location: ../auth/welcome.php");
-  }
-  ?>
+
+  <?php } ?>
 
   <script src="../layout/layout.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
