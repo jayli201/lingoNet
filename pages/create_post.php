@@ -6,7 +6,15 @@
 * Availability: https://getbootstrap.com/
 ***************************************************************************************/ -->
 <?php
-require("../db/connectdb.php");
+require("../sql/create_post_sql.php");
+
+if (isset($_POST['action'])) {
+  if (!empty($_POST['action']) && ($_POST['action'] == 'Post!')) {
+    $error = createPost($_SESSION['email'], $_POST['introduction'], $_POST['lookingFor'], $_POST['whyYou']);
+  }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -28,50 +36,50 @@ require("../db/connectdb.php");
 
 <body>
   <?php
-  // if user has logged in, then display 
-  if (isset($_SESSION['email'])) {
+  // if user has not logged in, then redirect
+  // otherwise, display content 
+  if (!isset($_SESSION['email'])) {
+    header("Location: ../auth/welcome.php");
+  } else
   ?>
-    <div class="page-container">
-      <div class="content-wrap">
-        <div id="header"></div>
-        <br />
 
-        <div class="form">
-          <h1 class="display-4">Your Introductory Post</h1>
+  <div class="page-container">
+    <div class="content-wrap">
+      <div id="header"></div>
+      <br />
 
-          <form id="fm-login" name="Post" action="profile.php" method="post" onsubmit="return validateInput()">
-            <div class="form-group">
-              <label>Personal Introduction: </label>
-              <textarea id="introduction" class="form-control" rows="7" placeholder="Introduce yourself!" autofocus required></textarea>
-            </div>
-            <br />
+      <div class="form">
+        <h1 class="display-4">Your Introductory Post</h1>
 
-            <div class="form-group">
-              <label>What You're Looking For: </label>
-              <textarea id="introduction" class="form-control" rows="5" placeholder="What are you looking for in a language partner?" required></textarea>
-            </div>
-            <br />
+        <form id="fm-login" name="Post" action="" method="post" onsubmit="return validateInput()">
+          <div class="form-group">
+            <label>Personal Introduction: </label>
+            <textarea name="introduction" id="introduction" class="form-control" rows="7" placeholder="Introduce yourself!" autofocus required></textarea>
+          </div>
+          <br />
 
-            <div class="form-group">
-              <label>Why You?</label>
-              <textarea id="introduction" class="form-control" rows="5" placeholder="How are you a great language partner?" required></textarea>
-            </div>
-            <br />
+          <div class="form-group">
+            <label>What You're Looking For: </label>
+            <textarea name="lookingFor" id="lookingFor" class="form-control" rows="5" placeholder="What are you looking for in a language partner?" required></textarea>
+          </div>
+          <br />
 
-            <input type="submit" value="Post!" class="btn btn-purple" />
-          </form>
-        </div>
+          <div class="form-group">
+            <label>Why You?</label>
+            <textarea name="whyYou" id="whyYou" class="form-control" rows="5" placeholder="How are you a great language partner?" required></textarea>
+          </div>
 
-        <br />
-        <div id="footer"></div>
+          <div class="feedback"><?php echo $error; ?></div>
+          <br />
+
+          <input type="submit" name="action" id="action" value="Post!" class="btn btn-purple" />
+        </form>
       </div>
+
+      <br />
+      <div id="footer"></div>
     </div>
-  <?php
-    // if user has not logged in, redirect to welcome page
-  } else {
-    header("Location: ../auth/welcome.html");
-  }
-  ?>
+  </div>
 
   <script src="../layout/layout.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

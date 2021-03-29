@@ -16,7 +16,7 @@
     setcookie("PHPSESSID", "", time() - 3600, "/");
 
     // redirect to home page
-    header('Location: ../auth/welcome.html');
+    header('Location: ../auth/welcome.php');
   }
   ?>
 

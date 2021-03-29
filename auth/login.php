@@ -7,6 +7,13 @@
 ***************************************************************************************/ -->
 <?php
 require("../db/connectdb.php");
+require("../sql/login_sql.php");
+
+if (isset($_POST['action'])) {
+  if (!empty($_POST['action']) && ($_POST['action'] == 'Login')) {
+    $error = login($_POST['email'], $_POST['pwd']);
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,35 +41,32 @@ require("../db/connectdb.php");
 
       <div class="form">
         <h1 class="display-4">Login</h1>
-        <form id="fm-login" action="<?php $_SERVER['PHP_SELF'] ?>" method="post" onsubmit="return validateInput()">
-          <label>Email: </label>
-          <input type="text" name="email" id="email" class="form-control" autofocus required />
-          <div id="email_msg" class="feedback"></div>
-
-          <br />
-          <label>Password: </label>
-          <input type="password" id="pwd" class="form-control" required />
-          <br />
+        <form id="fm-login" action="" method="post" onsubmit="return validateInput()">
           <div class="form-group">
-            <input type="checkbox" id="showPwd" /> Show password
+            <label>Email: </label>
+            <input type="text" name="email" id="email" class="form-control" autofocus required />
+            <span class="feedback" id="email_msg"></span>
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label>Password: </label>
+            <input type="password" name="pwd" id="pwd" class="form-control" required />
+            <br />
+            <div class="form-group">
+              <input type="checkbox" id="showPwd" /> Show password
+            </div>
           </div>
 
+          <div class="feedback"><?php echo $error; ?></div>
           <br />
-          <input type="submit" id="submit_btn" value="Login" class="btn btn-purple" />
+
+          <input type="submit" name="action" id="action" value="Login" class="btn btn-purple" />
         </form>
       </div>
-      <!-- So far, $_SESSION(<?php echo session_id() ?>) contains <br />
-      <?php foreach ($_SESSION as $k => $v) echo "$k: $v </br>" ?> -->
     </div>
     <br />
     <div id="footer"></div>
-
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $_SESSION['email'] = $_POST['email'];
-      header('Location: ../pages/postfeed.php');
-    }
-    ?>
 
     <script src="../layout/welcome_layout.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -91,7 +95,7 @@ require("../db/connectdb.php");
 
       (function() {
         var pwd = document.getElementById("pwd");
-        var submitBtn = document.getElementById("submit_btn");
+        var submitBtn = document.getElementById("action");
         var submitted = false;
         submitBtn.disabled = true;
         submitBtn.className = "btn btn-purple mt-2";
@@ -106,19 +110,6 @@ require("../db/connectdb.php");
           }
         }, false);
       }());
-
-      // check if the email is entered and is valid format
-      function checkEmail() {
-        var msg = document.getElementById("email_msg");
-        if (!checkPattern(this.value))
-          msg.textContent = "Email must be valid.";
-        else
-          msg.textContent = "";
-      }
-      var email = document.getElementById("email");
-
-      // bind event listener to the email variable
-      email.addEventListener('blur', checkEmail, false);
 
       checkPattern = (str) => {
         // test if user input matches the standard email pattern		
@@ -135,6 +126,7 @@ require("../db/connectdb.php");
         if (!checkPattern(email.value)) {
           number_error++;
           document.getElementById("email").value = email.value;
+          document.getElementById("email_msg").innerHTML = "Email must be valid.";
         } else
           document.getElementById("email_msg").innerHTML = "";
 
