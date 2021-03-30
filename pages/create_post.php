@@ -59,23 +59,17 @@ if (isset($_POST['action'])) {
           </div>
           <br />
 
-          <form id="fm-login" name="Post" action="" method="post" onsubmit="return validateInput()">
-            <div class="form-group">
-              <label>Personal Introduction: </label>
-              <textarea name="introduction" id="introduction" class="form-control" rows="7" placeholder="Introduce yourself!" autofocus required></textarea>
-            </div>
+          <form action="" method="post" onsubmit="return validateInput()">
+            <label>Personal Introduction: </label>
+            <textarea name="introduction" id="introduction" class="form-control" rows="7" placeholder="Introduce yourself!" autofocus required></textarea>
             <br />
 
-            <div class="form-group">
-              <label>What You're Looking For: </label>
-              <textarea name="lookingFor" id="lookingFor" class="form-control" rows="5" placeholder="What are you looking for in a language partner?" required></textarea>
-            </div>
+            <label>What You're Looking For: </label>
+            <textarea name="lookingFor" id="lookingFor" class="form-control" rows="5" placeholder="What are you looking for in a language partner?" required></textarea>
             <br />
 
-            <div class="form-group">
-              <label>Why You?</label>
-              <textarea name="whyYou" id="whyYou" class="form-control" rows="5" placeholder="How are you a great language partner?" required></textarea>
-            </div>
+            <label>Why You?</label>
+            <textarea name="whyYou" id="whyYou" class="form-control" rows="5" placeholder="How are you a great language partner?" required></textarea>
             <br />
 
             <input type="submit" name="action" id="action" value="Post!" class="btn btn-lg btn-purple" />

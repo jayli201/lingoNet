@@ -50,6 +50,14 @@
     color: red;
 }
 
+.input-icon {
+    cursor: pointer;
+}
+
+#label {
+    margin-bottom: 1px;
+}
+
 @media only screen and (max-width: 768px) {
     h1 {
         line-height: 1.1em;

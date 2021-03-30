@@ -45,7 +45,7 @@ if (isset($_POST['action'])) {
           <br />
           <br />
 
-          <form id="fm-login" name="SignUpForm" action="" method="post">
+          <form action="" method="post">
             <table id="natives" class="table list-native">
               <thead>
                 <tr>
