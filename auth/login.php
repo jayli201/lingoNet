@@ -28,6 +28,7 @@ if (isset($_POST['action'])) {
   <title>Login</title>
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <link rel="stylesheet" href="../css/layout.css" />
   <link rel="stylesheet" href="../css/content.css" />
   <link rel="stylesheet" href="../css/theme.css" />
@@ -49,20 +50,22 @@ if (isset($_POST['action'])) {
           </div>
           <br />
 
-          <form id="fm-login" action="" method="post" onsubmit="return validateInput()">
-            <div class="form-group">
-              <label>Email: </label>
-              <input type="text" name="email" id="email" class="form-control" autofocus required />
-              <span class="feedback" id="email_msg"></span>
-            </div>
+          <form action="" method="post" onsubmit="return validateInput()">
+            <label>Email: </label>
+            <input type="text" name="email" id="email" class="form-control" autofocus required />
+            <span class="feedback" id="email_msg"></span>
+            <br />
             <br />
 
-            <div class="form-group">
-              <label>Password: </label>
-              <input type="password" name="pwd" id="pwd" class="form-control" required />
-              <br />
-              <input type="checkbox" id="showPwd" /> Show password
+            <div class="label-icon" style="display: inline-block">
+              <label>Password:</label>
             </div>
+
+            <div class="input-icon" style="display: inline-block">
+              <i id="showPwd" class="fa fa-eye" aria-hidden="true" onClick="viewPassword()"></i>
+            </div>
+
+            <input type="password" name="pwd" id="pwd" class="form-control" required />
             <br />
 
             <input type="submit" name="action" id="action" value="Login" class="btn btn-lg btn-purple" />
@@ -79,26 +82,6 @@ if (isset($_POST['action'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
     <script>
-      // runs as soon as this code is reached
-      (function() {
-        var pwd = document.getElementById("pwd");
-        var showPwd = document.getElementById("showPwd");
-
-        // when "show password" is checked
-        showPwd.addEventListener("change", function() {
-          try {
-            // change to indicate user wants to see the password
-            if (showPwd.checked)
-              pwd.type = "text";
-            // change to indicate user does not want to see the password
-            else
-              pwd.type = "password";
-          } catch (error) {
-            alert("Cannot switch type");
-          }
-        }, false);
-      }());
-
       (function() {
         var pwd = document.getElementById("pwd");
         var submitBtn = document.getElementById("action");
@@ -116,6 +99,19 @@ if (isset($_POST['action'])) {
           }
         }, false);
       }());
+
+      viewPassword = () => {
+        var passwordInput = document.getElementById('pwd');
+        var passStatus = document.getElementById('showPwd');
+
+        if (passwordInput.type == 'password') {
+          passwordInput.type = 'text';
+          passStatus.className = 'fa fa-eye-slash';
+        } else {
+          passwordInput.type = 'password';
+          passStatus.className = 'fa fa-eye';
+        }
+      }
 
       checkPattern = (str) => {
         // test if user input matches the standard email pattern		

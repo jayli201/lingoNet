@@ -28,6 +28,7 @@ if (isset($_POST['action'])) {
   <title>Sign Up</title>
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <link rel="stylesheet" href="../css/layout.css" />
   <link rel="stylesheet" href="../css/content.css" />
   <link rel="stylesheet" href="../css/theme.css" />
@@ -49,7 +50,7 @@ if (isset($_POST['action'])) {
           </div>
           <br />
 
-          <form id="fm-login" name="SignUpForm" action="" method="post" onsubmit="return validateInput()">
+          <form action="" method="post" onsubmit="return validateInput()">
             <div class="row">
               <div class="col">
                 <label>First Name: </label>
@@ -77,31 +78,37 @@ if (isset($_POST['action'])) {
 
             <hr />
 
-            <div class="form-group">
-              <label>Email: </label>
-              <input type="text" name="email" id="email" class="form-control" required />
-              <span class="feedback" id="email_msg"></span>
-            </div>
+            <label>Email: </label>
+            <input type="text" name="email" id="email" class="form-control" required />
+            <span class="feedback" id="email_msg"></span>
+            <br />
             <br />
 
-            <div class="form-group">
-              <label>Password: </label>
-              <div id="pwd-msg" class="feedback"></div>
-              <input type="password" name="pwd" id="pwd" class="form-control" required />
-              <br />
-              <input type="checkbox" id="showPwd" /> Show password
+            <div class="label-icon" style="display: inline-block">
+              <label>Password:</label>
             </div>
+
+            <div class="input-icon" style="display: inline-block">
+              <i id="show_pwd" class="fa fa-eye" aria-hidden="true" onClick="viewPassword()"></i>
+            </div>
+
+            <div id="pwd-msg" class="feedback"></div>
+            <input type="password" name="pwd" id="pwd" class="form-control" required />
             <br />
 
-            <div class="form-group">
-              <label>Confirm Password: </label>
-              <div id="pwd-confirm-msg" class="feedback"></div>
-              <input type="password" name="confirm_pwd" id="confirm_pwd" class="form-control" required />
-              <br />
-              <input type="checkbox" id="showConfirmPwd" /> Show password
-              <div>
-                <span class="feedback" id="pwd_msg"></span>
-              </div>
+            <div class="label-icon" style="display: inline-block">
+              <label>Confirm Password:</label>
+            </div>
+
+            <div class="input-icon" style="display: inline-block">
+              <i id="show_confirm_pwd" class="fa fa-eye" aria-hidden="true" onClick="viewConfirmPassword()"></i>
+            </div>
+
+            <div id="pwd-confirm-msg" class="feedback"></div>
+            <input type="password" name="confirm_pwd" id="confirm_pwd" class="form-control" required />
+
+            <div>
+              <span class="feedback" id="pwd_msg"></span>
             </div>
             <br />
 
@@ -119,42 +126,31 @@ if (isset($_POST['action'])) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
   <script>
-    // runs as soon as this code is reached
-    (function() {
-      var pwd = document.getElementById("pwd");
-      var showPwd = document.getElementById("showPwd");
+    viewPassword = () => {
+      var pwd = document.getElementById('pwd');
+      var showPwd = document.getElementById('show_pwd');
 
-      var confirmPwd = document.getElementById("confirm_pwd");
-      var showConfirmPwd = document.getElementById("showConfirmPwd");
+      if (pwd.type == 'password') {
+        pwd.type = 'text';
+        showPwd.className = 'fa fa-eye-slash';
+      } else {
+        pwd.type = 'password';
+        showPwd.className = 'fa fa-eye';
+      }
+    }
 
-      // when "show password" is checked
-      showPwd.addEventListener("change", function() {
-        try {
-          // change to indicate user wants to see the password
-          if (showPwd.checked)
-            pwd.type = "text";
-          // change to indicate user does not want to see the password
-          else
-            pwd.type = "password";
-        } catch (error) {
-          alert("Cannot switch type");
-        }
-      }, false);
+    viewConfirmPassword = () => {
+      var confirmPwd = document.getElementById('confirm_pwd');
+      var showConfirmPwd = document.getElementById('show_confirm_pwd');
 
-      // when "show password" is checked
-      showConfirmPwd.addEventListener("change", function() {
-        try {
-          // change to indicate user wants to see the password
-          if (showConfirmPwd.checked)
-            confirm_pwd.type = "text";
-          // change to indicate user does not want to see the password
-          else
-            confirm_pwd.type = "password";
-        } catch (error) {
-          alert("Cannot switch type");
-        }
-      }, false);
-    }());
+      if (confirmPwd.type == 'password') {
+        confirmPwd.type = 'text';
+        showConfirmPwd.className = 'fa fa-eye-slash';
+      } else {
+        confirmPwd.type = 'password';
+        showConfirmPwd.className = 'fa fa-eye';
+      }
+    }
 
     isInt = (str) => {
       var val = parseInt(str);
