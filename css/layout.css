@@ -15,3 +15,7 @@
     background-position: center;
     position: relative;
 }
+
+label {
+    font-weight: bold;
+}

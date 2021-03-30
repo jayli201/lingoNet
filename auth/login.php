@@ -39,34 +39,35 @@ if (isset($_POST['action'])) {
       <div id="header"></div>
       <br />
 
-      <div class="form">
-        <h1 class="display-4">Login</h1>
-        <br />
+      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
+        <div class="form">
+          <h1 class="display-4">Login</h1>
+          <br />
 
-        <div class="feedback">
-          <?php echo $error; ?>
-        </div>
-        <br />
-
-        <form id="fm-login" action="" method="post" onsubmit="return validateInput()">
-          <div class="form-group">
-            <label>Email: </label>
-            <input type="text" name="email" id="email" class="form-control" autofocus required />
-            <span class="feedback" id="email_msg"></span>
+          <div class="feedback">
+            <?php echo $error; ?>
           </div>
           <br />
 
-          <div class="form-group">
-            <label>Password: </label>
-            <input type="password" name="pwd" id="pwd" class="form-control" required />
-            <br />
+          <form id="fm-login" action="" method="post" onsubmit="return validateInput()">
             <div class="form-group">
+              <label>Email: </label>
+              <input type="text" name="email" id="email" class="form-control" autofocus required />
+              <span class="feedback" id="email_msg"></span>
+            </div>
+            <br />
+
+            <div class="form-group">
+              <label>Password: </label>
+              <input type="password" name="pwd" id="pwd" class="form-control" required />
+              <br />
               <input type="checkbox" id="showPwd" /> Show password
             </div>
-          </div>
+            <br />
 
-          <input type="submit" name="action" id="action" value="Login" class="btn btn-lg btn-purple" />
-        </form>
+            <input type="submit" name="action" id="action" value="Login" class="btn btn-lg btn-purple" />
+          </form>
+        </div>
       </div>
     </div>
 

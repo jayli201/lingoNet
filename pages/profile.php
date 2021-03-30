@@ -39,70 +39,72 @@ require("../sql/create_post_sql.php")
     <div class="page-container">
       <div class="content-wrap">
         <div id="header"></div>
-        <br />
 
-        <div class="content">
-          <h1 class="display-4">Profile</h1>
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
+          <div class="content">
+            <h1 class="display-4">Profile</h1>
+            <br />
 
-          <div class="container">
-            <div class="row">
-              <div class="col-4">
+            <div class="container">
+              <div class="row">
+                <div class="col-4">
 
-                <div class="card border border-purple">
-                  <!-- <img class="card-img-top" src="..." alt="Profile Picture"> -->
-                  <div class="card-body">
-                    <h5 class="card-title">
-                      John Smith
-                    </h5>
-                    <div>Username: johnsmith</div>
-                    <div>Age: 22</div>
-                    <div>Email: johnsmith@gmail.com</div>
-                    <div>Phone Number: 123-456-7890</div>
-                    <button class="btn btn-purple" role="button">Edit</button>
-
-                  </div>
-                </div>
-
-              </div>
-              <div class="col">
-                <div class="card border border-purple">
-                  <div class="card-body">
-                    <h5 class="card-title">
-                      Languages
-                    </h5>
-
-                    <h6 class="card-subtitle mb-2">Can speak: </h6>
-                    <p> English </p>
-                    <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                    <p> Spanish </p>
-                    <button class="btn btn-purple" role="button">Edit</button>
-
-                  </div>
-                </div>
-
-                <br />
-                <hr />
-
-                <?php
-                // if user has not created a post yet, then display "create post" button
-                // otherwise, display edit and delete post buttons
-                if (!postExists($_SESSION['email'])) {
-                ?>
-                  <a class="btn btn-purple btn-lg" href="create_post.php" role="button">Create Post</a>
-                <?php } else { ?>
                   <div class="card border border-purple">
+                    <!-- <img class="card-img-top" src="..." alt="Profile Picture"> -->
                     <div class="card-body">
                       <h5 class="card-title">
-                        Introductory Post
+                        John Smith
                       </h5>
-                      <div>This is my introductory post.</div>
-                      <button class="btn btn-success" role="button">Edit Post</button>
-                      <button class="btn btn-danger" role="button">Delete Post</button>
+                      <div>Username: johnsmith</div>
+                      <div>Age: 22</div>
+                      <div>Email: johnsmith@gmail.com</div>
+                      <div>Phone Number: 123-456-7890</div>
+                      <button class="btn btn-purple" role="button">Edit</button>
 
                     </div>
                   </div>
-                <?php } ?>
 
+                </div>
+                <div class="col">
+                  <div class="card border border-purple">
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        Languages
+                      </h5>
+
+                      <h6 class="card-subtitle mb-2">Can speak: </h6>
+                      <p> English </p>
+                      <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
+                      <p> Spanish </p>
+                      <button class="btn btn-purple" role="button">Edit</button>
+
+                    </div>
+                  </div>
+
+                  <br />
+                  <hr />
+
+                  <?php
+                  // if user has not created a post yet, then display "create post" button
+                  // otherwise, display edit and delete post buttons
+                  if (!postExists($_SESSION['email'])) {
+                  ?>
+                    <a class="btn btn-purple btn-lg" href="create_post.php" role="button">Create Post</a>
+                  <?php } else { ?>
+                    <div class="card border border-purple">
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          Introductory Post
+                        </h5>
+                        <div>This is my introductory post.</div>
+                        <button class="btn btn-success" role="button">Edit Post</button>
+                        <button class="btn btn-danger" role="button">Delete Post</button>
+
+                      </div>
+                    </div>
+                  <?php } ?>
+
+                </div>
               </div>
             </div>
           </div>

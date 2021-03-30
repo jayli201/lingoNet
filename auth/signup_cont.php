@@ -39,59 +39,70 @@ if (isset($_POST['action'])) {
       <div id="header"></div>
       <br />
 
-      <div class="form">
-        <h1 class="display-4">Language Sign Up</h1>
-        <br />
+      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
+        <div class="form">
+          <h1 class="display-4">Sign Up</h1>
+          <br />
+          <br />
 
-        <form id="fm-login" name="SignUpForm" action="" method="post">
-          <table id="natives" class="table list-native">
-            <thead>
-              <tr>
+          <form id="fm-login" name="SignUpForm" action="" method="post">
+            <table id="natives" class="table list-native">
+              <thead>
+                <tr>
+                  <td>
+                    <h4>Native Language</h4>
+                  </td>
+                  <td style="text-align: left;">
+                    <input type="button" class="btn btn-purple " id="addNativeRow" value="+" />
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-sm-4">
+                    <input type="text" name="native[]" id="native" class="form-control" placeholder="Enter a language of profiency" autofocus required />
+                  </td>
+                  <td class="col-sm-2"><a class="deleteNativeRow"></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <br />
+            <hr />
+            <br />
+
+            <table id="targets" class="table list-target">
+              <thead>
                 <td>
-                  <h4>Native Language</h4>
+                  <h4>Target Language</h4>
                 </td>
                 <td style="text-align: left;">
-                  <input type="button" class="btn btn-purple " id="addNativeRow" value="+" />
+                  <input type="button" class="btn btn-purple " id="addTargetRow" value="+" required />
                 </td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="col-sm-4">
-                  <input type="text" name="native[]" id="native" class="form-control" autofocus required />
-                </td>
-                <td class="col-sm-2"><a class="deleteNativeRow"></a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-sm-4">
+                    <input type="text" name="target[]" id="target" class="form-control" placeholder="Enter a language of interest" />
+                  </td>
+                  <td class="col-sm-2"><a class="deleteTargetRow"></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
 
-          <br />
-          <hr />
-          <br />
-
-          <table id="targets" class="table list-target">
-            <thead>
-              <td>
-                <h4>Target Language</h4>
-              </td>
-              <td style="text-align: left;">
-                <input type="button" class="btn btn-purple " id="addTargetRow" value="+" required />
-              </td>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="col-sm-4">
-                  <input type="text" name="target[]" id="target" class="form-control" />
-                </td>
-                <td class="col-sm-2"><a class="deleteTargetRow"></a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <input type="submit" name="action" id="action" value="Sign Up" class="btn btn-lg btn-purple" />
-        </form>
+            <div class="row">
+              <div class="col-9">
+                <input type="submit" name="action" id="action" value="Sign Up" class="btn btn-lg btn-purple" />
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-outline-purple" onclick="goBack()">Go Back</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
 
       <br />
@@ -105,12 +116,16 @@ if (isset($_POST['action'])) {
 
   <!-- following script inspired by https://bootsnipp.com/snippets/402bQ -->
   <script>
+    function goBack() {
+      window.history.back();
+    }
+
     $(document).ready(function() {
       $("#addNativeRow").on("click", function() {
         var newRow = $("<tr>");
         var cols = "";
 
-        cols += '<td><input type="text" name="native[]" id="native" class="form-control" /></td>';
+        cols += '<td><input type="text" name="native[]" id="native" class="form-control" placeholder="Enter a language of profiency"/></td>';
         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger" value="X"></td>';
 
         newRow.append(cols);
@@ -127,7 +142,7 @@ if (isset($_POST['action'])) {
         var newRow = $("<tr>");
         var cols = "";
 
-        cols += '<td><input type="text" name="target[]" id="target" class="form-control" /></td>';
+        cols += '<td><input type="text" name="target[]" id="target" class="form-control" placeholder="Enter a language of interest"/></td>';
         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger" value=X></td>';
 
         newRow.append(cols);

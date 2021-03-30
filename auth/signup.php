@@ -39,76 +39,76 @@ if (isset($_POST['action'])) {
       <div id="header"></div>
       <br />
 
-      <div class="form">
-        <h1 class="display-4">Sign Up</h1>
-        <br />
+      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
+        <div class="form">
+          <h1 class="display-4">Sign Up</h1>
+          <br />
 
-        <div class="feedback">
-          <?php echo $error; ?>
+          <div class="feedback">
+            <?php echo $error; ?>
+          </div>
+          <br />
+
+          <form id="fm-login" name="SignUpForm" action="" method="post" onsubmit="return validateInput()">
+            <div class="row">
+              <div class="col">
+                <label>First Name: </label>
+                <input type="text" name="firstName" id="firstName" class="form-control" autofocus required />
+              </div>
+              <div class="col">
+                <label>Last Name: </label>
+                <input type="text" name="lastName" id="lastName" class="form-control" required />
+              </div>
+            </div>
+            <br />
+
+            <div class="row">
+              <div class="col">
+                <label>Phone Number: </label>
+                <input type="text" name="phone" id="phone" class="form-control" required />
+                <span class="feedback" id="phone_msg"></span>
+              </div>
+              <div class="col">
+                <label>Age: </label>
+                <input type="text" name="age" id="age" class="form-control" required />
+                <span class="feedback" id="age_msg"></span>
+              </div>
+            </div>
+
+            <hr />
+
+            <div class="form-group">
+              <label>Email: </label>
+              <input type="text" name="email" id="email" class="form-control" required />
+              <span class="feedback" id="email_msg"></span>
+            </div>
+            <br />
+
+            <div class="form-group">
+              <label>Password: </label>
+              <div id="pwd-msg" class="feedback"></div>
+              <input type="password" name="pwd" id="pwd" class="form-control" required />
+              <br />
+              <input type="checkbox" id="showPwd" /> Show password
+            </div>
+            <br />
+
+            <div class="form-group">
+              <label>Confirm Password: </label>
+              <div id="pwd-confirm-msg" class="feedback"></div>
+              <input type="password" name="confirm_pwd" id="confirm_pwd" class="form-control" required />
+              <br />
+              <input type="checkbox" id="showConfirmPwd" /> Show password
+              <div>
+                <span class="feedback" id="pwd_msg"></span>
+              </div>
+            </div>
+            <br />
+
+            <input type="submit" name="action" id="action" value="Next" class="btn btn-lg btn-purple" />
+          </form>
         </div>
-        <br />
-
-        <form id="fm-login" name="SignUpForm" action="" method="post" onsubmit="return validateInput()">
-          <div class="form-group">
-            <label>Email: </label>
-            <input type="text" name="email" id="email" class="form-control" placeholder="Enter your email" autofocus required />
-            <span class="feedback" id="email_msg"></span>
-          </div>
-          <br />
-
-          <div class="form-group">
-            <label>Password: </label>
-            <div id="pwd-msg" class="feedback"></div>
-            <input type="password" name="pwd" id="pwd" class="form-control" placeholder="Enter your password" required />
-          </div>
-          <div class="form-group">
-            <input type="checkbox" id="showPwd" /> Show password
-          </div>
-          <br />
-
-          <div class="form-group">
-            <label>Confirm Password: </label>
-            <div id="pwd-confirm-msg" class="feedback"></div>
-            <input type="password" name="confirm_pwd" id="confirm_pwd" class="form-control" placeholder="Re-enter your password" required />
-          </div>
-          <div class="form-group">
-            <input type="checkbox" id="showConfirmPwd" /> Show password
-            <div>
-              <span class="feedback" id="pwd_msg"></span>
-            </div>
-          </div>
-          <br />
-
-          <div class="row">
-            <div class="col">
-              <label>First Name: </label>
-              <input type="text" name="firstName" id="firstName" class="form-control" required />
-            </div>
-            <div class="col">
-              <label>Last Name: </label>
-              <input type="text" name="lastName" id="lastName" class="form-control" required />
-            </div>
-          </div>
-          <br />
-
-          <div class="row">
-            <div class="col">
-              <label>Phone Number: </label>
-              <input type="text" name="phone" id="phone" class="form-control" required />
-              <span class="feedback" id="phone_msg"></span>
-            </div>
-            <div class="col">
-              <label>Age: </label>
-              <input type="text" name="age" id="age" class="form-control" required />
-              <span class="feedback" id="age_msg"></span>
-            </div>
-          </div>
-          <br />
-
-          <input type="submit" name="action" id="action" value="Next" class="btn btn-lg btn-purple" />
-        </form>
       </div>
-
       <br />
       <div id="footer"></div>
     </div>
