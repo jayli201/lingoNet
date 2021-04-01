@@ -1,6 +1,7 @@
 <?php
 require("../db/connectdb.php");
 
+// get post feed information for all users 
 function getPostfeedInfo()
 {
   global $db;

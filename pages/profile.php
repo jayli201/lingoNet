@@ -7,7 +7,8 @@
 ***************************************************************************************/ -->
 <?php
 require("../db/connectdb.php");
-require("../sql/create_post_sql.php")
+require("../sql/create_post_sql.php");
+require("../sql/profile_sql.php");
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +36,11 @@ require("../sql/create_post_sql.php")
     header("Location: ../auth/welcome.php");
   } else {
   ?>
+    <?php
+    $profile_info = getProfileInfo($_SESSION['email']);
+    $language_info = getLanguageInfo($_SESSION['email']);
+    $post_info = getPostInfo($_SESSION['email']);
+    ?>
 
     <div class="page-container">
       <div class="content-wrap">
@@ -53,19 +59,18 @@ require("../sql/create_post_sql.php")
                     <!-- <img class="card-img-top" src="..." alt="Profile Picture"> -->
                     <div class="card-body">
                       <h5 class="card-title">
-                        John Smith
+                        <?php echo $profile_info['firstName'] . " " . $profile_info['lastName']; ?>
                       </h5>
-                      <div>Username: johnsmith</div>
-                      <div>Age: 22</div>
-                      <div>Email: johnsmith@gmail.com</div>
-                      <div>Phone Number: 123-456-7890</div>
+                      <div>Age: <?php echo $profile_info['age'] ?></div>
+                      <div>Email: <?php echo $profile_info['email'] ?></div>
+                      <div>Phone Number: <?php echo $profile_info['phone'] ?></div>
                       <button class="btn btn-purple" role="button">Edit</button>
 
                     </div>
                   </div>
 
-                </div>
-                <div class="col">
+                  <hr />
+
                   <div class="card border border-purple">
                     <div class="card-body">
                       <h5 class="card-title">
@@ -73,16 +78,16 @@ require("../sql/create_post_sql.php")
                       </h5>
 
                       <h6 class="card-subtitle mb-2">Can speak: </h6>
-                      <p> English </p>
+                      <p> <?php echo $language_info['native'] ?> </p>
                       <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                      <p> Spanish </p>
+                      <p> <?php echo $language_info['target'] ?> </p>
                       <button class="btn btn-purple" role="button">Edit</button>
 
                     </div>
                   </div>
 
-                  <br />
-                  <hr />
+                </div>
+                <div class="col">
 
                   <?php
                   // if user has not created a post yet, then display "create post" button
@@ -96,7 +101,16 @@ require("../sql/create_post_sql.php")
                         <h5 class="card-title">
                           Introductory Post
                         </h5>
-                        <div>This is my introductory post.</div>
+                        <div>
+                          Introduction: <?php echo $post_info['introduction']; ?>
+                          <hr />
+                          Looking For: <?php echo $post_info['lookingFor']; ?>
+                          <hr />
+                          Why You? <?php echo $post_info['whyYou']; ?>
+
+                        </div>
+                        <br />
+
                         <button class="btn btn-success" role="button">Edit Post</button>
                         <button class="btn btn-danger" role="button">Delete Post</button>
 
