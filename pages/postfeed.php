@@ -6,7 +6,15 @@
 * Availability: https://getbootstrap.com/
 ***************************************************************************************/ -->
 <?php
-require("../db/connectdb.php");
+require("../sql/postfeed_sql.php");
+$user_info_array = getPostfeedInfo();
+$arr_len = count($user_info_array);
+
+// foreach ($user_info_array as $user_json) {
+//   $user = json_decode($user_json);
+//   echo $user->firstName . '<br/>';
+// }
+
 ?>
 
 <!DOCTYPE html>
@@ -58,151 +66,43 @@ require("../db/connectdb.php");
           </div>
           <br />
 
-          <div class="card-deck">
-            <div class="card border border-purple">
+          <?php $count = 0;
+          ?>
+          <?php foreach ($user_info_array as $key => $value) : ?>
+            <?php if ($count % 3 == 0) : ?>
+              <div class="card-deck">
+              <?php endif; ?>
+              <div class="card border border-purple">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <?= json_decode($value)->firstName ?>
+                    <?= json_decode($value)->lastName ?>
+                    <button type="button" class="btn btn-purple btn-sm">
+                      <!-- Add friend button -->
+                      <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                      </svg>
+                    </button>
+                  </h5>
+                  <h6 class="card-subtitle mb-2">Can speak: </h6>
+                  <p><?= json_decode($value)->native ?>
 
-              <div class="card-body">
-                <h5 class="card-title">
-                  Rebecca Zhou
-                  <button type="button" class="btn btn-purple btn-sm">
-                    <!-- Add friend button -->
-                    <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                      <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                      <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                    </svg>
-                  </button>
-                </h5>
-                <h6 class="card-subtitle mb-2">Can speak: </h6>
-                <p> English, Chinese </p>
-                <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                <p> Korean </p>
+                  <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
+                  <p><?= json_decode($value)->target ?>
+                </div>
+                <div class="card-footer">
+                  <a href="#" class="card-link">More info</a>
+                </div>
               </div>
-              <div class="card-footer">
-                <a href="#" class="card-link">More info</a>
+              <?php if (($count % 3 == 2) || $count == $arr_len - 1) : ?>
               </div>
-            </div>
+              </br>
+            <?php endif; ?>
+            <?php $count++ ?>
+          <?php endforeach; ?>
 
-            <div class="card border border-purple">
-              <div class="card-body">
-                <h5 class="card-title">
-                  Jasmin Li
-                  <button type="button" class="btn btn-purple btn-sm">
-                    <!-- Add friend button -->
-                    <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                      <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                      <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                    </svg>
-                  </button>
-                </h5>
-                <h6 class="card-subtitle mb-2">Can speak: </h6>
-                <p> English, Chinese </p>
-                <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                <p> Korean </p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="card-link">More info</a>
-              </div>
-            </div>
-
-            <div class="card border border-purple">
-              <div class="card-body">
-                <h5 class="card-title">
-                  User 1
-                  <button type="button" class="btn btn-purple btn-sm">
-                    <!-- Add friend button -->
-                    <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                      <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                      <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                    </svg>
-                  </button>
-                </h5>
-                <h6 class="card-subtitle mb-2">Can speak: </h6>
-                <p> English, Chinese </p>
-                <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                <p> Korean </p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="card-link">More info</a>
-              </div>
-            </div>
-          </div>
-
-          <br />
-
-          <div class="card-deck">
-            <div class="card border border-purple">
-
-              <div class="card-body">
-                <h5 class="card-title">
-                  User 2
-                  <button type="button" class="btn btn-purple btn-sm">
-                    <!-- Add friend button -->
-                    <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                      <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                      <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                    </svg>
-                  </button>
-                </h5>
-                <h6 class="card-subtitle mb-2">Can speak: </h6>
-                <p> English, Chinese </p>
-                <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                <p> Korean </p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="card-link">More info</a>
-              </div>
-            </div>
-
-            <div class="card border border-purple">
-              <div class="card-body">
-                <h5 class="card-title">
-                  User 3
-                  <button type="button" class="btn btn-purple btn-sm">
-                    <!-- Add friend button -->
-                    <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                      <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                      <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                    </svg>
-                  </button>
-                </h5>
-                <h6 class="card-subtitle mb-2">Can speak: </h6>
-                <p> English, Chinese </p>
-                <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                <p> Korean </p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="card-link">More info</a>
-              </div>
-            </div>
-
-            <div class="card border border-purple">
-              <div class="card-body">
-                <h5 class="card-title">
-                  User 4
-                  <button type="button" class="btn btn-purple btn-sm">
-                    <!-- Add friend button -->
-                    <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                      <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                      <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                    </svg>
-                  </button>
-                </h5>
-                <h6 class="card-subtitle mb-2">Can speak: </h6>
-                <p> English, Chinese </p>
-                <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                <p> Korean </p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="card-link">More info</a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
