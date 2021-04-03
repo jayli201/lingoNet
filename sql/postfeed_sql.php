@@ -30,6 +30,40 @@ function getPostfeedInfo()
   return $user_info_array;
 }
 
+// checks if user is already in friend table
+function inFriendtable($email, $friendEmail)
+{
+  global $db;
+  $query = "SELECT * FROM friend WHERE email = ? AND friendEmail = ?";
+  $check_stmt = $db->prepare($query);
+  $check_stmt->bind_param("ss", $email, $friendEmail);
+  $check_stmt->execute();
+  $check_stmt->store_result();
+
+  if ($check_stmt->num_rows() == 1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// checks if user is already a pending friend
+function isPendingFriend($email, $friendEmail, $friendStatus)
+{
+  global $db;
+  $query = "SELECT * FROM friend WHERE email = ? AND friendEmail = ? AND friendStatus = ?";
+  $check_stmt = $db->prepare($query);
+  $check_stmt->bind_param("sss", $email, $friendEmail, $friendStatus);
+  $check_stmt->execute();
+  $check_stmt->store_result();
+
+  if ($check_stmt->num_rows() == 1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function addFriendtoPending($email, $friendEmail, $pending)
 {
   global $db;
