@@ -9,17 +9,9 @@
 require("../sql/postfeed_sql.php");
 $user_info_array = getPostfeedInfo();
 $arr_len = count($user_info_array);
-// foreach ($user_info_array as $user_json) {
-//   $user = json_decode($user_json);
-//   echo $user->firstName . '<br/>';
-// }
 
 if (isset($_POST['addFriend'])) {
-  // echo $_POST['addFriend'];
-  // echo $_POST['friendEmail'];
-  // echo $_POST['firstName'];
-  // echo $_POST['lastName'];
-  addFriendtoPending($_SESSION['email'], $_POST['friendEmail']);
+  addFriendtoPending($_SESSION['email'], $_POST['friendEmail'], "pending");
 }
 ?>
 

@@ -18,16 +18,29 @@ function getPostfeedInfo()
         'target' => $row['target'],
         'native' => $row['native']
       );
-      $user_json = json_encode($user);
-      array_push($user_info_array, $user_json);
+
+      // do not display info for current user
+      if ($user['email'] != $_SESSION['email']) {
+        $user_json = json_encode($user);
+        array_push($user_info_array, $user_json);
+      }
     }
   }
   mysqli_free_result($query);
   return $user_info_array;
 }
 
-function addFriendtoPending($email, $friendEmail)
+function addFriendtoPending($email, $friendEmail, $pending)
 {
-  echo $email;
-  echo $friendEmail;
+  global $db;
+
+  // add friend to pending
+  $stmt = $db->prepare("INSERT INTO friend(email, friendEmail, friendStatus) VALUES (?, ?, ?)");
+  $stmt->bind_param("sss", $email, $friendEmail, $pending);
+  if (!$stmt->execute()) {
+    return "Error adding friend";
+  } else {
+    header("Location: ../pages/postfeed.php");
+  }
+  $stmt->close();
 }
