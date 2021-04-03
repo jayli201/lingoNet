@@ -25,3 +25,9 @@ function getPostfeedInfo()
   mysqli_free_result($query);
   return $user_info_array;
 }
+
+function addFriendtoPending($email, $friendEmail)
+{
+  echo $email;
+  echo $friendEmail;
+}

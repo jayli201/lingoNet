@@ -9,12 +9,18 @@
 require("../sql/postfeed_sql.php");
 $user_info_array = getPostfeedInfo();
 $arr_len = count($user_info_array);
-
 // foreach ($user_info_array as $user_json) {
 //   $user = json_decode($user_json);
 //   echo $user->firstName . '<br/>';
 // }
 
+if (isset($_POST['addFriend'])) {
+  // echo $_POST['addFriend'];
+  // echo $_POST['friendEmail'];
+  // echo $_POST['firstName'];
+  // echo $_POST['lastName'];
+  addFriendtoPending($_SESSION['email'], $_POST['friendEmail']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -77,14 +83,23 @@ $arr_len = count($user_info_array);
                   <h5 class="card-title">
                     <?= json_decode($value)->firstName ?>
                     <?= json_decode($value)->lastName ?>
-                    <button type="button" class="btn btn-purple btn-sm">
+                    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+
+                      <input type="hidden" name="firstName" id="firstName" value="<?= json_decode($value)->firstName ?>" />
+                      <input type="hidden" name="lastName" id="lastName" value="<?= json_decode($value)->lastName ?>" />
+                      <input type="hidden" name="friendEmail" id="friendEmail" value="<?= json_decode($value)->email ?>" />
+
                       <!-- Add friend button -->
-                      <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                      </svg>
-                    </button>
+                      <button type="submit" name="addFriend" class="btn btn-purple btn-sm">
+                        <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                          <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                          <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                        </svg>
+
+                      </button>
+                    </form>
+
                   </h5>
                   <h6 class="card-subtitle mb-2">Can speak: </h6>
                   <p><?= json_decode($value)->native ?>
@@ -96,6 +111,7 @@ $arr_len = count($user_info_array);
                   <a href="#" class="card-link">More info</a>
                 </div>
               </div>
+
               <?php if (($count % 3 == 2) || $count == $arr_len - 1) : ?>
               </div>
               </br>
@@ -123,6 +139,35 @@ $arr_len = count($user_info_array);
       alert("You entered: " + search_input);
       console.log(search_input);
     }
+
+    function addFriendtoPending($email, $friendEmail) {
+      alert($email, $friendEmail);
+    }
+
+    // use ajax through jQuery --> jQuery doesn't count for EC
+    // plain javascript
+    // or create a form and send to backend 
+    // don't need onclick because automatcially send request to php
+    // https://stackoverflow.com/questions/20543722/ajax-post-within-jquery-onclick
+    $('.btn btn-purple btn-sm').click(function() {
+
+      var book_id = $(this).parent().data('id');
+
+      $.ajax({
+        url: 'postfeed.php',
+        data: {
+          "bookID": book_id
+        },
+        type: 'post',
+        success: function(result) {
+          $('.modal-box').text(result).fadeIn(700, function() {
+            setTimeout(function() {
+              $('.modal-box').fadeOut();
+            }, 2000);
+          });
+        }
+      });
+    });
   </script>
 
 </body>
