@@ -6,7 +6,12 @@
 * Availability: https://getbootstrap.com/
 ***************************************************************************************/ -->
 <?php
-require("../db/connectdb.php");
+require("../sql/friends_sql.php");
+require("../sql/postfeed_sql.php");
+
+$pendingFriends = getPendingFriends($_SESSION['email']);
+$pendingFriendsLen = count($pendingFriends);
+// var_dump($pendingFriends);
 ?>
 
 <!DOCTYPE html>
@@ -48,38 +53,31 @@ require("../db/connectdb.php");
           <div class="row ">
             <div class="col-sm-4 ">
               Pending Friend Requests
-              <div class="card border border-purple">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    Pending 1
-                  </h5>
-                  <h6 class="card-subtitle mb-2">Can speak: </h6>
-                  <p> English, Chinese </p>
-                  <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                  <p> Korean </p>
-                </div>
-                <div class="card-footer">
-                  <a href="#" class="card-link">More info</a>
-                </div>
-              </div>
 
-              </br>
+              <?php foreach ($pendingFriends as $key => $value) : ?>
 
-              <div class="card border border-purple">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    Pending 2
-                  </h5>
-                  <h6 class="card-subtitle mb-2">Can speak: </h6>
-                  <p> English, Chinese </p>
-                  <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                  <p> Korean </p>
-                </div>
-                <div class="card-footer">
-                  <a href="#" class="card-link">More info</a>
-                </div>
-              </div>
+                <div class="card border border-purple">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <?= json_decode($value)->firstName ?>
+                      <?= json_decode($value)->lastName ?>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                        <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
+                      </svg>
+                    </h5>
+                    <h6 class="card-subtitle mb-2">Can speak: </h6>
+                    <p><?= json_decode($value)->native ?>
 
+                    <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
+                    <p><?= json_decode($value)->target ?>
+                  </div>
+                  <div class="card-footer">
+                    <a href="#" class="card-link">More info</a>
+                  </div>
+                </div>
+                </br>
+
+              <?php endforeach; ?>
             </div>
 
             <div class="col-sm-4">
