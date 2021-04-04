@@ -62,19 +62,19 @@ function getIncomingFriends($email)
   return $user_info_array;
 }
 
-// get incomingFriends information for current user 
+// get acceptedFriends information for current user 
 function getAcceptedFriends($email)
 {
   global $db;
   $user_info_array = array();
-  $query = "SELECT * FROM users, native, target, friend 
+  $query1 = "SELECT * FROM users, native, target, friend 
   WHERE friend.friendEmail = '" . $email . "'  
   AND users.email = native.email AND users.email = target.email 
   AND users.email = friend.email";
 
-  $result = mysqli_query($db, $query);
-  if (mysqli_num_rows($result) > 0) {
-    while ($row = $result->fetch_assoc()) {
+  $result1 = mysqli_query($db, $query1);
+  if (mysqli_num_rows($result1) > 0) {
+    while ($row = $result1->fetch_assoc()) {
       $user = array(
         'email' => $row['email'],
         'friendEmail' => $row['friendEmail'],
@@ -89,33 +89,51 @@ function getAcceptedFriends($email)
       array_push($user_info_array, $user_json);
     }
   }
-  mysqli_free_result($query);
+  mysqli_free_result($query1);
+
+  $query2 = "SELECT * FROM users, native, target, friend 
+  WHERE friend.email = '" . $email . "'  
+  AND users.email = native.email AND users.email = target.email 
+  AND users.email = friend.email";
+
+  $result1 = mysqli_query($db, $query2);
+  if (mysqli_num_rows($result1) > 0) {
+    while ($row = $result1->fetch_assoc()) {
+      $user = array(
+        'email' => $row['email'],
+        'friendEmail' => $row['friendEmail'],
+        'firstName' => $row['firstName'],
+        'lastName' => $row['lastName'],
+        'email' => $row['email'],
+        'target' => $row['target'],
+        'native' => $row['native']
+      );
+
+      $user_json = json_encode($user);
+      array_push($user_info_array, $user_json);
+    }
+  }
+  mysqli_free_result($query2);
+
   return $user_info_array;
 }
+
 
 function acceptFriendRequest($email, $friendEmail)
 {
   global $db;
 
-  // Add pair into friend table: add both (user, friend) pair and (friend, user) pair for easy retrieval in getAcceptedFriends()
-  $stmt = $db->prepare("INSERT INTO friend(email, friendEmail) VALUES (?, ?)");
+  // Add pair into friend table
   $stmt1 = $db->prepare("INSERT INTO friend(email, friendEmail) VALUES (?, ?)");
-
-  $stmt->bind_param("ss", $email, $friendEmail);
   $stmt1->bind_param("ss", $friendEmail, $email);
-
 
   // Remove friend from pending table
   $stmt2 = $db->prepare("DELETE FROM pending WHERE email = ? AND friendEmail = ?");
   $stmt2->bind_param("ss", $friendEmail, $email);
 
-  $stmt->execute();
   $stmt1->execute();
   $stmt2->execute();
 
-  if (!$stmt->execute()) {
-    return "Error adding (user, friend).";
-  }
   if (!$stmt1->execute()) {
     return "Error adding (friend, user).";
   }
@@ -125,7 +143,6 @@ function acceptFriendRequest($email, $friendEmail)
     header("Location: ../pages/friends.php");
   }
 
-  $stmt->close();
   $stmt1->close();
   $stmt2->close();
 }

@@ -60,6 +60,7 @@ if (isset($_POST['acceptFriend'])) {
               Pending Friend Requests
 
               <?php if (count($pendingFriends) == 0) : ?>
+                </br>
                 <i> No pending friend requests </i>
               <?php endif ?>
 
@@ -93,6 +94,7 @@ if (isset($_POST['acceptFriend'])) {
               Incoming Friend Requests
 
               <?php if (count($incomingFriends) == 0) : ?>
+                </br>
                 <i> No incoming friend requests </i>
               <?php endif ?>
 
