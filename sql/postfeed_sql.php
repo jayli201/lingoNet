@@ -48,12 +48,12 @@ function inFriendtable($email, $friendEmail)
 }
 
 // checks if user is already a pending friend
-function isPendingFriend($email, $friendEmail, $friendStatus)
+function isPendingFriend($email, $friendEmail)
 {
   global $db;
-  $query = "SELECT * FROM friend WHERE email = ? AND friendEmail = ? AND friendStatus = ?";
+  $query = "SELECT * FROM pending WHERE email = ? AND friendEmail = ?";
   $check_stmt = $db->prepare($query);
-  $check_stmt->bind_param("sss", $email, $friendEmail, $friendStatus);
+  $check_stmt->bind_param("ss", $email, $friendEmail);
   $check_stmt->execute();
   $check_stmt->store_result();
 
@@ -64,13 +64,30 @@ function isPendingFriend($email, $friendEmail, $friendStatus)
   }
 }
 
-function addFriendtoPending($email, $friendEmail, $pending)
+// checks if user is already an accepted friend
+function isAcceptedFriend($email, $friendEmail)
+{
+  global $db;
+  $query = "SELECT * FROM friend WHERE email = ? AND friendEmail = ?";
+  $check_stmt = $db->prepare($query);
+  $check_stmt->bind_param("ss", $email, $friendEmail);
+  $check_stmt->execute();
+  $check_stmt->store_result();
+
+  if ($check_stmt->num_rows() == 1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function addFriendtoPending($email, $friendEmail)
 {
   global $db;
 
   // add friend to pending
-  $stmt = $db->prepare("INSERT INTO friend(email, friendEmail, friendStatus) VALUES (?, ?, ?)");
-  $stmt->bind_param("sss", $email, $friendEmail, $pending);
+  $stmt = $db->prepare("INSERT INTO pending(email, friendEmail) VALUES (?, ?)");
+  $stmt->bind_param("ss", $email, $friendEmail);
   if (!$stmt->execute()) {
     return "Error adding friend";
   } else {
