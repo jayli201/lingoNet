@@ -11,9 +11,10 @@ require("../sql/postfeed_sql.php");
 
 $pendingFriends = getPendingFriends($_SESSION['email']);
 $incomingFriends = getIncomingFriends($_SESSION['email']);
+$acceptedFriends = getAcceptedFriends($_SESSION['email']);
 
 if (isset($_POST['acceptFriend'])) {
-  acceptFriendRequest($_SESSION['email'], $_POST['friendEmail'], "accepted");
+  acceptFriendRequest($_SESSION['email'], $_POST['friendEmail']);
 }
 
 ?>
@@ -134,6 +135,46 @@ if (isset($_POST['acceptFriend'])) {
 
             <div class="col-sm-4">
               Friends
+              <?php if (count($acceptedFriends) == 0) : ?>
+                <i> No friends </i>
+              <?php endif ?>
+
+              <?php foreach ($acceptedFriends as $key => $value) : ?>
+
+                <div class="card border border-purple">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+
+                        <?= json_decode($value)->firstName ?>
+                        <?= json_decode($value)->lastName ?>
+                        <input type="hidden" name="friendEmail" id="friendEmail" value="<?= json_decode($value)->email ?>" />
+                        <!-- Remove friend button -->
+                        <button type="submit" name="removeFriend" class="btn btn-purple btn-sm">
+                          <!-- https://icons.getbootstrap.com/icons/person-dash-fill/ -->
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
+                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                          </svg>
+                        </button>
+                      </form>
+
+                    </h5>
+                    <h6 class="card-subtitle mb-2">Can speak: </h6>
+                    <p><?= json_decode($value)->native ?>
+
+                    <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
+                    <p><?= json_decode($value)->target ?>
+                  </div>
+                  <div class="card-footer">
+                    <a href="#" class="card-link">More info</a>
+                  </div>
+                </div>
+                </br>
+
+              <?php endforeach; ?>
+
+
               <div class="card border border-purple">
                 <div class="card-body">
                   <h5 class="card-title">
