@@ -79,11 +79,23 @@ if (isset($_POST['addFriend'])) {
                       <input type="hidden" name="lastName" id="lastName" value="<?= json_decode($value)->lastName ?>" />
                       <input type="hidden" name="friendEmail" id="friendEmail" value="<?= json_decode($value)->email ?>" />
 
-                      <!-- if in pending pending, display pending icon -->
+                      <!-- if pending (outgoing), display right arrow icon -->
                       <?php if (isPendingFriend($_SESSION['email'], json_decode($value)->email)) : ?>
+                        <!-- https://icons.getbootstrap.com/icons/arrow-right/ -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                        </svg>
+
                         <!-- https://icons.getbootstrap.com/icons/person-lines-fill/ -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                           <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
+                        </svg> -->
+
+                        <!-- if incoming, display left arrow icon -->
+                      <?php elseif (isPendingFriend(json_decode($value)->email, $_SESSION['email'])) : ?>
+                        <!-- https://icons.getbootstrap.com/icons/arrow-left/ -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                         </svg>
 
                         <!-- if in friend table, display accepted icon  -->
