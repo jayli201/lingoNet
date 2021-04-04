@@ -25,7 +25,6 @@ function signUp($email, $pwd, $firstName, $lastName, $age, $phone)
     return "Email already exists in system. Please sign up with a different email.";
   } else {
     $hashed_pwd = md5($pwd);
-    echo $hashed_pwd;
     $_SESSION['email'] = $email;
     $_SESSION['pwd'] = $hashed_pwd;
     $_SESSION['firstName'] = $firstName;
@@ -42,7 +41,7 @@ function signUpCont($email, $pwd, $firstName, $lastName, $age, $phone, $native, 
 
   // add user into db
   $stmt = $db->prepare("INSERT INTO users(email, password, firstName, lastName, age, phone) VALUES (?, ?, ?, ?, ?, ?)");
-  $stmt->bind_param("ssssii", $email, $pwd, $firstName, $lastName, $age, $phone);
+  $stmt->bind_param("ssssis", $email, $pwd, $firstName, $lastName, $age, $phone);
   $stmt->execute();
   $stmt->close();
 

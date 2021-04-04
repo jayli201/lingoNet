@@ -66,8 +66,7 @@ if (isset($_POST['action'])) {
             <div class="row">
               <div class="col">
                 <label>Phone Number: </label>
-                <input type="text" name="phone" id="phone" class="form-control" required />
-                <span class="feedback" id="phone_msg"></span>
+                <input type="text" name="phone" id="phone" class="form-control" maxlength="17" required />
               </div>
               <div class="col">
                 <label>Age: </label>
@@ -126,6 +125,28 @@ if (isset($_POST['action'])) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
   <script>
+    // Phone validation code from:
+    // https://stackoverflow.com/questions/30058927/format-a-phone-number-as-a-user-types-using-pure-javascript
+    $('#phone').keyup(function(e) {
+      var formattedPhone = this.value.replace(/\D/g, '').substring(0, 10);
+      var deleteKey = (e.keyCode == 8 || e.keyCode == 46);
+      var len = formattedPhone.length;
+      if (len == 0) {
+        formattedPhone = formattedPhone;
+      } else if (len < 3) {
+        formattedPhone = '(' + formattedPhone;
+      } else if (len == 3) {
+        formattedPhone = '(' + formattedPhone + (deleteKey ? '' : ') ');
+      } else if (len < 6) {
+        formattedPhone = '(' + formattedPhone.substring(0, 3) + ') ' + formattedPhone.substring(3, 6);
+      } else if (len == 6) {
+        formattedPhone = '(' + formattedPhone.substring(0, 3) + ') ' + formattedPhone.substring(3, 6) + (deleteKey ? '' : '-');
+      } else {
+        formattedPhone = '(' + formattedPhone.substring(0, 3) + ') ' + formattedPhone.substring(3, 6) + '-' + formattedPhone.substring(6, 10);
+      }
+      this.value = formattedPhone;
+    });
+
     viewPassword = () => {
       var pwd = document.getElementById('pwd');
       var showPwd = document.getElementById('show_pwd');
@@ -185,15 +206,6 @@ if (isset($_POST['action'])) {
         document.getElementById("pwd_msg").innerHTML = "Passwords do not match.";
       } else
         document.getElementById("pwd_msg").innerHTML = "";
-
-      // phone validation - integer
-      var phone = document.getElementById("phone");
-      if (!isInt(phone.value)) {
-        number_error++;
-        document.getElementById("phone").value = phone.value;
-        document.getElementById("phone_msg").innerHTML = "Phone must be an integer.";
-      } else
-        document.getElementById("phone_msg").innerHTML = "";
 
       // age validation - integer and at least 13 years old
       var age = document.getElementById("age");
