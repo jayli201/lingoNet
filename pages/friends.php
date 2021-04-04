@@ -17,6 +17,10 @@ if (isset($_POST['acceptFriend'])) {
   acceptFriendRequest($_SESSION['email'], $_POST['friendEmail']);
 }
 
+if (isset($_POST['removeFriend'])) {
+  removeFriend($_SESSION['email'], $_POST['friendEmail']);
+}
+
 ?>
 
 <!DOCTYPE html>

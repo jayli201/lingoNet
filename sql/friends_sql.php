@@ -143,3 +143,25 @@ function acceptFriendRequest($email, $friendEmail)
   // go back to friends page
   header("Location: ../pages/friends.php");
 }
+
+function removeFriend($email, $friendEmail)
+{
+  global $db;
+
+  // Remove friend from friend table
+  $stmt1 = $db->prepare("DELETE FROM friend WHERE email = ? AND friendEmail = ?");
+  $stmt1->bind_param("ss", $email, $friendEmail);
+
+  // Remove friend from friend table
+  $stmt2 = $db->prepare("DELETE FROM friend WHERE email = ? AND friendEmail = ?");
+  $stmt2->bind_param("ss", $friendEmail, $email);
+
+  $stmt1->execute();
+  $stmt2->execute();
+
+  $stmt1->close();
+  $stmt2->close();
+
+  // go back to friends page
+  header("Location: ../pages/friends.php");
+}
