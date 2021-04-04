@@ -6,8 +6,8 @@ function getPendingFriends($email)
 {
   global $db;
   $user_info_array = array();
-  $query = "SELECT * FROM users, native, target, friend WHERE friend.email = '" . $email . "' AND friend.friendStatus = 'pending'
-  AND users.email = native.email AND users.email = target.email AND users.email = friend.friendEmail";
+  $query = "SELECT * FROM users, native, target, pending WHERE pending.email = '" . $email . "'
+  AND users.email = native.email AND users.email = target.email AND users.email = pending.friendEmail";
 
   $result = mysqli_query($db, $query);
   if (mysqli_num_rows($result) > 0) {
