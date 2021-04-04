@@ -97,25 +97,35 @@ function acceptFriendRequest($email, $friendEmail)
 {
   global $db;
 
-  // add friend into friend table: add both (user, friend) pair and (friend, user) pair for easy retrieval in getAcceptedFriends()
+  // Add pair into friend table: add both (user, friend) pair and (friend, user) pair for easy retrieval in getAcceptedFriends()
   $stmt = $db->prepare("INSERT INTO friend(email, friendEmail) VALUES (?, ?)");
   $stmt1 = $db->prepare("INSERT INTO friend(email, friendEmail) VALUES (?, ?)");
 
   $stmt->bind_param("ss", $email, $friendEmail);
   $stmt1->bind_param("ss", $friendEmail, $email);
+
+
+  // Remove friend from pending table
+  $stmt2 = $db->prepare("DELETE FROM pending WHERE email = ? AND friendEmail = ?");
+  $stmt2->bind_param("ss", $friendEmail, $email);
+
   $stmt->execute();
   $stmt1->execute();
+  $stmt2->execute();
 
   if (!$stmt->execute()) {
     return "Error adding (user, friend).";
   }
   if (!$stmt1->execute()) {
     return "Error adding (friend, user).";
+  }
+  if (!$stmt2->execute()) {
+    return "Error deleting friend from pending table";
   } else {
     header("Location: ../pages/friends.php");
   }
+
   $stmt->close();
   $stmt1->close();
-
-  // TODO: remove friend from pending table
+  $stmt2->close();
 }
