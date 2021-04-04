@@ -174,54 +174,6 @@ if (isset($_POST['acceptFriend'])) {
 
               <?php endforeach; ?>
 
-
-              <div class="card border border-purple">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    Friend 1
-                    <button type="button" class="btn btn-purple btn-sm">
-                      <!-- Remove friend button -->
-                      <!-- https://icons.getbootstrap.com/icons/person-dash-fill/ -->
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
-                        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                      </svg>
-                    </button>
-                  </h5>
-                  <h6 class="card-subtitle mb-2">Can speak: </h6>
-                  <p> English, Chinese </p>
-                  <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                  <p> Korean </p>
-                </div>
-                <div class="card-footer">
-                  <a href="#" class="card-link">More info</a>
-                </div>
-              </div>
-
-              </br>
-
-              <div class="card border border-purple">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    Friend 2
-                    <button type="button" class="btn btn-purple btn-sm">
-                      <!-- Remove friend button -->
-                      <!-- https://icons.getbootstrap.com/icons/person-dash-fill/ -->
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
-                        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                      </svg>
-                    </button>
-                  </h5>
-                  <h6 class="card-subtitle mb-2">Can speak: </h6>
-                  <p> English, Chinese </p>
-                  <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                  <p> Korean </p>
-                </div>
-                <div class="card-footer">
-                  <a href="#" class="card-link">More info</a>
-                </div>
-              </div>
             </div>
           </div>
         </div>

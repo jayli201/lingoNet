@@ -88,7 +88,6 @@ function getAcceptedFriends($email)
       $user_json = json_encode($user);
       array_push($user_info_array, $user_json);
     }
-    var_dump($user_info_array);
   }
   mysqli_free_result($query);
   return $user_info_array;
