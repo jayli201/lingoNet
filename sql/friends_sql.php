@@ -67,6 +67,8 @@ function getAcceptedFriends($email)
 {
   global $db;
   $user_info_array = array();
+
+  // check if (email, friendEmail) pair is in friend table
   $query1 = "SELECT * FROM users, native, target, friend 
   WHERE friend.friendEmail = '" . $email . "'  
   AND users.email = native.email AND users.email = target.email 
@@ -91,14 +93,15 @@ function getAcceptedFriends($email)
   }
   mysqli_free_result($query1);
 
+  // check if (friendEmail, email) pair is in friend table
   $query2 = "SELECT * FROM users, native, target, friend 
   WHERE friend.email = '" . $email . "'  
   AND users.email = native.email AND users.email = target.email 
   AND users.email = friend.email";
 
-  $result1 = mysqli_query($db, $query2);
-  if (mysqli_num_rows($result1) > 0) {
-    while ($row = $result1->fetch_assoc()) {
+  $result2 = mysqli_query($db, $query2);
+  if (mysqli_num_rows($result2) > 0) {
+    while ($row = $result2->fetch_assoc()) {
       $user = array(
         'email' => $row['email'],
         'friendEmail' => $row['friendEmail'],
@@ -134,15 +137,9 @@ function acceptFriendRequest($email, $friendEmail)
   $stmt1->execute();
   $stmt2->execute();
 
-  if (!$stmt1->execute()) {
-    return "Error adding (friend, user).";
-  }
-  if (!$stmt2->execute()) {
-    return "Error deleting friend from pending table";
-  } else {
-    header("Location: ../pages/friends.php");
-  }
-
   $stmt1->close();
   $stmt2->close();
+
+  // go back to friends page
+  header("Location: ../pages/friends.php");
 }

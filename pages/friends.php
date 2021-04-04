@@ -138,6 +138,7 @@ if (isset($_POST['acceptFriend'])) {
             <div class="col-sm-4">
               Friends
               <?php if (count($acceptedFriends) == 0) : ?>
+                </br>
                 <i> No friends </i>
               <?php endif ?>
 
