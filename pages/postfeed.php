@@ -51,25 +51,23 @@ if (isset($_POST['addFriend'])) {
 
           <div class="form">
             <form id="search_form" method="post" onsubmit="getSearchResults()">
-              <!-- <input type="text" id="search_input" class="form-control" autofocus /> -->
-
               <div class="input-group">
                 <input style="margin-right: 1em;" type="text" id="search_input" class="form-control" autofocus />
                 <span class="input-group-btn">
                   <input type="submit" value="Search" class="btn btn-purple" />
                 </span>
               </div>
-
             </form>
           </div>
           <br />
 
-          <?php $count = 0;
-          ?>
+          <?php $count = 0; ?>
           <?php foreach ($user_info_array as $key => $value) : ?>
+
             <?php if ($count % 3 == 0) : ?>
               <div class="card-deck">
               <?php endif; ?>
+
               <div class="card border border-purple">
                 <div class="card-body">
                   <h5 class="card-title">
@@ -98,7 +96,6 @@ if (isset($_POST['addFriend'])) {
                           </svg>
                         <?php endif; ?>
 
-
                         <!-- else if not in friend table, then display addFriend button -->
                       <?php else : ?>
                         <!-- Add friend button -->
@@ -109,11 +106,9 @@ if (isset($_POST['addFriend'])) {
                             <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
                           </svg>
                         </button>
-
                       <?php endif; ?>
 
                     </form>
-
                   </h5>
                   <h6 class="card-subtitle mb-2">Can speak: </h6>
                   <p><?= json_decode($value)->native ?>
@@ -142,8 +137,6 @@ if (isset($_POST['addFriend'])) {
   </div>
 
   <script src="../layout/layout.js"></script>
-  <!-- <script src="postfeed.js"></script> -->
-
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
@@ -154,34 +147,8 @@ if (isset($_POST['addFriend'])) {
       console.log(search_input);
     }
 
-    function addFriendtoPending($email, $friendEmail) {
-      alert($email, $friendEmail);
-    }
-
-    // use ajax through jQuery --> jQuery doesn't count for EC
-    // plain javascript
-    // or create a form and send to backend 
-    // don't need onclick because automatcially send request to php
+    // if want to use jQuery:
     // https://stackoverflow.com/questions/20543722/ajax-post-within-jquery-onclick
-    $('.btn btn-purple btn-sm').click(function() {
-
-      var book_id = $(this).parent().data('id');
-
-      $.ajax({
-        url: 'postfeed.php',
-        data: {
-          "bookID": book_id
-        },
-        type: 'post',
-        success: function(result) {
-          $('.modal-box').text(result).fadeIn(700, function() {
-            setTimeout(function() {
-              $('.modal-box').fadeOut();
-            }, 2000);
-          });
-        }
-      });
-    });
   </script>
 
 </body>
