@@ -73,10 +73,10 @@ if (isset($_POST['addFriend'])) {
               <div class="card border border-purple">
                 <div class="card-body">
                   <h5 class="card-title">
-                    <?= json_decode($value)->firstName ?>
-                    <?= json_decode($value)->lastName ?>
-                    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
+                    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+                      <?= json_decode($value)->firstName ?>
+                      <?= json_decode($value)->lastName ?>
                       <input type="hidden" name="firstName" id="firstName" value="<?= json_decode($value)->firstName ?>" />
                       <input type="hidden" name="lastName" id="lastName" value="<?= json_decode($value)->lastName ?>" />
                       <input type="hidden" name="friendEmail" id="friendEmail" value="<?= json_decode($value)->email ?>" />
