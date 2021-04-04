@@ -37,8 +37,8 @@ function getIncomingFriends($email)
 {
   global $db;
   $user_info_array = array();
-  $query = "SELECT * FROM users, native, target, friend WHERE friend.friendEmail = '" . $email . "' AND friend.friendStatus = 'pending'
-  AND users.email = native.email AND users.email = target.email AND users.email = friend.email";
+  $query = "SELECT * FROM users, native, target, pending WHERE pending.friendEmail = '" . $email . "'
+  AND users.email = native.email AND users.email = target.email AND users.email = pending.email";
 
   $result = mysqli_query($db, $query);
   if (mysqli_num_rows($result) > 0) {
