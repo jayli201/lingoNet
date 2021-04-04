@@ -68,9 +68,9 @@ function isPendingFriend($email, $friendEmail)
 function isAcceptedFriend($email, $friendEmail)
 {
   global $db;
-  $query = "SELECT * FROM friend WHERE email = ? AND friendEmail = ?";
+  $query = "SELECT * FROM friend WHERE (email = ? AND friendEmail = ?) OR (email = ? AND friendEmail = ?)";
   $check_stmt = $db->prepare($query);
-  $check_stmt->bind_param("ss", $email, $friendEmail);
+  $check_stmt->bind_param("ssss", $email, $friendEmail, $friendEmail, $email);
   $check_stmt->execute();
   $check_stmt->store_result();
 
