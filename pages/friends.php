@@ -10,8 +10,12 @@ require("../sql/friends_sql.php");
 require("../sql/postfeed_sql.php");
 
 $pendingFriends = getPendingFriends($_SESSION['email']);
-$pendingFriendsLen = count($pendingFriends);
-// var_dump($pendingFriends);
+$incomingFriends = getIncomingFriends($_SESSION['email']);
+
+if (isset($_POST['acceptFriend'])) {
+  acceptFriendRequest($_SESSION['email'], $_POST['friendEmail'], "accepted");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +58,10 @@ $pendingFriendsLen = count($pendingFriends);
             <div class="col-sm-4 ">
               Pending Friend Requests
 
+              <?php if (count($pendingFriends) == 0) : ?>
+                <i> No pending friend requests </i>
+              <?php endif ?>
+
               <?php foreach ($pendingFriends as $key => $value) : ?>
 
                 <div class="card border border-purple">
@@ -82,54 +90,44 @@ $pendingFriendsLen = count($pendingFriends);
 
             <div class="col-sm-4">
               Incoming Friend Requests
-              <div class="card border border-purple">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    Incoming 1
-                    <button type="button" class="btn btn-purple btn-sm">
-                      <!-- Add friend button -->
-                      <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                      </svg>
-                    </button>
-                  </h5>
-                  <h6 class="card-subtitle mb-2">Can speak: </h6>
-                  <p> English, Chinese </p>
-                  <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                  <p> Korean </p>
-                </div>
-                <div class="card-footer">
-                  <a href="#" class="card-link">More info</a>
-                </div>
-              </div>
 
-              </br>
+              <?php if (count($incomingFriends) == 0) : ?>
+                <i> No incoming friend requests </i>
+              <?php endif ?>
 
-              <div class="card border border-purple">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    Incoming 2
-                    <button type="button" class="btn btn-purple btn-sm">
-                      <!-- Add friend button -->
-                      <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                      </svg>
-                    </button>
+              <?php foreach ($incomingFriends as $key => $value) : ?>
 
-                  </h5>
-                  <h6 class="card-subtitle mb-2">Can speak: </h6>
-                  <p> English, Chinese </p>
-                  <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                  <p> Korean </p>
+                <div class="card border border-purple">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+
+                        <?= json_decode($value)->firstName ?>
+                        <?= json_decode($value)->lastName ?>
+                        <!-- Add friend button -->
+                        <button type="submit" name="acceptFriend" class="btn btn-purple btn-sm">
+                          <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                          </svg>
+                        </button>
+                      </form>
+
+                    </h5>
+                    <h6 class="card-subtitle mb-2">Can speak: </h6>
+                    <p><?= json_decode($value)->native ?>
+
+                    <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
+                    <p><?= json_decode($value)->target ?>
+                  </div>
+                  <div class="card-footer">
+                    <a href="#" class="card-link">More info</a>
+                  </div>
                 </div>
-                <div class="card-footer">
-                  <a href="#" class="card-link">More info</a>
-                </div>
-              </div>
+                </br>
+
+              <?php endforeach; ?>
 
             </div>
 
