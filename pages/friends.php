@@ -104,6 +104,7 @@ if (isset($_POST['acceptFriend'])) {
 
                         <?= json_decode($value)->firstName ?>
                         <?= json_decode($value)->lastName ?>
+                        <input type="hidden" name="friendEmail" id="friendEmail" value="<?= json_decode($value)->email ?>" />
                         <!-- Add friend button -->
                         <button type="submit" name="acceptFriend" class="btn btn-purple btn-sm">
                           <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
