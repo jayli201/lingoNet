@@ -10,6 +10,8 @@
 <html>
 
 <body>
+  <h3>Your Introductory Post</h3>
+  <br />
   <div class="card border border-purple">
     <div class="card-body">
       <h5 class="card-title">

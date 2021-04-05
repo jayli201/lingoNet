@@ -10,11 +10,8 @@
 <html>
 
 <body>
-  <h3>Introduce yourself to other language learners!</h3>
+  <h3>Introduce Yourself!</h3>
   <br />
-  <div class="feedback">
-    <?php echo $error; ?>
-  </div>
   <form action="" method="post">
     <label>Personal Introduction: </label>
     <textarea name="introduction" id="introduction" class="form-control" rows="7" placeholder="Introduce yourself!" autofocus required></textarea>
