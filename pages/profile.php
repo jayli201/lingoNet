@@ -95,10 +95,11 @@ if (isset($_POST['deleteTarget'])) {
           <div class="container">
 
             <div class="row">
-              <div class="col-5">
+              <div class="col">
                 <?php include("relevant_profile/profile_info.php") ?>
                 <hr />
                 <?php include("relevant_profile/profile_lang.php"); ?>
+                <hr />
               </div>
 
               <div class="col">

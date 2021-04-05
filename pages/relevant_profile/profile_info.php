@@ -17,7 +17,8 @@ if (isset($_POST['editProfile'])) {
 <html>
 
 <body>
-
+  <h3>Your Profile Information</h3>
+  <br />
   <div class="card border border-purple">
     <div class="card-body">
       <h5 class="card-title">
