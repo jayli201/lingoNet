@@ -37,3 +37,15 @@ function createPost($email, $introduction, $lookingFor, $whyYou)
     $stmt->close();
   }
 }
+
+function removePost($email)
+{
+  global $db;
+
+  // Remove post from post table
+  $stmt = $db->prepare("DELETE FROM post WHERE email = ?");
+  $stmt->bind_param("s", $email);
+
+  $stmt->execute();
+  $stmt->close();
+}
