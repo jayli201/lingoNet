@@ -11,7 +11,7 @@ require("../sql/intropost_sql.php");
 require("../sql/profile_sql.php");
 
 $profile_info = getProfileInfo($_SESSION['email']);
-$language_info = getLanguageInfo($_SESSION['email']);
+$language_info = getMultiLanguageInfo($_SESSION['email']);
 $post_info = getPostInfo($_SESSION['email']);
 
 if (isset($_POST['action'])) {
