@@ -76,12 +76,11 @@ if (isset($_POST['removeFriend'])) {
                       <?= json_decode($value)->firstName ?>
                       <?= json_decode($value)->lastName ?>
                       <!-- https://icons.getbootstrap.com/icons/arrow-right/ -->
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                      </svg>
-                      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-                        <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
-                      </svg> -->
+                      <button type="button" disabled name="pending" class="btn btn-purple btn-sm" data-toggle="Disabled tooltip" data-placement="bottom" title="Request Sent">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                        </svg>
+                      </button>
                     </h5>
                     <h6 class="card-subtitle mb-2">Can speak: </h6>
                     <p><?= json_decode($value)->native ?>
@@ -117,7 +116,7 @@ if (isset($_POST['removeFriend'])) {
                         <?= json_decode($value)->lastName ?>
                         <input type="hidden" name="friendEmail" id="friendEmail" value="<?= json_decode($value)->email ?>" />
                         <!-- Add friend button -->
-                        <button type="submit" name="acceptFriend" class="btn btn-purple btn-sm">
+                        <button type="submit" name="acceptFriend" class="btn btn-purple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Accept Friend Request">
                           <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
                             <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -161,7 +160,7 @@ if (isset($_POST['removeFriend'])) {
                         <?= json_decode($value)->lastName ?>
                         <input type="hidden" name="friendEmail" id="friendEmail" value="<?= json_decode($value)->email ?>" />
                         <!-- Remove friend button -->
-                        <button type="submit" name="removeFriend" class="btn btn-purple btn-sm">
+                        <button type="submit" name="removeFriend" class="btn btn-purple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Remove Friend">
                           <!-- https://icons.getbootstrap.com/icons/person-dash-fill/ -->
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
