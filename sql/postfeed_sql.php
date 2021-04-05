@@ -95,3 +95,25 @@ function addFriendtoPending($email, $friendEmail)
   }
   $stmt->close();
 }
+
+function getMoreInfo($email)
+{
+  echo $email;
+  global $db;
+  $query = "SELECT * FROM users, post WHERE users.email = post.email";
+  $result = mysqli_query($db, $query);
+
+  if (mysqli_num_rows($result) > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $user = array(
+        'introduction' => $row['introduction'],
+        'lookingFor' => $row['lookingFor'],
+        'whyYou' => $row['whyYou']
+      );
+      $user_json = json_encode($user);
+      echo $user_json;
+    }
+  }
+  mysqli_free_result($query);
+  return $user_json;
+}

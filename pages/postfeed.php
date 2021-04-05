@@ -13,6 +13,10 @@ $arr_len = count($user_info_array);
 if (isset($_POST['addFriend'])) {
   addFriendtoPending($_SESSION['email'], $_POST['friendEmail']);
 }
+
+if (isset($_GET['email'])) {
+  getMoreInfo($_GET['email']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -128,7 +132,10 @@ if (isset($_POST['addFriend'])) {
                   <p><?= json_decode($value)->target ?>
                 </div>
                 <div class="card-footer">
-                  <a href="#" class="card-link">More info</a>
+                  <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+                    <a href="<?php $_SERVER['PHP_SELF'] ?>?email=<?= json_decode($value)->email ?>" class="card-link">More info</a>
+                  </form>
+
                 </div>
               </div>
 
