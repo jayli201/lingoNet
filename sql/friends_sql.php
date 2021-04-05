@@ -86,7 +86,6 @@ function getAcceptedFriends($email)
         'target' => $row['target'],
         'native' => $row['native']
       );
-
       $user_json = json_encode($user);
       array_push($user_info_array, $user_json);
     }
@@ -97,7 +96,7 @@ function getAcceptedFriends($email)
   $query2 = "SELECT * FROM users, native, target, friend 
   WHERE friend.email = '" . $email . "'  
   AND users.email = native.email AND users.email = target.email 
-  AND users.email = friend.email";
+  AND users.email = friend.friendEmail";
 
   $result2 = mysqli_query($db, $query2);
   if (mysqli_num_rows($result2) > 0) {
