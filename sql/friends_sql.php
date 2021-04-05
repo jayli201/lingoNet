@@ -72,7 +72,7 @@ function getAcceptedFriends($email)
   $query1 = "SELECT * FROM users, native, target, friend 
   WHERE friend.friendEmail = '" . $email . "'  
   AND users.email = native.email AND users.email = target.email 
-  AND users.email = friend.friendEmail";
+  AND users.email = friend.email";
 
   $result1 = mysqli_query($db, $query1);
   if (mysqli_num_rows($result1) > 0) {
@@ -96,7 +96,7 @@ function getAcceptedFriends($email)
   $query2 = "SELECT * FROM users, native, target, friend 
   WHERE friend.email = '" . $email . "'  
   AND users.email = native.email AND users.email = target.email 
-  AND users.email = friend.email";
+  AND users.email = friend.friendEmail";
 
   $result2 = mysqli_query($db, $query2);
   if (mysqli_num_rows($result2) > 0) {
@@ -111,11 +111,8 @@ function getAcceptedFriends($email)
         'native' => $row['native']
       );
 
-      // do not display info for current user
-      if ($user['email'] != $_SESSION['email']) {
-        $user_json = json_encode($user);
-        array_push($user_info_array, $user_json);
-      }
+      $user_json = json_encode($user);
+      array_push($user_info_array, $user_json);
     }
   }
   mysqli_free_result($query2);
