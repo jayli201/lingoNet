@@ -24,7 +24,7 @@ function getProfileInfo($email)
   return $user;
 }
 
-// gets native and target language info for current user
+// gets all native and target language info for current user
 function getMultiLanguageInfo($email)
 {
   global $db;
@@ -59,24 +59,24 @@ function getMultiLanguageInfo($email)
 }
 
 // gets native and target language info for current user
-function getLanguageInfo($email)
-{
-  global $db;
-  $languages = array();
-  $query = "SELECT * FROM users, native, target WHERE users.email = native.email AND users.email = target.email AND users.email = '" . $email . "'";
+// function getLanguageInfo($email)
+// {
+//   global $db;
+//   $languages = array();
+//   $query = "SELECT * FROM users, native, target WHERE users.email = native.email AND users.email = target.email AND users.email = '" . $email . "'";
 
-  $result = mysqli_query($db, $query);
-  if (mysqli_num_rows($result) > 0) {
-    while ($row = $result->fetch_assoc()) {
-      $languages = array(
-        'native' => $row['native'],
-        'target' => $row['target'],
-      );
-    }
-  }
-  mysqli_free_result($query);
-  return $languages;
-}
+//   $result = mysqli_query($db, $query);
+//   if (mysqli_num_rows($result) > 0) {
+//     while ($row = $result->fetch_assoc()) {
+//       $languages = array(
+//         'native' => $row['native'],
+//         'target' => $row['target'],
+//       );
+//     }
+//   }
+//   mysqli_free_result($query);
+//   return $languages;
+// }
 
 // gets post info for current user
 function getPostInfo($email)
