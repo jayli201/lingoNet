@@ -39,16 +39,16 @@
                   <tbody>
                     <tr>
                       <td>Introduction</td>
-                      <td><textarea name="editedIntro" id="editedIntro" class="form-control" rows=7 required><?php echo $post_info['introduction']; ?></textarea>
+                      <td><textarea name="editedIntro" id="editedIntro" class="form-control" rows=5 required><?php echo $post_info['introduction']; ?></textarea>
                     </tr>
                     <tr>
                     <tr>
                       <td>What You're Looking For</td>
-                      <td><textarea name="editedLookingFor" id="editedLookingFor" class="form-control" rows=7 required><?php echo $post_info['lookingFor']; ?></textarea></td>
+                      <td><textarea name="editedLookingFor" id="editedLookingFor" class="form-control" rows=5 required><?php echo $post_info['lookingFor']; ?></textarea></td>
                     </tr>
                     <tr>
                       <td>Why You?</td>
-                      <td><textarea name="editedWhyYou" id="editedWhyYou" class="form-control" rows=7 required><?php echo $post_info['whyYou']; ?></textarea></td>
+                      <td><textarea name="editedWhyYou" id="editedWhyYou" class="form-control" rows=5 required><?php echo $post_info['whyYou']; ?></textarea></td>
                     </tr>
                   </tbody>
                 </table>

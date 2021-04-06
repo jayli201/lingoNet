@@ -6,6 +6,7 @@
 * Availability: https://getbootstrap.com/
 ***************************************************************************************/ -->
 <?php
+
 if (isset($_POST['editProfile'])) {
   if (!empty($_POST['editProfile']) && ($_POST['editProfile'] == 'Save changes')) {
     editProfileInfo($_SESSION['email'], $_POST['editedFirstName'], $_POST['editedLastName'], $_POST['editedAge'], $_POST['editedPhone']);
@@ -46,24 +47,24 @@ if (isset($_POST['editProfile'])) {
                   <tbody>
                     <tr>
                       <td>First Name</td>
-                      <td><input type="text" name="editedFirstName" id="editedFirstName" class="form-control" value=<?php echo $profile_info['firstName']; ?> required /></td>
+                      <td><input type="text" name="editedFirstName" id="editedFirstName" class="form-control" value="<?php echo $profile_info['firstName']; ?>" required /></td>
                     </tr>
                     <tr>
                     <tr>
                       <td>Last Name</td>
-                      <td><input type="text" name="editedLastName" id="editedLastName" class="form-control" value=<?php echo $profile_info['lastName']; ?> required /></td>
+                      <td><input type="text" name="editedLastName" id="editedLastName" class="form-control" value="<?php echo $profile_info['lastName']; ?>" required /></td>
                     </tr>
                     <tr>
                       <td>Age</td>
-                      <td><input type="text" name="editedAge" id="editedAge" class="form-control" value=<?php echo $profile_info['age']; ?> required /></td>
+                      <td><input type="text" name="editedAge" id="editedAge" class="form-control" value="<?php echo $profile_info['age']; ?>" required /></td>
                     </tr>
                     <tr>
                       <td>Phone Number</td>
-                      <td><input type="text" name="editedPhone" id="editedPhone" class="form-control" value=<?php echo $profile_info['phone']; ?> required /></td>
+                      <td><input type="text" name="editedPhone" id="editedPhone" class="form-control" value="<?php echo htmlspecialchars($profile_info['phone']); ?>" required /></td>
                     </tr>
                   </tbody>
                 </table>
-                <span class="feedback" id="edit_age_msg"></span>
+                <span class=" feedback" id="edit_age_msg"></span>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
