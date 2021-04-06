@@ -98,14 +98,14 @@ function addFriendtoPending($email, $friendEmail)
 
 function getMoreInfo($email)
 {
-  echo $email;
   global $db;
-  $query = "SELECT * FROM users, post WHERE users.email = post.email";
-  $result = mysqli_query($db, $query);
+  $query = "SELECT * FROM post WHERE post.email =  '" . $email . "'";
 
+  $result = mysqli_query($db, $query);
   if (mysqli_num_rows($result) > 0) {
     while ($row = $result->fetch_assoc()) {
       $user = array(
+        'email' => $row['email'],
         'introduction' => $row['introduction'],
         'lookingFor' => $row['lookingFor'],
         'whyYou' => $row['whyYou']
@@ -116,4 +116,26 @@ function getMoreInfo($email)
   }
   mysqli_free_result($query);
   return $user_json;
+
+  // $query = "SELECT * FROM post WHERE email = ?";
+  // $check_stmt = $db->prepare($query);
+  // $check_stmt->bind_param("s", $email);
+  // $check_stmt->execute();
+  // $check_stmt->store_result();
+
+  // echo $check_stmt->num_rows();
+  // if ($check_stmt->num_rows() == 1) {
+  //   $result = $check_stmt->get_result();
+  //   while ($row = $result->fetch_assoc()) {
+  //     $user = array(
+  //       'email' => $row['email'],
+  //       'introduction' => $row['introduction'],
+  //       'lookingFor' => $row['lookingFor'],
+  //       'whyYou' => $row['whyYou']
+  //     );
+  //     $user_json = json_encode($user);
+  //     echo $user_json;
+  //   }
+  // }
+
 }
