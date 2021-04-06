@@ -17,6 +17,7 @@ if (isset($_POST['addFriend'])) {
 if (isset($_GET['email'])) {
   getMoreInfo($_GET['email']);
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -132,10 +133,39 @@ if (isset($_GET['email'])) {
                   <p><?= json_decode($value)->target ?>
                 </div>
                 <div class="card-footer">
-                  <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
-                    <a href="<?php $_SERVER['PHP_SELF'] ?>?email=<?= json_decode($value)->email ?>" class="card-link">More info</a>
-                  </form>
+                  <form action="" method="get">
+                    <a href="<?php $_SERVER['PHP_SELF'] ?>?email=<?= json_decode($value)->email ?>">
+                      More info
+                    </a>
 
+                    <input type="hidden" id="show_modal" value="<?php echo isset($_GET['email']); ?>">
+
+                    <!-- Button trigger modal -->
+                    <!-- <button type=" button" class="btn btn-purple btn-sm" data-toggle="modal" data-target="#moreInfo">
+                      Modal More info
+                    </button> -->
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="moreInfo" tabindex="-1" role="dialog" aria-labelledby="moreInfoTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <?php echo "hi"; ?>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
 
@@ -165,8 +195,13 @@ if (isset($_GET['email'])) {
       console.log(search_input);
     }
 
-    // if want to use jQuery:
-    // https://stackoverflow.com/questions/20543722/ajax-post-within-jquery-onclick
+    // https://stackoverflow.com/questions/59312464/how-to-open-bootstrap-modal-by-using-a-php-get-request
+    $(document).ready(function() {
+      let show_modal = $('#show_modal').val();
+      if (show_modal == 1) {
+        $('#moreInfo').modal('show');
+      }
+    });
   </script>
 
 </body>
