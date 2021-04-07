@@ -145,7 +145,13 @@ if (isset($_GET['email'])) {
                       <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle"><?php echo $more_info['firstName'] . " " . $more_info['lastName']; ?></h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">
+                              <?php if ($more_info['email']) : ?>
+                                <?php echo $more_info['firstName'] . " " . $more_info['lastName']; ?>
+                              <?php else : ?>
+                                Currently no info :(
+                              <?php endif ?>
+                            </h5>
 
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
@@ -154,18 +160,22 @@ if (isset($_GET['email'])) {
                           <div class="modal-body">
                             <table class="table">
                               <tbody>
-                                <tr>
-                                  <td>Introduction</td>
-                                  <td><?php echo $more_info['introduction']; ?></td>
-                                </tr>
-                                <tr>
-                                  <td>Looking For</td>
-                                  <td><?php echo $more_info['lookingFor']; ?></td>
-                                </tr>
-                                <tr>
-                                  <td>Why You?</td>
-                                  <td><?php echo $more_info['whyYou']; ?></td>
-                                </tr>
+                                <?php if ($more_info['email']) : ?>
+                                  <tr>
+                                    <td>Introduction</td>
+                                    <td><?php echo $more_info['introduction']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Looking For</td>
+                                    <td><?php echo $more_info['lookingFor']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Why You?</td>
+                                    <td><?php echo $more_info['whyYou']; ?></td>
+                                  </tr>
+                                <?php else : ?>
+                                  Come back later!
+                                <?php endif ?>
                               </tbody>
                             </table>
                           </div>
