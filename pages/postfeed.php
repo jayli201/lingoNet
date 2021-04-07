@@ -134,7 +134,7 @@ if (isset($_GET['email'])) {
                 </div>
                 <div class="card-footer">
                   <form action="" method="get">
-                    <a href="<?php $_SERVER['PHP_SELF'] ?>?email=<?= json_decode($value)->email ?>">
+                    <a href="<?php $_SERVER['PHP_SELF'] ?>?email=<?= json_decode($value)->email ?>" class="btn btn-purple btn-sm">
                       More info
                     </a>
 
