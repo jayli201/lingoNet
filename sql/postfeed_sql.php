@@ -99,23 +99,23 @@ function addFriendtoPending($email, $friendEmail)
 function getMoreInfo($email)
 {
   global $db;
-  $query = "SELECT * FROM post WHERE post.email =  '" . $email . "'";
+  $query = "SELECT * FROM post, users WHERE post.email =  '" . $email . "' AND post.email = users.email";
 
   $result = mysqli_query($db, $query);
   if (mysqli_num_rows($result) > 0) {
     while ($row = $result->fetch_assoc()) {
-      $user = array(
+      $more_info = array(
+        'firstName' => $row['firstName'],
+        'lastName' => $row['lastName'],
         'email' => $row['email'],
         'introduction' => $row['introduction'],
         'lookingFor' => $row['lookingFor'],
         'whyYou' => $row['whyYou']
       );
-      $user_json = json_encode($user);
-      echo $user_json;
     }
   }
   mysqli_free_result($query);
-  return $user_json;
+  return $more_info;
 
   // $query = "SELECT * FROM post WHERE email = ?";
   // $check_stmt = $db->prepare($query);

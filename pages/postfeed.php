@@ -15,7 +15,7 @@ if (isset($_POST['addFriend'])) {
 }
 
 if (isset($_GET['email'])) {
-  getMoreInfo($_GET['email']);
+  $more_info = getMoreInfo($_GET['email']);
 }
 
 ?>
@@ -127,10 +127,10 @@ if (isset($_GET['email'])) {
                     </form>
                   </h5>
                   <h6 class="card-subtitle mb-2">Can speak: </h6>
-                  <p><?= json_decode($value)->native ?>
+                  <p><?= json_decode($value)->native ?></p>
 
                   <h6 class="card-subtitle mb-2 ">Want to practice: </h6>
-                  <p><?= json_decode($value)->target ?>
+                  <p><?= json_decode($value)->target ?></p>
                 </div>
                 <div class="card-footer">
                   <form action="" method="get">
@@ -140,27 +140,37 @@ if (isset($_GET['email'])) {
 
                     <input type="hidden" id="show_modal" value="<?php echo isset($_GET['email']); ?>">
 
-                    <!-- Button trigger modal -->
-                    <!-- <button type=" button" class="btn btn-purple btn-sm" data-toggle="modal" data-target="#moreInfo">
-                      Modal More info
-                    </button> -->
-
                     <!-- Modal -->
                     <div class="modal fade" id="moreInfo" tabindex="-1" role="dialog" aria-labelledby="moreInfoTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle"><?php echo $more_info['firstName'] . " " . $more_info['lastName']; ?></h5>
+
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
-                            <?php echo "hi"; ?>
+                            <table class="table">
+                              <tbody>
+                                <tr>
+                                  <td>Introduction</td>
+                                  <td><?php echo $more_info['introduction']; ?></td>
+                                </tr>
+                                <tr>
+                                  <td>Looking For</td>
+                                  <td><?php echo $more_info['lookingFor']; ?></td>
+                                </tr>
+                                <tr>
+                                  <td>Why You?</td>
+                                  <td><?php echo $more_info['whyYou']; ?></td>
+                                </tr>
+                              </tbody>
+                            </table>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+
                           </div>
                         </div>
                       </div>

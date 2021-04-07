@@ -39,7 +39,7 @@
                   <tbody>
                     <tr>
                       <td>Introduction</td>
-                      <td><textarea name="editedIntro" id="editedIntro" class="form-control" rows=5 required><?php echo $post_info['introduction']; ?></textarea>
+                      <td><textarea name="editedIntro" id="editedIntro" class="form-control" rows=5 required><?php echo $post_info['introduction']; ?></textarea></td>
                     </tr>
                     <tr>
                     <tr>
