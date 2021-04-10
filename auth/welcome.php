@@ -25,21 +25,26 @@
 </head>
 
 <body>
+
   <div class="page-container">
     <div class="content-wrap">
       <div id="header"></div>
       <br />
 
-      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2 text-center bg-light">
-        <div class="col-md-5 p-lg-3 mx-auto my-5">
-          <h1 class="display-2" style="color: #6b359d;">Welcome to LingoNet!</h1>
-          <p class="lead font-weight-normal">Find a language partner, practice with native speakers and make
+      <div class="welcome-content text-center">
+        <div>
+          <h1 class="display-2">LingoNet</h1>
+          <hr />
+          <p class=" lead font-weight-normal">Find a language partner, practice with native speakers and make
             friends!
           </p>
+          <br />
           <a class="btn btn-purple btn-lg" href="signup.php" role="button">Sign Up Now</a>
         </div>
-        <div class="product-device box-shadow d-none d-md-block"></div>
-        <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+
+        <div class="box-1 box"></div>
+        <div class="box-2 box"></div>
+        <div class="box-3 box"></div>
       </div>
 
       <br />

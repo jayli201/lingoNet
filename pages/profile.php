@@ -69,6 +69,7 @@ if (isset($_POST['deleteTarget'])) {
   <title>Profile</title>
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <link rel="stylesheet" href="../css/layout.css" />
   <link rel="stylesheet" href="../css/content.css" />
   <link rel="stylesheet" href="../css/theme.css" />
@@ -90,6 +91,7 @@ if (isset($_POST['deleteTarget'])) {
       <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
         <div class="content">
           <h1 class="display-4">Profile</h1>
+          <hr />
           <br />
 
           <div class="container">

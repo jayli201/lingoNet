@@ -57,14 +57,15 @@ if (isset($_POST['removeFriend'])) {
       <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
         <div class="content">
           <h1 class="display-4">Friends</h1>
+          <hr />
           <br />
 
           <div class="row ">
-            <div class="col-sm-4 ">
-              Pending Friend Requests
+            <div class="col-sm-4">
+              <h3>Pending Friend Requests</h3>
+              <br />
 
               <?php if (count($pendingFriends) == 0) : ?>
-                </br>
                 <i> No pending friend requests </i>
               <?php endif ?>
 
@@ -98,10 +99,10 @@ if (isset($_POST['removeFriend'])) {
             </div>
 
             <div class="col-sm-4">
-              Incoming Friend Requests
+              <h3>Incoming Friend Requests</h3>
+              <br />
 
               <?php if (count($incomingFriends) == 0) : ?>
-                </br>
                 <i> No incoming friend requests </i>
               <?php endif ?>
 
@@ -143,9 +144,10 @@ if (isset($_POST['removeFriend'])) {
             </div>
 
             <div class="col-sm-4">
-              Friends
+              <h3>Friends</h3>
+              <br />
+
               <?php if (count($acceptedFriends) == 0) : ?>
-                </br>
                 <i> No friends </i>
               <?php endif ?>
 

@@ -1,41 +1,49 @@
-/* Title: Bootstrap Example of Custom Components
-* Author: Bootstrap
-* Availability: https://getbootstrap.com/docs/4.0/examples/product/ */
+.welcome-content {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+}
 
-.container {
-    max-width: 900px;
-}
-  
-/* dummy devices */
-.product-device {
+/* Title: Shoes-Nike-Landing-Page
+* Author: Vikalp2502
+* Availability: https://github.com/vikalp2502/Shoes-Nike-Landing-Page/ */
+.box-1 {
     position: absolute;
-    right: 10%;
-    bottom: -30%;
-    width: 300px;
-    height: 540px;
-    background-color: #8860ad;
-    border-radius: 21px;
-    -webkit-transform: rotate(30deg);
+    width: 60px;
+    height: 60px;
+    background: none;
+    border: 2px solid #c5a7e1;
+    top: 12%;
+    left: 15%;
+    z-index: -1;
+    transform: rotate(60deg);
+}
+
+.box-2 {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: #b994db;
+    /* border: 2px solid orange; */
+    top: 54%;
+    left: 15%;
+    z-index: -1;
+    transform: rotate(-110deg);
+}
+
+.box-3 {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: none;
+    border: 2px solid #9c51e2;
+    top: 28%;
+    left: 82%;
+    z-index: -1;
     transform: rotate(30deg);
-}
-  
-.product-device::before {
-    position: absolute;
-    top: 10%;
-    right: 10px;
-    bottom: 10%;
-    left: 10px;
-    content: "";
-    background-color: #ddcfeb;
-    border-radius: 5px;
-}
-  
-.product-device-2 {
-    top: -25%;
-    right: auto;
-    bottom: 0;
-    left: 5%;
-    background-color: #8a828d;
 }
 
 @media only screen and (max-width: 768px) {

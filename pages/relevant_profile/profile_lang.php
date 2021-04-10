@@ -11,31 +11,38 @@
 
 <body>
   <div class="card border border-purple">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-9">
+          <h4>
+            Native Languages
+          </h4>
+        </div>
+        <div class="col-3 text-right">
+          <button class="btn btn-purple btn-sm" data-toggle="modal" data-target="#nativeModal">+</button>
+        </div>
+      </div>
+    </div>
     <div class="card-body">
-      <h5 class="card-title">
-        Native Languages
-        <button class="btn btn-purple btn-sm" data-toggle="modal" data-target="#nativeModal">+</button>
-      </h5>
-
       <div class="modal fade" id="nativeModal" tabindex="-1" role="dialog" aria-labelledby="nativeModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="nativeModalLabel">Add Native Languages</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <div class="col-9">
+                <h5>
+                  Add Native Languages
+                </h5>
+              </div>
+              <div class="col-3" style="text-align: right;">
+                <input type="button" class="btn btn-purple btn-sm" id="addNativeRow" value="+" />
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
             </div>
             <div class="modal-body">
               <form action="" method="post">
                 <table id="natives" class="table list-native">
-                  <thead>
-                    <tr>
-                      <td style="text-align: left;">
-                        <input type="button" class="btn btn-purple btn-sm" id="addNativeRow" value="+" />
-                      </td>
-                    </tr>
-                  </thead>
                   <tbody>
                     <tr>
                       <td class="col-sm-4">
@@ -82,29 +89,38 @@
   <hr />
 
   <div class="card border border-purple">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-9">
+          <h4>
+            Target Languages
+          </h4>
+        </div>
+        <div class="col-3 text-right">
+          <button class="btn btn-purple btn-sm" data-toggle="modal" data-target="#targetModal">+</button>
+        </div>
+      </div>
+    </div>
     <div class="card-body">
-      <h5 class="card-title">
-        Target Languages
-        <button class="btn btn-purple btn-sm" data-toggle="modal" data-target="#targetModal">+</button>
-      </h5>
-
       <div class="modal fade" id="targetModal" tabindex="-1" role="dialog" aria-labelledby="targetModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="targetModalLabel">Add Target Languages</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <div class="col-9">
+                <h5>
+                  Add Target Languages
+                </h5>
+              </div>
+              <div class="col-3" style="text-align: right;">
+                <input type="button" class="btn btn-purple btn-sm" id="addTargetRow" value="+" />
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
             </div>
             <div class="modal-body">
               <form action="" method="post">
                 <table id="targets" class="table list-target">
-                  <thead>
-                    <td style="text-align: left;">
-                      <input type="button" class="btn btn-purple btn-sm" id="addTargetRow" value="+" required />
-                    </td>
-                  </thead>
                   <tbody>
                     <tr>
                       <td class="col-sm-4">

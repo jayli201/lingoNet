@@ -10,7 +10,7 @@ require("../db/connectdb.php");
 require("../sql/signup_sql.php");
 
 if (isset($_POST['action'])) {
-  if (!empty($_POST['action']) && ($_POST['action'] == 'Sign Up')) {
+  if (!empty($_POST['action']) && ($_POST['action'] == 'Sign Up!')) {
     $error = signUpCont($_SESSION['email'], $_SESSION['pwd'], $_SESSION['firstName'], $_SESSION['lastName'], $_SESSION['age'], $_SESSION['phone'], $_POST['native'], $_POST['target']);
   }
 }
@@ -41,8 +41,8 @@ if (isset($_POST['action'])) {
 
       <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
         <div class="form">
-          <h1 class="display-4">Sign Up</h1>
-          <br />
+          <h1 class="display-4">Language Information</h1>
+          <hr />
           <br />
 
           <form action="" method="post">
@@ -95,7 +95,7 @@ if (isset($_POST['action'])) {
 
             <div class="row">
               <div class="col-9">
-                <input type="submit" name="action" id="action" value="Sign Up" class="btn btn-lg btn-purple" />
+                <input type="submit" name="action" id="action" value="Sign Up!" class="btn btn-lg btn-purple" />
               </div>
               <div class="col">
                 <button type="button" class="btn btn-outline-purple" onclick="goBack()">Go Back</button>
