@@ -10,7 +10,7 @@
 /* Title: Shoes-Nike-Landing-Page
 * Author: Vikalp2502
 * Availability: https://github.com/vikalp2502/Shoes-Nike-Landing-Page/ */
-.box-1 {
+.box-1-welcome {
     position: absolute;
     width: 60px;
     height: 60px;
@@ -22,7 +22,7 @@
     transform: rotate(60deg);
 }
 
-.box-2 {
+.box-2-welcome {
     position: absolute;
     width: 120px;
     height: 120px;
@@ -34,12 +34,12 @@
     transform: rotate(-110deg);
 }
 
-.box-3 {
+.box-3-welcome {
     position: absolute;
     width: 80px;
     height: 80px;
     background: none;
-    border: 2px solid #9c51e2;
+    border: 2px solid #995ad4;
     top: 28%;
     left: 82%;
     z-index: -1;

@@ -41,10 +41,12 @@ if (isset($_POST['action'])) {
       <br />
 
       <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
+        <div class="box-1-signup box"></div>
+        <div class="box-2-signup box"></div>
+
         <div class="form">
           <h1 class="display-4">Basic Information</h1>
           <hr />
-
           <div class="feedback">
             <?php echo $error; ?>
           </div>
@@ -54,11 +56,11 @@ if (isset($_POST['action'])) {
             <div class="row">
               <div class="col">
                 <label>First Name: </label>
-                <input type="text" name="firstName" id="firstName" class="form-control" autofocus required />
+                <input type="text" name="firstName" id="firstName" class="form-control" value="<?php echo $_SESSION['firstName'] ?>" autofocus required />
               </div>
               <div class="col">
                 <label>Last Name: </label>
-                <input type="text" name="lastName" id="lastName" class="form-control" required />
+                <input type="text" name="lastName" id="lastName" class="form-control" value="<?php echo $_SESSION['lastName'] ?>" required />
               </div>
             </div>
             <br />
@@ -66,48 +68,61 @@ if (isset($_POST['action'])) {
             <div class="row">
               <div class="col">
                 <label>Phone Number: </label>
-                <input type="text" name="phone" id="phone" class="form-control" maxlength="17" required />
+                <input type="text" name="phone" id="phone" class="form-control" maxlength="17" value="<?php echo $_SESSION['phone'] ?>" required />
               </div>
               <div class="col">
                 <label>Age: </label>
-                <input type="text" name="age" id="age" class="form-control" required />
+                <input type="text" name="age" id="age" class="form-control" value="<?php echo $_SESSION['age'] ?>" required />
                 <span class="feedback" id="age_msg"></span>
               </div>
             </div>
 
+            <br />
             <hr />
 
-            <label>Email: </label>
-            <input type="text" name="email" id="email" class="form-control" required />
-            <span class="feedback" id="email_msg"></span>
-            <br />
-            <br />
+            <div class="row">
+              <div class="col-6">
+                <label>Email: </label>
+                <input type="text" name="email" id="email" class="form-control" required />
+                <span class="feedback" id="email_msg"></span>
+                <br />
 
-            <div class="label-icon" style="display: inline-block">
-              <label>Password:</label>
-            </div>
+                <div class="label-icon" style="display: inline-block">
+                  <label>Password:</label>
+                </div>
 
-            <div class="input-icon" style="display: inline-block">
-              <i id="show_pwd" class="fa fa-eye" aria-hidden="true" onClick="viewPassword()"></i>
-            </div>
+                <div class="input-icon" style="display: inline-block">
+                  <i id="show_pwd" class="fa fa-eye" aria-hidden="true" onClick="viewPassword()"></i>
+                </div>
 
-            <div id="pwd-msg" class="feedback"></div>
-            <input type="password" name="pwd" id="pwd" class="form-control" required />
-            <br />
+                <div id="pwd-msg" class="feedback"></div>
+                <input type="password" name="pwd" id="pwd" class="form-control" required />
+                <br />
 
-            <div class="label-icon" style="display: inline-block">
-              <label>Confirm Password:</label>
-            </div>
+                <div class="label-icon" style="display: inline-block">
+                  <label>Confirm Password:</label>
+                </div>
 
-            <div class="input-icon" style="display: inline-block">
-              <i id="show_confirm_pwd" class="fa fa-eye" aria-hidden="true" onClick="viewConfirmPassword()"></i>
-            </div>
+                <div class="input-icon" style="display: inline-block">
+                  <i id="show_confirm_pwd" class="fa fa-eye" aria-hidden="true" onClick="viewConfirmPassword()"></i>
+                </div>
 
-            <div id="pwd-confirm-msg" class="feedback"></div>
-            <input type="password" name="confirm_pwd" id="confirm_pwd" class="form-control" required />
+                <div id="pwd-confirm-msg" class="feedback"></div>
+                <input type="password" name="confirm_pwd" id="confirm_pwd" class="form-control" required />
 
-            <div>
-              <span class="feedback" id="pwd_msg"></span>
+                <br />
+                <div>
+                  <span class="feedback" id="pwd_msg"></span>
+                </div>
+              </div>
+              <div class="col-6 text-center">
+                <div class="centered">
+                  <h4>
+                    Already have an account?
+                    <a style="color: #8444c0" href="login.php">Log In</a>
+                  </h4>
+                </div>
+              </div>
             </div>
             <br />
 

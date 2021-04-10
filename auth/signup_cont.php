@@ -46,68 +46,78 @@ if (isset($_POST['action'])) {
           <br />
 
           <form action="" method="post">
-            <table id="natives" class="table list-native">
-              <thead>
-                <tr>
-                  <td>
-                    <h4>Native Language</h4>
-                  </td>
-                  <td style="text-align: left;">
-                    <input type="button" class="btn btn-purple " id="addNativeRow" value="+" />
-                  </td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="col-sm-4">
-                    <input type="text" name="native[]" id="native" class="form-control" placeholder="Enter a language of profiency" autofocus required />
-                  </td>
-                  <td class="col-sm-2"><a class="deleteNativeRow"></a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="row">
+              <div class="col-6">
+                <table id="natives" class="table list-native">
+                  <thead>
+                    <tr>
+                      <td>
+                        <h4>Native Language(s)</h4>
+                      </td>
+                      <td style="text-align: left;">
+                        <input type="button" class="btn btn-purple " id="addNativeRow" value="+" />
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="col-sm-4">
+                        <input type="text" name="native[]" id="native" class="form-control" placeholder="Enter a language of profiency" autofocus required />
+                      </td>
+                      <td class="col-sm-2"><a class="deleteNativeRow"></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <br />
+              <hr />
+              <br />
+
+              <div class="col-6">
+                <table id="targets" class="table list-target">
+                  <thead>
+                    <td>
+                      <h4>Target Language(s)</h4>
+                    </td>
+                    <td style="text-align: left;">
+                      <input type="button" class="btn btn-purple " id="addTargetRow" value="+" required />
+                    </td>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="col-sm-4">
+                        <input type="text" name="target[]" id="target" class="form-control" placeholder="Enter a language of interest" />
+                      </td>
+                      <td class="col-sm-2"><a class="deleteTargetRow"></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
 
             <br />
-            <hr />
-            <br />
-
-            <table id="targets" class="table list-target">
-              <thead>
-                <td>
-                  <h4>Target Language</h4>
-                </td>
-                <td style="text-align: left;">
-                  <input type="button" class="btn btn-purple " id="addTargetRow" value="+" required />
-                </td>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="col-sm-4">
-                    <input type="text" name="target[]" id="target" class="form-control" placeholder="Enter a language of interest" />
-                  </td>
-                  <td class="col-sm-2"><a class="deleteTargetRow"></a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
             <br />
 
             <div class="row">
-              <div class="col-9">
+              <div class="col-10">
                 <input type="submit" name="action" id="action" value="Sign Up!" class="btn btn-lg btn-purple" />
               </div>
-              <div class="col">
+              <div class="col-2">
                 <button type="button" class="btn btn-outline-purple" onclick="goBack()">Go Back</button>
               </div>
             </div>
+
           </form>
         </div>
       </div>
-
-      <br />
-      <div id="footer"></div>
     </div>
+
+    <br />
+    <div id="footer"></div>
+  </div>
   </div>
 
   <script src="../layout/welcome_layout.js"></script>

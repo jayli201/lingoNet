@@ -42,9 +42,9 @@
           <a class="btn btn-purple btn-lg" href="signup.php" role="button">Sign Up Now</a>
         </div>
 
-        <div class="box-1 box"></div>
-        <div class="box-2 box"></div>
-        <div class="box-3 box"></div>
+        <div class="box-1-welcome box"></div>
+        <div class="box-2-welcome box"></div>
+        <div class="box-3-welcome box"></div>
       </div>
 
       <br />

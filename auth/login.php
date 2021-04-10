@@ -41,6 +41,10 @@ if (isset($_POST['action'])) {
       <br />
 
       <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
+        <div class="box-1-login box"></div>
+        <div class="box-2-login box"></div>
+        <div class="box-3-login box"></div>
+        <img class="svg1" src="../css/dashed-circle.svg" alt="">
         <div class="form">
           <h1 class="display-4">Login</h1>
           <hr />
@@ -50,26 +54,30 @@ if (isset($_POST['action'])) {
           </div>
           <br />
 
-          <form action="" method="post" onsubmit="return validateInput()">
-            <label>Email: </label>
-            <input type="text" name="email" id="email" class="form-control" autofocus required />
-            <span class="feedback" id="email_msg"></span>
-            <br />
-            <br />
+          <div class="row">
+            <div class="col-6">
+              <form action="" method="post" onsubmit="return validateInput()">
+                <label>Email: </label>
+                <input type="text" name="email" id="email" class="form-control" autofocus required />
+                <span class="feedback" id="email_msg"></span>
+                <br />
+                <br />
 
-            <div class="label-icon" style="display: inline-block">
-              <label>Password:</label>
+                <div class="label-icon" style="display: inline-block">
+                  <label>Password:</label>
+                </div>
+
+                <div class="input-icon" style="display: inline-block">
+                  <i id="showPwd" class="fa fa-eye" aria-hidden="true" onClick="viewPassword()"></i>
+                </div>
+
+                <input type="password" name="pwd" id="pwd" class="form-control" required />
+                <br />
+
+                <input type="submit" name="action" id="action" value="Login" class="btn btn-lg btn-purple" />
+              </form>
             </div>
-
-            <div class="input-icon" style="display: inline-block">
-              <i id="showPwd" class="fa fa-eye" aria-hidden="true" onClick="viewPassword()"></i>
-            </div>
-
-            <input type="password" name="pwd" id="pwd" class="form-control" required />
-            <br />
-
-            <input type="submit" name="action" id="action" value="Login" class="btn btn-lg btn-purple" />
-          </form>
+          </div>
         </div>
       </div>
     </div>
