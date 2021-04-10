@@ -145,7 +145,7 @@ if (isset($_GET['email'])) {
                             <i class="fas fa-info-circle fa-lg" style="color: green"></i>
                           </a>
 
-                          <input type="hidden" id="show_modal" value="<?php echo isset($_GET['email']); ?>">
+                          <input type="hidden" id="show_modal" value="<?php echo isset($_GET['email']); ?>" />
 
                           <!-- Modal -->
                           <div class="modal fade" id="moreInfo" tabindex="-1" role="dialog" aria-labelledby="moreInfoTitle" aria-hidden="true">
@@ -185,9 +185,6 @@ if (isset($_GET['email'])) {
                                       <?php endif ?>
                                     </tbody>
                                   </table>
-                                </div>
-                                <div class="modal-footer">
-
                                 </div>
                               </div>
                             </div>
