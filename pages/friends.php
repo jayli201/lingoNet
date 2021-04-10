@@ -67,6 +67,7 @@ if (isset($_POST['removeFriend'])) {
 
               <?php if (count($pendingFriends) == 0) : ?>
                 <i> No pending friend requests </i>
+                <hr />
               <?php endif ?>
 
               <?php foreach ($pendingFriends as $key => $value) : ?>
@@ -104,6 +105,7 @@ if (isset($_POST['removeFriend'])) {
 
               <?php if (count($incomingFriends) == 0) : ?>
                 <i> No incoming friend requests </i>
+                <hr />
               <?php endif ?>
 
               <?php foreach ($incomingFriends as $key => $value) : ?>
@@ -149,6 +151,7 @@ if (isset($_POST['removeFriend'])) {
 
               <?php if (count($acceptedFriends) == 0) : ?>
                 <i> No friends </i>
+                <hr />
               <?php endif ?>
 
               <?php foreach ($acceptedFriends as $key => $value) : ?>

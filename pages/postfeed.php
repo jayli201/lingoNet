@@ -74,14 +74,14 @@ if (isset($_GET['email'])) {
           <hr />
           <br />
 
-          <div class="row card-group">
+          <div class="row">
             <?php
           $displayed_users = array();
           foreach ($user_info_array as $key => $value) {
             $language_info = getMultiLanguageInfo(json_decode($value)->email);
             if (!in_array($language_info, $displayed_users)) {
               array_push($displayed_users, $language_info); ?>
-                <div class="col-4">
+                <div class="col-md-4 align-items-stretch">
                   <div class="card border border-purple" style="margin-bottom: 2rem;">
                     <div class="card-header">
                       <div class="row">
