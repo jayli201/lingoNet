@@ -61,7 +61,7 @@ if (isset($_POST['removeFriend'])) {
           <br />
 
           <div class="row ">
-            <div class="col-sm-4 text-center">
+            <div class="col-sm-4">
               <h3>Pending Friend Requests</h3>
               <br />
 
@@ -71,7 +71,7 @@ if (isset($_POST['removeFriend'])) {
 
               <?php foreach ($pendingFriends as $key => $value) : ?>
 
-                <div class="card border border-purple text-left">
+                <div class="card border border-purple">
                   <div class="card-body">
                     <h5 class="card-title">
                       <?= json_decode($value)->firstName ?>
@@ -98,7 +98,7 @@ if (isset($_POST['removeFriend'])) {
               <?php endforeach; ?>
             </div>
 
-            <div class="col-sm-4 text-center">
+            <div class="col-sm-4">
               <h3>Incoming Friend Requests</h3>
               <br />
 
@@ -108,7 +108,7 @@ if (isset($_POST['removeFriend'])) {
 
               <?php foreach ($incomingFriends as $key => $value) : ?>
 
-                <div class="card border border-purple text-left">
+                <div class="card border border-purple">
                   <div class="card-body">
                     <h5 class="card-title">
                       <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
@@ -143,7 +143,7 @@ if (isset($_POST['removeFriend'])) {
 
             </div>
 
-            <div class="col-sm-4 text-center">
+            <div class="col-sm-4">
               <h3>Friends</h3>
               <br />
 
@@ -153,7 +153,7 @@ if (isset($_POST['removeFriend'])) {
 
               <?php foreach ($acceptedFriends as $key => $value) : ?>
 
-                <div class="card border border-purple text-left">
+                <div class="card border border-purple">
                   <div class="card-body">
                     <h5 class="card-title">
                       <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
