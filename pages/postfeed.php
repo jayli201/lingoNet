@@ -85,7 +85,7 @@ if (isset($_GET['email'])) {
                   <div class="card border border-purple" style="margin-bottom: 2rem;">
                     <div class="card-header">
                       <div class="row">
-                        <div class="col-9">
+                        <div class="col-10">
                           <h4>
                             <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                               <?= json_decode($value)->firstName ?>
@@ -137,7 +137,7 @@ if (isset($_GET['email'])) {
                           </h4>
                         </div>
 
-                        <div class="col-3" style="text-align: right;">
+                        <div class="col-2" style="text-align: right;">
                           <form action="" method="get">
                             <a href="<?php $_SERVER['PHP_SELF'] ?>?email=<?= json_decode($value)->email ?>">
                               <i class="fas fa-info-circle fa-lg" style="color: green"></i>
