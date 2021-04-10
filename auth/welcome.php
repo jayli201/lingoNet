@@ -25,29 +25,33 @@
 </head>
 
 <body>
+
   <div class="page-container">
     <div class="content-wrap">
-      <div id="header"></div>
+      <?php include("../layout/welcome_header.html") ?>
       <br />
 
-      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2 text-center bg-light">
-        <div class="col-md-5 p-lg-3 mx-auto my-5">
-          <h1 class="display-2" style="color: #6b359d;">Welcome to LingoNet!</h1>
-          <p class="lead font-weight-normal">Find a language partner, practice with native speakers and make
+      <div class="welcome-content text-center">
+        <div>
+          <h1 class="display-2">LingoNet</h1>
+          <hr />
+          <p class=" lead font-weight-normal">Find a language partner, practice with native speakers and make
             friends!
           </p>
+          <br />
           <a class="btn btn-purple btn-lg" href="signup.php" role="button">Sign Up Now</a>
         </div>
-        <div class="product-device box-shadow d-none d-md-block"></div>
-        <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+
+        <div class="box-1 box"></div>
+        <div class="box-2 box"></div>
+        <div class="box-3 box"></div>
       </div>
 
       <br />
-      <div id="footer"></div>
+      <?php include("../layout/footer.html") ?>
     </div>
   </div>
 
-  <script src="../layout/welcome_layout.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </body>

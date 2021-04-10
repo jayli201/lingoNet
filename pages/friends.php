@@ -57,20 +57,21 @@ if (isset($_POST['removeFriend'])) {
       <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
         <div class="content">
           <h1 class="display-4">Friends</h1>
+          <hr />
           <br />
 
           <div class="row ">
-            <div class="col-sm-4 ">
-              Pending Friend Requests
+            <div class="col-sm-4 text-center">
+              <h3>Pending Friend Requests</h3>
+              <br />
 
               <?php if (count($pendingFriends) == 0) : ?>
-                </br>
                 <i> No pending friend requests </i>
               <?php endif ?>
 
               <?php foreach ($pendingFriends as $key => $value) : ?>
 
-                <div class="card border border-purple">
+                <div class="card border border-purple text-left">
                   <div class="card-body">
                     <h5 class="card-title">
                       <?= json_decode($value)->firstName ?>
@@ -97,17 +98,17 @@ if (isset($_POST['removeFriend'])) {
               <?php endforeach; ?>
             </div>
 
-            <div class="col-sm-4">
-              Incoming Friend Requests
+            <div class="col-sm-4 text-center">
+              <h3>Incoming Friend Requests</h3>
+              <br />
 
               <?php if (count($incomingFriends) == 0) : ?>
-                </br>
                 <i> No incoming friend requests </i>
               <?php endif ?>
 
               <?php foreach ($incomingFriends as $key => $value) : ?>
 
-                <div class="card border border-purple">
+                <div class="card border border-purple text-left">
                   <div class="card-body">
                     <h5 class="card-title">
                       <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
@@ -142,16 +143,17 @@ if (isset($_POST['removeFriend'])) {
 
             </div>
 
-            <div class="col-sm-4">
-              Friends
+            <div class="col-sm-4 text-center">
+              <h3>Friends</h3>
+              <br />
+
               <?php if (count($acceptedFriends) == 0) : ?>
-                </br>
                 <i> No friends </i>
               <?php endif ?>
 
               <?php foreach ($acceptedFriends as $key => $value) : ?>
 
-                <div class="card border border-purple">
+                <div class="card border border-purple text-left">
                   <div class="card-body">
                     <h5 class="card-title">
                       <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">

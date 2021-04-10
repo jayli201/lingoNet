@@ -42,7 +42,7 @@ if (isset($_POST['action'])) {
       <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
         <div class="form">
           <h1 class="display-4">Sign Up</h1>
-          <br />
+          <hr />
           <br />
 
           <form action="" method="post">
@@ -53,7 +53,7 @@ if (isset($_POST['action'])) {
                     <h4>Native Language</h4>
                   </td>
                   <td style="text-align: left;">
-                    <input type="button" class="btn btn-purple " id="addNativeRow" value="+" />
+                    <input type="button" class="btn btn-success " id="addNativeRow" value="+" />
                   </td>
                 </tr>
               </thead>
@@ -78,7 +78,7 @@ if (isset($_POST['action'])) {
                   <h4>Target Language</h4>
                 </td>
                 <td style="text-align: left;">
-                  <input type="button" class="btn btn-purple " id="addTargetRow" value="+" required />
+                  <input type="button" class="btn btn-success " id="addTargetRow" value="+" required />
                 </td>
               </thead>
               <tbody>
@@ -98,7 +98,7 @@ if (isset($_POST['action'])) {
                 <input type="submit" name="action" id="action" value="Sign Up" class="btn btn-lg btn-purple" />
               </div>
               <div class="col">
-                <button type="button" class="btn btn-outline-purple" onclick="goBack()">Go Back</button>
+                <button type="button" class="btn btn-outline-success" onclick="goBack()">Go Back</button>
               </div>
             </div>
           </form>
