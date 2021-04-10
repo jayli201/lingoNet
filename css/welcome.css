@@ -1,7 +1,3 @@
-/* Title: Shoes-Nike-Landing-Page
-* Author: Vikalp2502
-* Availability: https://github.com/vikalp2502/Shoes-Nike-Landing-Page/ */
- 
 .welcome-content {
     height: 70%;
     width: 100%;
@@ -11,6 +7,9 @@
     justify-content: center;
 }
 
+/* Title: Shoes-Nike-Landing-Page
+* Author: Vikalp2502
+* Availability: https://github.com/vikalp2502/Shoes-Nike-Landing-Page/ */
 .box-1 {
     position: absolute;
     width: 60px;
