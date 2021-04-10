@@ -151,7 +151,7 @@ if (isset($_GET['email'])) {
                         More info
                       </a>
 
-                      <input type="hidden" id="show_modal" value="<?php echo isset($_GET['email']); ?>">
+                      <input type="hidden" id="show_modal" value="<?php echo isset($_GET['email']); ?>" />
 
                       <!-- Modal -->
                       <div class="modal fade" id="moreInfo" tabindex="-1" role="dialog" aria-labelledby="moreInfoTitle" aria-hidden="true">
@@ -192,9 +192,6 @@ if (isset($_GET['email'])) {
                                 </tbody>
                               </table>
                             </div>
-                            <div class="modal-footer">
-
-                            </div>
                           </div>
                         </div>
                       </div>
@@ -208,7 +205,6 @@ if (isset($_GET['email'])) {
               <?php endif; ?>
               <?php $count++ ?>
             <?php endif; ?>
-
           <?php endforeach; ?>
         </div>
       </div>
