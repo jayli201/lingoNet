@@ -38,13 +38,11 @@ if (isset($_POST['action'])) {
   <div class="page-container">
     <div class="content-wrap">
       <div id="header"></div>
-      <br />
 
       <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
         <div class="box-1-login box"></div>
         <div class="box-2-login box"></div>
         <div class="box-3-login box"></div>
-        <img class="svg1" src="../css/dashed-circle.svg" alt="">
         <div class="form">
           <h1 class="display-4">Login</h1>
           <hr />

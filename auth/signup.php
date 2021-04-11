@@ -38,7 +38,6 @@ if (isset($_POST['action'])) {
   <div class="page-container">
     <div class="content-wrap">
       <div id="header"></div>
-      <br />
 
       <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
         <div class="box-1-signup box"></div>
