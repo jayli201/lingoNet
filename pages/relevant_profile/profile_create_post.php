@@ -10,6 +10,14 @@
 <html>
 
 <body>
+  <?php
+  // if user has not logged in, then redirect
+  // otherwise, display content 
+  if (!isset($_SESSION['email'])) {
+    header("Location: ../../auth/welcome.php");
+  } else
+  ?>
+
   <h3>Introduce Yourself!</h3>
   <br />
   <form action="" method="post">

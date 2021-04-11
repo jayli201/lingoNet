@@ -18,6 +18,14 @@ if (isset($_POST['editProfile'])) {
 <html>
 
 <body>
+  <?php
+  // if user has not logged in, then redirect
+  // otherwise, display content 
+  if (!isset($_SESSION['email'])) {
+    header("Location: ../../auth/welcome.php");
+  } else
+  ?>
+
   <h3>Your Profile Information</h3>
   <br />
   <div class="card border border-purple">

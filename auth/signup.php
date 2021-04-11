@@ -86,6 +86,7 @@ if (isset($_POST['action'])) {
                 <input type="text" name="email" id="email" class="form-control" required />
                 <span class="feedback" id="email_msg"></span>
                 <br />
+                <br />
 
                 <div class="label-icon" style="display: inline-block">
                   <label>Password:</label>
@@ -110,7 +111,6 @@ if (isset($_POST['action'])) {
                 <div id="pwd-confirm-msg" class="feedback"></div>
                 <input type="password" name="confirm_pwd" id="confirm_pwd" class="form-control" required />
 
-                <br />
                 <div>
                   <span class="feedback" id="pwd_msg"></span>
                 </div>
