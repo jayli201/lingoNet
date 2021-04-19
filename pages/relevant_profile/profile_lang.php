@@ -10,14 +10,6 @@
 <html>
 
 <body>
-  <?php
-  // if user has not logged in, then redirect
-  // otherwise, display content 
-  if (!isset($_SESSION['email'])) {
-    header("Location: ../../auth/welcome.php");
-  } else
-  ?>
-
   <div class="card border border-purple">
     <div class="card-header">
       <div class="row">
@@ -74,7 +66,7 @@
       <table class="table">
         <tbody>
           <?php
-        foreach ($language_info['native'] as $native) { ?>
+          foreach ($language_info['native'] as $native) { ?>
             <tr>
               <td><?php echo $native ?></td>
               <td style="text-align: right">

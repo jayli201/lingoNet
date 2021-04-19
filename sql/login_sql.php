@@ -62,6 +62,7 @@ function login($email, $pwd)
     if ($stmt->num_rows() == 1) {
       // fill in session details
       $_SESSION['email'] = $email;
+      $_SESSION['loggedIn'] = true;
       // go to mainpage afterwards
       header('Location: ../pages/postfeed.php');
     }

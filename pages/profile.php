@@ -76,14 +76,6 @@ if (isset($_POST['deleteTarget'])) {
 </head>
 
 <body>
-  <?php
-  // if user has not logged in, then redirect
-  // otherwise, display content 
-  if (!isset($_SESSION['email'])) {
-    header("Location: ../auth/welcome.php");
-  } else
-  ?>
-
   <div class="page-container">
     <div class="content-wrap">
       <div id="header"></div>

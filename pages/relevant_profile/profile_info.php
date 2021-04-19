@@ -21,8 +21,8 @@ if (isset($_POST['editProfile'])) {
   <?php
   // if user has not logged in, then redirect
   // otherwise, display content 
-  if (!isset($_SESSION['email'])) {
-    header("Location: ../../auth/welcome.php");
+  if (!isset($_SESSION['loggedIn'])) {
+    header("Location: ../auth/welcome.php");
   } else
   ?>
 

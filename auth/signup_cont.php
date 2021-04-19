@@ -87,7 +87,7 @@ if (isset($_POST['action'])) {
                   <tbody>
                     <tr>
                       <td class="col-sm-4">
-                        <input type="text" name="target[]" id="target" class="form-control" placeholder="Enter a language of interest" />
+                        <input type="text" name="target[]" id="target" class="form-control" placeholder="Enter a language of interest" required />
                       </td>
                       <td class="col-sm-2"><a class="deleteTargetRow"></a>
                       </td>

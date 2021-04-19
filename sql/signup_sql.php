@@ -69,5 +69,6 @@ function signUpCont($email, $pwd, $firstName, $lastName, $age, $phone, $native, 
     }
   }
 
+  $_SESSION['loggedIn'] = true;
   header("Location: ../pages/postfeed.php");
 }
