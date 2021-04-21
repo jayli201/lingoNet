@@ -20,7 +20,7 @@ function getProfileInfo($email)
       );
     }
   }
-  mysqli_free_result($query);
+  // mysqli_free_result($query);
   return $user;
 }
 
@@ -37,7 +37,7 @@ function getMultiLanguageInfo($email)
       array_push($natives, $row['native']);
     }
   }
-  mysqli_free_result($native_query);
+  // mysqli_free_result($native_query);
 
   $targets = array();
   $target_query = "SELECT * FROM target WHERE email = '" . $email . "'";
@@ -48,7 +48,7 @@ function getMultiLanguageInfo($email)
       array_push($targets, $row['target']);
     }
   }
-  mysqli_free_result($target_query);
+  // mysqli_free_result($target_query);
 
   $languages = array();
   $languages = array(
@@ -95,7 +95,7 @@ function getPostInfo($email)
       );
     }
   }
-  mysqli_free_result($query);
+  // mysqli_free_result($query);
   return $post_info;
 }
 

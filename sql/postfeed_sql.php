@@ -26,7 +26,7 @@ function getPostfeedInfo()
       }
     }
   }
-  mysqli_free_result($query);
+  // mysqli_free_result($query);
   return $user_info_array;
 }
 
@@ -114,6 +114,6 @@ function getMoreInfo($email)
       );
     }
   }
-  mysqli_free_result($query);
+  // mysqli_free_result($query);
   return $more_info;
 }

@@ -15,7 +15,6 @@ function getPendingFriends($email)
       $user = array(
         'email' => $row['email'],
         'friendEmail' => $row['friendEmail'],
-        'friendStatus' => $row['friendStatus'],
         'firstName' => $row['firstName'],
         'lastName' => $row['lastName'],
         'email' => $row['email'],
@@ -27,7 +26,7 @@ function getPendingFriends($email)
       array_push($user_info_array, $user_json);
     }
   }
-  mysqli_free_result($query);
+  // mysqli_free_result($query);
   return $user_info_array;
 }
 
@@ -58,7 +57,7 @@ function getIncomingFriends($email)
       array_push($user_info_array, $user_json);
     }
   }
-  mysqli_free_result($query);
+  // mysqli_free_result($query);
   return $user_info_array;
 }
 
@@ -90,7 +89,7 @@ function getAcceptedFriends($email)
       array_push($user_info_array, $user_json);
     }
   }
-  mysqli_free_result($query1);
+  // mysqli_free_result($query1);
 
   // check if (friendEmail, email) pair is in friend table
   $query2 = "SELECT * FROM users, native, target, friend 
@@ -115,7 +114,7 @@ function getAcceptedFriends($email)
       array_push($user_info_array, $user_json);
     }
   }
-  mysqli_free_result($query2);
+  // mysqli_free_result($query2);
 
   return $user_info_array;
 }
