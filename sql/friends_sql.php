@@ -45,7 +45,6 @@ function getIncomingFriends($email)
       $user = array(
         'email' => $row['email'],
         'friendEmail' => $row['friendEmail'],
-        'friendStatus' => $row['friendStatus'],
         'firstName' => $row['firstName'],
         'lastName' => $row['lastName'],
         'email' => $row['email'],
