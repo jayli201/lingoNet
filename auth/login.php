@@ -8,6 +8,7 @@
 <?php
 require("../db/connectdb.php");
 require("../sql/login_sql.php");
+$error =  "";
 
 if (isset($_POST['action'])) {
   if (!empty($_POST['action']) && ($_POST['action'] == 'Login')) {

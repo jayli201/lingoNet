@@ -8,10 +8,15 @@
 <?php
 require("../db/connectdb.php");
 require("../sql/signup_sql.php");
+$error =  "";
+$_SESSION['firstName'] = "";
+$_SESSION['lastName'] = "";
+$_SESSION['age'] = "";
+$_SESSION['phone'] = "";
 
 if (isset($_POST['action'])) {
   if (!empty($_POST['action']) && ($_POST['action'] == 'Next')) {
-    $error = signUp($_POST['email'], $_POST['pwd'], $_POST['firstName'], $_POST['lastName'], $_POST['age'], $_POST['phone'], $_POST['native'], $_POST['target']);
+    $error = signUp($_POST['email'], $_POST['pwd'], $_POST['firstName'], $_POST['lastName'], $_POST['age'], $_POST['phone']);
   }
 }
 ?>
