@@ -1,9 +1,9 @@
 export class Card {
    constructor(
-      public first_name: string,
-      public last_name: string,
+      public firstName: string,
+      public lastName: string,
       public email: string,
-      public native: [string],
-      public target: [string],
+      public natives: [string],
+      public targets: [string],
    ){}
 }

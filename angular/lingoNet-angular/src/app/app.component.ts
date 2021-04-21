@@ -9,6 +9,6 @@ import { Card } from './card';
 export class AppComponent {
   title = 'LingoNet';
 
-  card = new Card('first', 'last', 'test@gmail.com', ['native'], ['target']);
+  card = new Card('first', 'last', 'test@gmail.com', ['native1, native2, native3'], ['target1, target2']);
 }
 
