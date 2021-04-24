@@ -1,48 +1,8 @@
 <div class="container">
-  <h1>{{ title }}</h1>
+  <!-- <h1>{{ title }}</h1> -->
 
-    <div class="card border border-purple" style="margin-bottom: 2rem;">
-      <div class="card-header">
-        <div class="row">
-          <div class="col-10">
-            <h4>
-              <form action="" method="post">
-                {{ card.firstName }}
-                {{ card.lastName }}
-                  
-                <br />
-
-                {{ card.email }}
-
-                friend button
-                more info button
-                
-              </form>
-              
-            </h4>
-          </div>
-    
-        </div>
-      </div>
-    
-      <div class="card-body">
-        <h6 class="card-subtitle mb-2">Can speak: </h6>
-        hardcode native
-          <p *ngFor="let native of card.natives">
-            {{ native }}
-          </p>
-
-        <br />
-    
-        <h6 class="card-subtitle mb-2 ">Wants to practice: </h6>
-          <p *ngFor="let target of card.targets">
-            {{ target }}
-          </p>
-
-        <br />
-    
-      </div>
-    </div>
+  <app-friends></app-friends>
+  
 
 </div>
 

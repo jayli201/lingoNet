@@ -1,1 +1,397 @@
 /* You can add global styles to this file, and also import other style files */
+/* Pages are generally set up like this:
+<div class="page-container"> --> goes around everything
+    <div class="content-wrap"> --> sets up footer height
+        <div id="header"></div> --> include general header from layout folder
+        <div class="content" OR class="form"> --> sets margins
+            // actual content of page
+        </div>
+        <div id="footer"></div> --> include general footer from layout folder
+    </div>
+</div>
+*/
+
+/* goes around everything on page */
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* sets bottom padding that is the height of the footer */
+.content-wrap {
+  padding-bottom: 6rem;
+}
+
+/* footer sticks to the bottom and uses .content-wrap's padding-bottom height */
+.footer {
+  padding: 20px 0px 20px 0px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 6rem;
+  background-color: rgb(221, 219, 219);
+}
+
+.centered {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title: Shoes-Nike-Landing-Page
+* Author: Vikalp2502
+* Availability: https://github.com/vikalp2502/Shoes-Nike-Landing-Page/ */
+.box-1-login {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: none;
+  border: 2px solid #c5a7e1;
+  top: 12%;
+  left: 60%;
+  z-index: -1;
+  transform: rotate(60deg);
+}
+
+.box-2-login {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: #b994db;
+  /* border: 2px solid orange; */
+  top: 54%;
+  left: 60%;
+  z-index: -1;
+  transform: rotate(-110deg);
+}
+
+.box-3-login {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: none;
+  border: 2px solid #995ad4;
+  top: 28%;
+  left: 75%;
+  z-index: -1;
+  transform: rotate(30deg);
+}
+
+.box-1-signup {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: none;
+  border: 2px solid #c5a7e1;
+  top: 54%;
+  left: 55%;
+  z-index: -1;
+  transform: rotate(-110deg);
+}
+
+.box-2-signup {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: #b994db;
+  /* border: 2px solid orange; */
+  top: 72%;
+  left: 80%;
+  z-index: -1;
+  transform: rotate(30deg);
+}
+
+h1 {
+  color: #6b359d;
+}
+
+.form {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.content {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.title {
+  text-align: center;
+}
+
+.feedback {
+  font-style: italic;
+  color: red;
+}
+
+.input-icon {
+  cursor: pointer;
+}
+
+#label {
+  margin-bottom: 1px;
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    line-height: 1.1em;
+  }
+  .description .display-1 {
+    font-size: 4rem;
+  }
+  .description .display-4 {
+    font-size: 2rem;
+  }
+  .description p {
+    font-size: 1rem;
+    line-height: 1em;
+  }
+  .content .display-4 {
+    font-size: 3rem;
+  }
+}
+
+.navbar {
+  /* background: #8444c0; */
+  color: black;
+}
+
+.nav-link {
+  margin-right: 1em;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+.header {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+label {
+  font-weight: bold;
+}
+
+/* Title: Bootstrap 4 Color Utility Generator
+* Author: Ling
+* Date: 2019-05-23
+* Availability: https://lingtalfi.com/bootstrap4-color-generator# */
+
+/* the following is to override bootstrap's theme colors to be purple */
+.form-control:focus {
+  border-color: #b994db;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #cfb7e6;
+}
+
+.alert-purple {
+  color: #2c1641;
+  background-color: #cfb7e6;
+  border-color: #c5a7e1;
+}
+
+.alert-purple hr {
+  border-top-color: #b994db;
+}
+
+.alert-purple .alert-link {
+  color: #12091b;
+}
+
+.badge-purple {
+  color: #fff;
+  background-color: #8444c0;
+}
+
+.badge-purple[href]:hover,
+.badge-purple[href]:focus {
+  color: #fff;
+  background-color: #512876;
+}
+
+.bg-purple {
+  background-color: #8444c0 !important;
+}
+
+a.bg-purple:hover,
+a.bg-purple:focus,
+button.bg-purple:hover,
+button.bg-purple:focus {
+  background-color: #512876 !important;
+}
+
+.border-purple {
+  border-color: #8444c0 !important;
+}
+
+.btn-purple {
+  color: #fff;
+  background-color: #8444c0;
+  border-color: #8444c0;
+}
+
+.btn-purple:hover {
+  color: #fff;
+  background-color: #582b82;
+  border-color: #512876;
+}
+
+.btn-purple:focus,
+.btn-purple.focus {
+  box-shadow: 0 0 0 0.2rem rgba(107, 53, 157, 0.5);
+}
+
+.btn-purple.disabled,
+.btn-purple:disabled {
+  color: #fff;
+  background-color: #8444c0;
+  border-color: #8444c0;
+}
+
+.btn-purple:not(:disabled):not(.disabled):active,
+.btn-purple:not(:disabled):not(.disabled).active,
+.show > .btn-purple.dropdown-toggle {
+  color: #fff;
+  background-color: #512876;
+  border-color: #49246b;
+}
+
+.btn-purple:not(:disabled):not(.disabled):active:focus,
+.btn-purple:not(:disabled):not(.disabled).active:focus,
+.show > .btn-purple.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(107, 53, 157, 0.5);
+}
+
+.btn-outline-purple {
+  color: #8444c0;
+  background-color: transparent;
+  border-color: #8444c0;
+}
+
+.btn-outline-purple:hover {
+  color: #fff;
+  background-color: #8444c0;
+  border-color: #8444c0;
+}
+
+.btn-outline-purple:focus,
+.btn-outline-purple.focus {
+  box-shadow: 0 0 0 0.2rem rgba(107, 53, 157, 0.5);
+}
+
+.btn-outline-purple.disabled,
+.btn-outline-purple:disabled {
+  color: #8444c0;
+  background-color: transparent;
+}
+
+.btn-outline-purple:not(:disabled):not(.disabled):active,
+.btn-outline-purple:not(:disabled):not(.disabled).active,
+.show > .btn-outline-purple.dropdown-toggle {
+  color: #fff;
+  background-color: #8444c0;
+  border-color: #8444c0;
+}
+
+.btn-outline-purple:not(:disabled):not(.disabled):active:focus,
+.btn-outline-purple:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-purple.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(107, 53, 157, 0.5);
+}
+
+.list-group-item-purple {
+  color: #2c1641;
+  background-color: #c5a7e1;
+}
+
+.list-group-item-purple.list-group-item-action:hover,
+.list-group-item-purple.list-group-item-action:focus {
+  color: #2c1641;
+  background-color: #b994db;
+}
+
+.list-group-item-purple.list-group-item-action.active {
+  color: #fff;
+  background-color: #2c1641;
+  border-color: #2c1641;
+}
+
+.table-purple,
+.table-purple > th,
+.table-purple > td {
+  background-color: #c5a7e1;
+}
+
+.table-hover .table-purple:hover {
+  background-color: #b994db;
+}
+
+.table-hover .table-purple:hover > td,
+.table-hover .table-purple:hover > th {
+  background-color: #b994db;
+}
+
+.text-purple {
+  color: #8444c0 !important;
+}
+
+a.text-purple:hover,
+a.text-purple:focus {
+  color: #512876 !important;
+}
+
+.welcome-content {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title: Shoes-Nike-Landing-Page
+* Author: Vikalp2502
+* Availability: https://github.com/vikalp2502/Shoes-Nike-Landing-Page/ */
+.box-1-welcome {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: none;
+  border: 2px solid #c5a7e1;
+  top: 12%;
+  left: 15%;
+  z-index: -1;
+  transform: rotate(60deg);
+}
+
+.box-2-welcome {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: #b994db;
+  /* border: 2px solid orange; */
+  top: 54%;
+  left: 15%;
+  z-index: -1;
+  transform: rotate(-110deg);
+}
+
+.box-3-welcome {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: none;
+  border: 2px solid #995ad4;
+  top: 28%;
+  left: 82%;
+  z-index: -1;
+  transform: rotate(30deg);
+}
+
+@media only screen and (max-width: 768px) {
+  .display-2 {
+    font-size: 4rem;
+  }
+}
