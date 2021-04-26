@@ -14,6 +14,10 @@ header('Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE, PUT');
 // connect to friends_sql.php, which connects to db
 require("friends_sql.php");
 
+$pendingFriends = getPendingFriends($_SESSION['email']);
+$incomingFriends = getIncomingFriends($_SESSION['email']);
+$acceptedFriends = getAcceptedFriends($_SESSION['email']);
+
 // retrieve data from the request
 $postdata = file_get_contents("php://input");
 
@@ -22,6 +26,8 @@ $postdata = file_get_contents("php://input");
 
 // Extract json format to PHP array
 $request = json_decode($postdata);
+// $request = json_decode($pendingFriends);
+
 
 $data = [];
 foreach ($request as $k => $v) {

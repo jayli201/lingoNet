@@ -12,14 +12,28 @@
               </div>
               <!-- {{ card.firstName }}
               {{ card.lastName }} -->
-  
+                
+                <!-- test out input: works -->
+              <div class="form-group">
+                <label>Name: </label>
+                <input type="text" required minlength="8" #name="ngModel" [class.is-invalid]="(name.invalid && name.touched)"
+                  class="form-control is-invalid" [(ngModel)]="cardModel.email" name="email">
+                <!-- note: we don't use autofocus here. Why? -->
+                <small class="text-danger" [class.d-none]="name.valid || name.untouched">
+                  Name is required and must be at least 8 characters.
+                </small>
+              </div>
+
               <br />
   
               {{ card.email }}
   
               friend button
               more info button
-  
+              <button class="btn btn-primary" type="submit" [disabled]="!orderForm.form.valid" (click)="confirmOrder(orderForm.value)"
+                title="always enabled">
+                Place order
+              </button>
             </form>
   
           </h4>

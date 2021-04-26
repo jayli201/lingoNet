@@ -15,6 +15,7 @@ export class FriendsComponent implements OnInit {
   // constructor() { }
 
   ngOnInit(): void {
+    console.log("init");
   }
 
   card = new Card('first', 'last', 'test@gmail.com', ['native1, native2, native3'], ['target1, target2']);
@@ -22,14 +23,16 @@ export class FriendsComponent implements OnInit {
   data_submitted = '';
   confirm_msg = '';
 
-  responsedata = new Card('', '', '', null, null);
 
+  cardModel = new Card('', '', '', null, null);
 
   confirmOrder(data: any): void {
     console.log(data);
     
   }
   
+  responsedata = new Card('', '', '', null, null);
+
   // passing in a form variable of type any, no return result
   onSubmit(form: any): void {
      console.log('You submitted value: ', form);
@@ -49,7 +52,8 @@ export class FriendsComponent implements OnInit {
     // post<return_type>('url', data);
     // observable --> subscribe 
       // the observable doesn't execute the function until subscribed
-    this.http.post<Card>('http://localhost/cs4640/angular/data/request-handler.php', params)
+    // this.http.post<Card>('http://localhost/cs4640/angular/data/request-handler.php', params)
+    this.http.post<Card>('http://localhost/cs4640/lingoNet/angular/data/request-handler.php', params)
       .subscribe((response_from_php) => {
         // successful, use response in some way
         this.responsedata = response_from_php;
@@ -59,5 +63,6 @@ export class FriendsComponent implements OnInit {
         console.log('Error occurs', error_in_comm);  
     })
   }
+
 
 }

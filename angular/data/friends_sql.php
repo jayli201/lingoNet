@@ -27,6 +27,8 @@ function getPendingFriends($email)
     }
   }
   // mysqli_free_result($query);
+  echo $user_info_array;
+  var_dump($user_info_array);
   return $user_info_array;
 }
 
