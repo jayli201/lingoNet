@@ -3,7 +3,7 @@ export class Card {
       public firstName: string,
       public lastName: string,
       public email: string,
-      public natives: [string],
-      public targets: [string],
+      public natives: [string] | null,
+      public targets: [string] | null,
    ){}
 }

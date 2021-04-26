@@ -4,9 +4,14 @@
       <div class="row">
         <div class="col-10">
           <h4>
-            <form action="" method="post">
-              {{ card.firstName }}
-              {{ card.lastName }}
+            <!-- <form action="" method="post"> -->
+            <form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm.value)">
+              <div class="form-group">
+                {{ card.firstName }}
+                {{ card.lastName }}
+              </div>
+              <!-- {{ card.firstName }}
+              {{ card.lastName }} -->
   
               <br />
   
@@ -25,7 +30,6 @@
   
     <div class="card-body">
       <h6 class="card-subtitle mb-2">Can speak: </h6>
-      hardcode native
       <p *ngFor="let native of card.natives">
         {{ native }}
       </p>
