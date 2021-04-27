@@ -9,6 +9,7 @@
 
   <title>Friends</title>
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 
   <body>
@@ -18,74 +19,249 @@
         <hr />
         <br />
     
-        <div class="row ">
+        <div class="row">
           <div class="col-sm-4">
             <h3>Pending Friend Requests</h3>
             <br />
     
-            <div class="card border border-purple" style="margin-bottom: 2rem;">
+            <div *ngFor="let item of pendingCards" class="card border border-purple" style="margin-bottom: 2rem;">
               <div class="card-header">
                 <div class="row">
                   <div class="col-10">
                     <h4>
-                      <!-- <form action="" method="post"> -->
-                      <form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm.value)">
-                        <div class="form-group">
-                          {{ card.firstName }}
-                          {{ card.lastName }}
-                        </div>
-                        <!-- {{ card.firstName }}
-                        {{ card.lastName }} -->
-                        
-                        <!-- test out input: works -->
-                        <div class="form-group">
-                          <label>Name: </label>
-                          <input type="text" required minlength="8" #name="ngModel"
-                            [class.is-invalid]="(name.invalid && name.touched)" class="form-control is-invalid"
-                            [(ngModel)]="cardModel.email" name="email">
-                            <!-- note: we don't use autofocus here. Why? -->
-                            <small class="text-danger" [class.d-none]="name.valid || name.untouched">
-                              Name is required and must be at least 8 characters.
-                            </small>
-                        </div>
-              
-                        <br />
-              
-                        {{ card.email }}
-              
-                        friend button
-                        more info button
-                        <button class="btn btn-primary" type="submit" [disabled]="!orderForm.form.valid"
-                          (click)="confirmOrder(orderForm.value)" title="always enabled">
-                          Place order
-                        </button>
-                      </form>
-              
+                      {{ item.firstName }}
+                      {{ item.lastName }}  
+                      <button type="button" disabled name="pending" class="btn btn-purple btn-sm" data-toggle="Disabled tooltip" data-placement="bottom" title="Request Sent">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                        </svg>
+                      </button>
                     </h4>
                   </div>
-              
+
+                  <div class="col-2" style="text-align: right;">   
+                    <form action="" method="get">
+                      <i class="fas fa-info-circle fa-lg" style="color: green; cursor: pointer;" data-toggle="modal" data-target="#moreInfo"></i>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="moreInfo" tabindex="-1" role="dialog" aria-labelledby="moreInfoTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">
+                                title
+                              </h5>
+
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <table class="table">
+                                <tbody>
+                                    <tr>
+                                      <td><em>Introduction</em></td>
+                                      <td>from db</td>
+                                    </tr>
+                                    <tr>
+                                      <td><em>Looking For</em></td>
+                                      <td>from db</td>
+                                    </tr>
+                                    <tr>
+                                      <td><em>Why You?</em></td>
+                                      <td>from db</td>
+                                    </tr>
+                                  else: come back later
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
-              
+
               <div class="card-body">
                 <h6 class="card-subtitle mb-2">Can speak: </h6>
-                <p *ngFor="let native of card.natives">
-                  {{ native }}
-                </p>
-              
+                {{ item.natives }}
                 <br />
-              
+                <br />
+
                 <h6 class="card-subtitle mb-2 ">Wants to practice: </h6>
-                <p *ngFor="let target of card.targets">
-                  {{ target }}
-                </p>
-          
+                {{ item.targets }}
                 <br />
-              
+
               </div>
-            </div>
+            </div>    
+          </div>
+
+          <div class="col-sm-4">
+            <h3>Incoming Friend Requests</h3>
+            <br />
+    
+            <div *ngFor="let item of incomingCards" class="card border border-purple" style="margin-bottom: 2rem;">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-10">
+                    <h4>
+                      {{ item.firstName }}
+                      {{ item.lastName }}  
+                      <!-- Add friend button -->
+                      <button type="submit" name="acceptFriend" class="btn btn-purple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Accept Friend Request">
+                        <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                          <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                          <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                        </svg>
+                      </button>
+                    </h4>
+                  </div>
+
+                  <div class="col-2" style="text-align: right;">   
+                    <form action="" method="get">
+                      <i class="fas fa-info-circle fa-lg" style="color: green; cursor: pointer;" data-toggle="modal" data-target="#moreInfo"></i>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="moreInfo" tabindex="-1" role="dialog" aria-labelledby="moreInfoTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">
+                                title
+                              </h5>
+
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <table class="table">
+                                <tbody>
+                                    <tr>
+                                      <td><em>Introduction</em></td>
+                                      <td>from db</td>
+                                    </tr>
+                                    <tr>
+                                      <td><em>Looking For</em></td>
+                                      <td>from db</td>
+                                    </tr>
+                                    <tr>
+                                      <td><em>Why You?</em></td>
+                                      <td>from db</td>
+                                    </tr>
+                                  else: come back later
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2">Can speak: </h6>
+                {{ item.natives }}
+                <br />
+                <br />
+
+                <h6 class="card-subtitle mb-2 ">Wants to practice: </h6>
+                {{ item.targets }}
+                <br />
+
+              </div>
+            </div>    
+          </div>
+
+          <div class="col-sm-4">
+            <h3>Friends</h3>
+            <br />
+    
+            <div *ngFor="let item of acceptedCards" class="card border border-purple" style="margin-bottom: 2rem;">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-10">
+                    <h4>
+                      {{ item.firstName }}
+                      {{ item.lastName }}  
+                      <!-- Remove friend button -->
+                      <button type="submit" name="removeFriend" class="btn btn-purple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Remove Friend">
+                        <!-- https://icons.getbootstrap.com/icons/person-dash-fill/ -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
+                          <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        </svg>
+                      </button>
+                    </h4>
+                  </div>
+
+                  <div class="col-2" style="text-align: right;">   
+                    <form action="" method="get">
+                      <i class="fas fa-info-circle fa-lg" style="color: green; cursor: pointer;" data-toggle="modal" data-target="#moreInfo"></i>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="moreInfo" tabindex="-1" role="dialog" aria-labelledby="moreInfoTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">
+                                title
+                              </h5>
+
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <table class="table">
+                                <tbody>
+                                    <tr>
+                                      <td><em>Introduction</em></td>
+                                      <td>from db</td>
+                                    </tr>
+                                    <tr>
+                                      <td><em>Looking For</em></td>
+                                      <td>from db</td>
+                                    </tr>
+                                    <tr>
+                                      <td><em>Why You?</em></td>
+                                      <td>from db</td>
+                                    </tr>
+                                  else: come back later
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2">Can speak: </h6>
+                {{ item.natives }}
+                <br />
+                <br />
+
+                <h6 class="card-subtitle mb-2 ">Wants to practice: </h6>
+                {{ item.targets }}
+                <br />
+
+              </div>
+            </div>    
           </div>
         </div>
+
+
+
+
+
       </div>
     </div>
 
