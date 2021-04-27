@@ -7,106 +7,88 @@
   <meta name="description" content="Friends">
   <meta name="author" content="Jasmin Li, Rebecca Zhou">
 
-  <title>Friend Requests</title>
+  <title>Friends</title>
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="../css/layout.css" />
-  <link rel="stylesheet" href="../css/content.css" />
-  <link rel="stylesheet" href="../css/theme.css" /> -->
 </head>
 
   <body>
-    <div class="page-container">
-      <div class="content-wrap">
-        <div id="header"></div>
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
+      <div class="content">
+        <h1 class="display-4">Friends</h1>
+        <hr />
+        <br />
     
-        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
-          <div class="content">
-            <h1 class="display-4">Friends</h1>
-            <hr />
+        <div class="row ">
+          <div class="col-sm-4">
+            <h3>Pending Friend Requests</h3>
             <br />
     
-            <div class="row ">
-              <div class="col-sm-4">
-                <h3>Pending Friend Requests</h3>
-                <br />
-    
-                <div class="card border border-purple" style="margin-bottom: 2rem;">
-                  <div class="card-header">
-                    <div class="row">
-                      <div class="col-10">
-                        <h4>
-                          <!-- <form action="" method="post"> -->
-                          <form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm.value)">
-                            <div class="form-group">
-                              {{ card.firstName }}
-                              {{ card.lastName }}
-                            </div>
-                            <!-- {{ card.firstName }}
-                            {{ card.lastName }} -->
+            <div class="card border border-purple" style="margin-bottom: 2rem;">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-10">
+                    <h4>
+                      <!-- <form action="" method="post"> -->
+                      <form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm.value)">
+                        <div class="form-group">
+                          {{ card.firstName }}
+                          {{ card.lastName }}
+                        </div>
+                        <!-- {{ card.firstName }}
+                        {{ card.lastName }} -->
+                        
+                        <!-- test out input: works -->
+                        <div class="form-group">
+                          <label>Name: </label>
+                          <input type="text" required minlength="8" #name="ngModel"
+                            [class.is-invalid]="(name.invalid && name.touched)" class="form-control is-invalid"
+                            [(ngModel)]="cardModel.email" name="email">
+                            <!-- note: we don't use autofocus here. Why? -->
+                            <small class="text-danger" [class.d-none]="name.valid || name.untouched">
+                              Name is required and must be at least 8 characters.
+                            </small>
+                        </div>
               
-                            <!-- test out input: works -->
-                            <div class="form-group">
-                              <label>Name: </label>
-                              <input type="text" required minlength="8" #name="ngModel"
-                                [class.is-invalid]="(name.invalid && name.touched)" class="form-control is-invalid"
-                                [(ngModel)]="cardModel.email" name="email">
-                              <!-- note: we don't use autofocus here. Why? -->
-                              <small class="text-danger" [class.d-none]="name.valid || name.untouched">
-                                Name is required and must be at least 8 characters.
-                              </small>
-                            </div>
+                        <br />
               
-                            <br />
+                        {{ card.email }}
               
-                            {{ card.email }}
+                        friend button
+                        more info button
+                        <button class="btn btn-primary" type="submit" [disabled]="!orderForm.form.valid"
+                          (click)="confirmOrder(orderForm.value)" title="always enabled">
+                          Place order
+                        </button>
+                      </form>
               
-                            friend button
-                            more info button
-                            <button class="btn btn-primary" type="submit" [disabled]="!orderForm.form.valid"
-                              (click)="confirmOrder(orderForm.value)" title="always enabled">
-                              Place order
-                            </button>
-                          </form>
-              
-                        </h4>
-                      </div>
-              
-                    </div>
+                    </h4>
                   </div>
               
-                  <div class="card-body">
-                    <h6 class="card-subtitle mb-2">Can speak: </h6>
-                    <p *ngFor="let native of card.natives">
-                      {{ native }}
-                    </p>
-              
-                    <br />
-              
-                    <h6 class="card-subtitle mb-2 ">Wants to practice: </h6>
-                    <p *ngFor="let target of card.targets">
-                      {{ target }}
-                    </p>
-              
-                    <br />
-              
-                  </div>
                 </div>
+              </div>
+              
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2">Can speak: </h6>
+                <p *ngFor="let native of card.natives">
+                  {{ native }}
+                </p>
+              
+                <br />
+              
+                <h6 class="card-subtitle mb-2 ">Wants to practice: </h6>
+                <p *ngFor="let target of card.targets">
+                  {{ target }}
+                </p>
+          
+                <br />
+              
               </div>
             </div>
           </div>
         </div>
-        
-        <div id="footer"></div>
-
       </div>
     </div>
 
-
-
-    
-    <script src="../layout/layout.js"></script>
   </body>
   
 </html>

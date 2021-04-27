@@ -6,11 +6,67 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/content.css" />
+  <link rel="stylesheet" href="assets/css/theme.css" />
 </head>
 <body>
-  <app-root></app-root>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  <script>
+  // document ready event is fired when DOM has been loaded 
+  $(document).ready(function () {
+    // do DOM manipulation, set header's height
+    $('.header').height($(window).height() / 2.5);
+  })
+  </script>
+  <div class="page-container">
+    <div class="content-wrap">
+
+      <header>
+        <nav class="navbar navbar-expand-md bg-light navbar-light">
+          <a class="navbar-brand" href="http://localhost/cs4640/lingonet/pages/postfeed.php">
+            <img src="assets/logo_transparent.png" width="200" alt="" class="d-inline-block align-middle mr-2">
+          </a>
+          <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="http://localhost/cs4640/lingonet/pages/postfeed.php" style="color: #6b359d;">Postfeed</a>
+              </li>
+              <li class="nav-item">
+                <!-- <a class="nav-link" href="friends.php" style="color: #6b359d;">Friends</a> -->
+                <a class="nav-link" href="http://localhost:4200/" style="color: #6b359d;">Friends</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://localhost/cs4640/lingonet/pages/profile.php" style="color: #6b359d;">Profile</a>
+              </li>
+              <li class="nav-item">
+                <form action="http://localhost/cs4640/lingonet/pages/logout.php" method="post">
+                  <input type="submit" value="Log out" style="background-color: #8444C0; color: white;" class="btn btn-purple" />
+                </form>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <app-root></app-root>
+
+      <footer class="footer">
+        <div class="container">
+          <div style="background-color: rgb(221, 219, 219);">
+            <h6 class="text-uppercase font-weight-bold">Copyright</h6>
+            <p style="color: #666;">&copy; 2021 Copyright: Jasmin Li (jl6ww@virginia.edu), Rebecca Zhou (rmz6yx@virginia.edu)
+            </p>
+          </div>
+        </div>
+      </footer> 
+
+    </div>
+  </div>
 </body>
 </html>

@@ -151,7 +151,7 @@ if (isset($_GET['email'])) {
                                 <div class="modal-content">
                                   <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLongTitle">
-                                      <?php if ($more_info['email']) : ?>
+                                      <?php if (sizeof($more_info) > 0) : ?>
                                         <?php echo $more_info['firstName'] . " " . $more_info['lastName']; ?>
                                       <?php else : ?>
                                         Currently no info :(
@@ -165,7 +165,7 @@ if (isset($_GET['email'])) {
                                   <div class="modal-body">
                                     <table class="table">
                                       <tbody>
-                                        <?php if ($more_info['email']) : ?>
+                                        <?php if (sizeof($more_info) > 0) : ?>
                                           <tr>
                                             <td><em>Introduction</em></td>
                                             <td><?php echo $more_info['introduction']; ?></td>

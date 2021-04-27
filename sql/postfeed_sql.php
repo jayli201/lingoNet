@@ -101,6 +101,7 @@ function getMoreInfo($email)
   global $db;
   $query = "SELECT * FROM post, users WHERE post.email =  '" . $email . "' AND post.email = users.email";
 
+  $more_info = array();
   $result = mysqli_query($db, $query);
   if (mysqli_num_rows($result) > 0) {
     while ($row = $result->fetch_assoc()) {
