@@ -1,0 +1,152 @@
+/* Pages are generally set up like this:
+<div class="page-container"> --> goes around everything
+    <div class="content-wrap"> --> sets up footer height
+        <div id="header"></div> --> include general header from layout folder
+        <div class="content" OR class="form"> --> sets margins
+            // actual content of page
+        </div>
+        <div id="footer"></div> --> include general footer from layout folder
+    </div>
+</div>
+*/
+
+/* goes around everything on page */
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+  
+/* sets bottom padding that is the height of the footer */
+.content-wrap {
+    padding-bottom: 6rem;    
+}
+  
+/* footer sticks to the bottom and uses .content-wrap's padding-bottom height */
+.footer {
+    padding: 20px 0px 20px 0px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 6rem;            
+    background-color:  rgb(221, 219, 219);
+}
+
+.centered {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Title: Shoes-Nike-Landing-Page
+* Author: Vikalp2502
+* Availability: https://github.com/vikalp2502/Shoes-Nike-Landing-Page/ */
+.box-1-login {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: none;
+    border: 2px solid #c5a7e1;
+    top: 12%;
+    left: 60%;
+    z-index: -1;
+    transform: rotate(60deg);
+}
+
+.box-2-login {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: #b994db;
+    /* border: 2px solid orange; */
+    top: 54%;
+    left: 60%;
+    z-index: -1;
+    transform: rotate(-110deg);
+}
+
+.box-3-login {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: none;
+    border: 2px solid #995ad4;
+    top: 28%;
+    left: 75%;
+    z-index: -1;
+    transform: rotate(30deg);
+}
+
+.box-1-signup {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: none;
+    border: 2px solid #c5a7e1;
+    top: 54%;
+    left: 55%;
+    z-index: -1;
+    transform: rotate(-110deg);
+}
+
+.box-2-signup {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #b994db;
+    /* border: 2px solid orange; */
+    top: 72%;
+    left: 80%;
+    z-index: -1;
+    transform: rotate(30deg);
+}
+
+h1 {
+    color: #6b359d;
+}
+
+.form {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.content {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.title {
+    text-align: center;
+}
+
+.feedback {
+    font-style: italic;
+    color: red;
+}
+
+.input-icon {
+    cursor: pointer;
+}
+
+#label {
+    margin-bottom: 1px;
+}
+
+@media only screen and (max-width: 768px) {
+    h1 {
+        line-height: 1.1em;
+    } 
+    .description .display-1 {
+        font-size: 4rem;
+    }
+    .description .display-4 {
+        font-size: 2rem;
+    }
+    .description p {
+        font-size: 1rem;
+        line-height: 1em;
+    }
+    .content .display-4 {
+        font-size: 3rem;
+    }
+} 

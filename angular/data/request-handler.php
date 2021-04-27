@@ -14,9 +14,11 @@ header('Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE, PUT');
 // connect to friends_sql.php, which connects to db
 require("friends_sql.php");
 
-$pendingFriends = getPendingFriends($_SESSION['email']);
-$incomingFriends = getIncomingFriends($_SESSION['email']);
-$acceptedFriends = getAcceptedFriends($_SESSION['email']);
+// $pendingFriends = getPendingFriends($_SESSION['email']);
+// $incomingFriends = getIncomingFriends($_SESSION['email']);
+// $acceptedFriends = getAcceptedFriends($_SESSION['email']);
+
+// get request: url rewriting, pass in email
 
 // retrieve data from the request
 $postdata = file_get_contents("php://input");

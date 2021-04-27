@@ -1,0 +1,53 @@
+.welcome-content {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Title: Shoes-Nike-Landing-Page
+* Author: Vikalp2502
+* Availability: https://github.com/vikalp2502/Shoes-Nike-Landing-Page/ */
+.box-1-welcome {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: none;
+    border: 2px solid #c5a7e1;
+    top: 12%;
+    left: 15%;
+    z-index: -1;
+    transform: rotate(60deg);
+}
+
+.box-2-welcome {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: #b994db;
+    /* border: 2px solid orange; */
+    top: 54%;
+    left: 15%;
+    z-index: -1;
+    transform: rotate(-110deg);
+}
+
+.box-3-welcome {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: none;
+    border: 2px solid #995ad4;
+    top: 28%;
+    left: 82%;
+    z-index: -1;
+    transform: rotate(30deg);
+}
+
+@media only screen and (max-width: 768px) {
+    .display-2 {
+        font-size: 4rem;
+    }
+} 
