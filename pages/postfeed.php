@@ -50,7 +50,7 @@ if (isset($_GET['email'])) {
 
   <div class="page-container">
     <div class="content-wrap">
-      <div id="header"></div>
+      <?php include("../layout/header.php") ?>
 
       <div class="position-relative overflow-hidden p-3 p-md-5 m-md-2">
         <div class="content">
@@ -75,12 +75,13 @@ if (isset($_GET['email'])) {
           <br />
 
           <div class="row">
+
             <?php
-          $displayed_users = array();
-          foreach ($user_info_array as $key => $value) {
-            $language_info = getMultiLanguageInfo(json_decode($value)->email);
-            if (!in_array($language_info, $displayed_users)) {
-              array_push($displayed_users, $language_info); ?>
+            $displayed_users = array();
+            foreach ($user_info_array as $key => $value) {
+              $language_info = getMultiLanguageInfo(json_decode($value)->email);
+              if (!in_array($language_info, $displayed_users)) {
+                array_push($displayed_users, $language_info); ?>
                 <div class="col-md-4 align-items-stretch">
                   <div class="card border border-purple" style="margin-bottom: 2rem;">
                     <div class="card-header">
@@ -207,7 +208,7 @@ if (isset($_GET['email'])) {
                   </div>
                 </div>
             <?php }
-          } ?>
+            } ?>
           </div>
         </div>
       </div>

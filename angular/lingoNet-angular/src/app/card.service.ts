@@ -27,4 +27,8 @@ export class CardService {
   getAllAccepted(): Observable<any[]> {
     return this.http.get<any>(this.baseUrl + '/request_accepted.php');
   }
+
+  getMoreInfo(data: any): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/request_more_info.php?cardEmail=' + data);
+  }
 }

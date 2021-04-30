@@ -4,5 +4,5 @@ $(document).ready(function () {
   $('.header').height($(window).height() / 2.5);
 })
 
-$("#header").load("../layout/header.html");
-$("#footer").load("../layout/footer.html");
+// $("#header").load("header.php");
+$("#footer").load("footer.html");

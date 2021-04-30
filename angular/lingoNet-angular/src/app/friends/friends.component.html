@@ -40,8 +40,15 @@
                   </div>
 
                   <div class="col-2" style="text-align: right;">   
-                    <form action="" method="get">
-                      <i class="fas fa-info-circle fa-lg" style="color: green; cursor: pointer;" data-toggle="modal" data-target="#moreInfo"></i>
+                    <form #moreInfoForm="ngForm" (ngSubmit)="onSubmit(item.friendEmail)"> 
+                      <div class="form-group">
+                        <button [ngStyle]="{border: 'white', outline: 'none'}"
+                          type="submit" class="fas fa-info-circle fa-lg" style="color: green; cursor: pointer;" 
+                          data-toggle="modal" data-target="#moreInfo"
+                          >
+                        </button>
+                        <!-- <input name="friendEmail" id="friendEmail" value="{{ item.friendEmail }}" /> -->
+                      </div>
 
                       <!-- Modal -->
                       <div class="modal fade" id="moreInfo" tabindex="-1" role="dialog" aria-labelledby="moreInfoTitle" aria-hidden="true">
@@ -49,7 +56,8 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <h5 class="modal-title" id="exampleModalLongTitle">
-                                title
+                                <p *ngIf="moreInfo.introduction" [(ngModel)]="moreInfo.email"> {{ moreInfo.email }} </p>
+                                <p *ngIf="!moreInfo.introduction" > Currently no info :( </p>
                               </h5>
 
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -57,29 +65,30 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                              <table class="table">
+                              <table *ngIf="moreInfo.introduction" class="table">
                                 <tbody>
                                     <tr>
                                       <td><em>Introduction</em></td>
-                                      <td>from db</td>
+                                      <td [(ngModel)]="moreInfo.introduction" name="introduction">{{ moreInfo.introduction }}</td>
                                     </tr>
                                     <tr>
                                       <td><em>Looking For</em></td>
-                                      <td>from db</td>
+                                      <td [(ngModel)]="moreInfo.lookingFor" name="lookingFor">{{ moreInfo.lookingFor }}</td>
                                     </tr>
                                     <tr>
                                       <td><em>Why You?</em></td>
-                                      <td>from db</td>
+                                      <td [(ngModel)]="moreInfo.whyYou" name="whyYou">{{ moreInfo.whyYou }}</td>
                                     </tr>
-                                  else: come back later
                                 </tbody>
                               </table>
+                              <p *ngIf="!moreInfo.introduction" > Come back later! </p>
                             </div>
                           </div>
                         </div>
                       </div>
                     </form>
                   </div>
+
                 </div>
               </div>
 
@@ -120,8 +129,15 @@
                   </div>
 
                   <div class="col-2" style="text-align: right;">   
-                    <form action="" method="get">
-                      <i class="fas fa-info-circle fa-lg" style="color: green; cursor: pointer;" data-toggle="modal" data-target="#moreInfo"></i>
+                    <form #moreInfoForm="ngForm" (ngSubmit)="onSubmit(item.email)"> 
+                      <div class="form-group">
+                        <button [ngStyle]="{border: 'white', outline: 'none'}"
+                          type="submit" class="fas fa-info-circle fa-lg" style="color: green; cursor: pointer;" 
+                          data-toggle="modal" data-target="#moreInfo"
+                          >
+                        </button>
+                        <!-- <input name="friendEmail" id="friendEmail" value="{{ item.friendEmail }}" /> -->
+                      </div>
 
                       <!-- Modal -->
                       <div class="modal fade" id="moreInfo" tabindex="-1" role="dialog" aria-labelledby="moreInfoTitle" aria-hidden="true">
@@ -129,7 +145,8 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <h5 class="modal-title" id="exampleModalLongTitle">
-                                title
+                                <p *ngIf="moreInfo.introduction" [(ngModel)]="moreInfo.email"> {{ moreInfo.email }} </p>
+                                <p *ngIf="!moreInfo.introduction" > Currently no info :( </p>
                               </h5>
 
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -137,29 +154,30 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                              <table class="table">
+                              <table *ngIf="moreInfo.introduction" class="table">
                                 <tbody>
                                     <tr>
                                       <td><em>Introduction</em></td>
-                                      <td>from db</td>
+                                      <td [(ngModel)]="moreInfo.introduction" name="introduction">{{ moreInfo.introduction }}</td>
                                     </tr>
                                     <tr>
                                       <td><em>Looking For</em></td>
-                                      <td>from db</td>
+                                      <td [(ngModel)]="moreInfo.lookingFor" name="lookingFor">{{ moreInfo.lookingFor }}</td>
                                     </tr>
                                     <tr>
                                       <td><em>Why You?</em></td>
-                                      <td>from db</td>
+                                      <td [(ngModel)]="moreInfo.whyYou" name="whyYou">{{ moreInfo.whyYou }}</td>
                                     </tr>
-                                  else: come back later
                                 </tbody>
                               </table>
+                              <p *ngIf="!moreInfo.introduction" > Come back later! </p>
                             </div>
                           </div>
                         </div>
                       </div>
                     </form>
                   </div>
+
                 </div>
               </div>
 
@@ -200,8 +218,15 @@
                   </div>
 
                   <div class="col-2" style="text-align: right;">   
-                    <form action="" method="get">
-                      <i class="fas fa-info-circle fa-lg" style="color: green; cursor: pointer;" data-toggle="modal" data-target="#moreInfo"></i>
+                    <form #moreInfoForm="ngForm" (ngSubmit)="onSubmit(item.cardEmail)"> 
+                      <div class="form-group">
+                        <button [ngStyle]="{border: 'white', outline: 'none'}"
+                          type="submit" class="fas fa-info-circle fa-lg" style="color: green; cursor: pointer;" 
+                          data-toggle="modal" data-target="#moreInfo"
+                          >
+                        </button>
+                        <!-- <input name="friendEmail" id="friendEmail" value="{{ item.friendEmail }}" /> -->
+                      </div>
 
                       <!-- Modal -->
                       <div class="modal fade" id="moreInfo" tabindex="-1" role="dialog" aria-labelledby="moreInfoTitle" aria-hidden="true">
@@ -209,7 +234,8 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <h5 class="modal-title" id="exampleModalLongTitle">
-                                title
+                                <p *ngIf="moreInfo.introduction" [(ngModel)]="moreInfo.email"> {{ moreInfo.email }} </p>
+                                <p *ngIf="!moreInfo.introduction" > Currently no info :( </p>
                               </h5>
 
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -217,29 +243,30 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                              <table class="table">
+                              <table *ngIf="moreInfo.introduction" class="table">
                                 <tbody>
                                     <tr>
                                       <td><em>Introduction</em></td>
-                                      <td>from db</td>
+                                      <td [(ngModel)]="moreInfo.introduction" name="introduction">{{ moreInfo.introduction }}</td>
                                     </tr>
                                     <tr>
                                       <td><em>Looking For</em></td>
-                                      <td>from db</td>
+                                      <td [(ngModel)]="moreInfo.lookingFor" name="lookingFor">{{ moreInfo.lookingFor }}</td>
                                     </tr>
                                     <tr>
                                       <td><em>Why You?</em></td>
-                                      <td>from db</td>
+                                      <td [(ngModel)]="moreInfo.whyYou" name="whyYou">{{ moreInfo.whyYou }}</td>
                                     </tr>
-                                  else: come back later
                                 </tbody>
                               </table>
+                              <p *ngIf="!moreInfo.introduction" > Come back later! </p>
                             </div>
                           </div>
                         </div>
                       </div>
                     </form>
                   </div>
+
                 </div>
               </div>
 

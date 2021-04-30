@@ -108,6 +108,7 @@ function getAcceptedFriends($email)
       if (!in_array($row['email'], $current_friends_1)) {
         $row["natives"] = getNativeLanguages($row['friendEmail']);
         $row["targets"] = getTargetLanguages($row['friendEmail']);
+        $row["cardEmail"] = $row['email'];
         $user_info_array[] = $row;
       }
       $current_friends_1[] = $row['email'];
@@ -127,6 +128,7 @@ function getAcceptedFriends($email)
       if (!in_array($row['friendEmail'], $current_friends_2)) {
         $row["natives"] = getNativeLanguages($row['friendEmail']);
         $row["targets"] = getTargetLanguages($row['friendEmail']);
+        $row["cardEmail"] = $row['friendEmail'];
         $user_info_array[] = $row;
       }
       $current_friends_2[] = $row['friendEmail'];
@@ -138,6 +140,21 @@ function getAcceptedFriends($email)
   return $user_info_array;
 }
 
+function getMoreInfo($email)
+{
+  global $db;
+  $user_info_array = array();
+  $native_query = "SELECT * FROM post WHERE email = '" . $email . "'";
+
+  $result = mysqli_query($db, $native_query);
+  if (mysqli_num_rows($result) > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $user_info_array[] = $row;
+    }
+  }
+
+  echo json_encode($user_info_array);
+}
 
 function acceptFriendRequest($email, $friendEmail)
 {
