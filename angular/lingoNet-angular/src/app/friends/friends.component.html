@@ -207,7 +207,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-10">
-                    <form #removeFriendForm="ngForm" (ngSubmit)="onRemoveFriend(item.email)">
+                    <form #removeFriendForm="ngForm" (ngSubmit)="onRemoveFriend(item.email)" (click)="reloadPage()">
                       <div class="form-group">
                         <h4>
                           {{ item.firstName }}
