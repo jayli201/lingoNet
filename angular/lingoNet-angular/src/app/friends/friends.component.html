@@ -114,7 +114,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-10">
-                    <form #acceptFriendForm="ngForm" (ngSubmit)="onAcceptFriend(item.email)">
+                    <form #acceptFriendForm="ngForm" (ngSubmit)="onAcceptFriend(item.email)" (click)="reloadPage()">
                       <div class="form-group">            
                         <h4>
                           {{ item.firstName }}

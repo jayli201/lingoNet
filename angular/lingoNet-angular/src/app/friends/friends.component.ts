@@ -94,4 +94,9 @@ export class FriendsComponent implements OnInit {
       console.log('Error:', error_in_comm);
     });
   }
+
+  reloadPage() {
+    console.log("reload");
+    window.location.reload();
+  }
 }
