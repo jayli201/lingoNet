@@ -27,7 +27,7 @@
             <div *ngFor="let item of pendingCards" class="card border border-purple" style="margin-bottom: 2rem;">
               <div class="card-header">
                 <div class="row">
-                  <div class="col-10">
+                  <div class="col-10">          
                     <h4>
                       {{ item.firstName }}
                       {{ item.lastName }}  
@@ -114,18 +114,22 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-10">
-                    <h4>
-                      {{ item.firstName }}
-                      {{ item.lastName }}  
-                      <!-- Add friend button -->
-                      <button type="submit" name="acceptFriend" class="btn btn-purple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Accept Friend Request">
-                        <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                          <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                          <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                        </svg>
-                      </button>
-                    </h4>
+                    <form #acceptFriendForm="ngForm" (ngSubmit)="onAcceptFriend(item.email)">
+                      <div class="form-group">            
+                        <h4>
+                          {{ item.firstName }}
+                          {{ item.lastName }}  
+                          <!-- Add friend button -->
+                          <button type="submit" name="acceptFriend" class="btn btn-purple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Accept Friend Request">
+                            <!-- https://icons.getbootstrap.com/icons/person-plus-fill/ -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                              <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                              <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                            </svg>
+                          </button>
+                        </h4>
+                      </div>
+                    </form>
                   </div>
 
                   <div class="col-2" style="text-align: right;">   
@@ -203,18 +207,22 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-10">
-                    <h4>
-                      {{ item.firstName }}
-                      {{ item.lastName }}  
-                      <!-- Remove friend button -->
-                      <button type="submit" name="removeFriend" class="btn btn-purple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Remove Friend">
-                        <!-- https://icons.getbootstrap.com/icons/person-dash-fill/ -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
-                          <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                        </svg>
-                      </button>
-                    </h4>
+                    <form #removeFriendForm="ngForm" (ngSubmit)="onRemoveFriend(item.email)">
+                      <div class="form-group">
+                        <h4>
+                          {{ item.firstName }}
+                          {{ item.lastName }}  
+                          <!-- Remove friend button -->
+                          <button type="submit" name="removeFriend" class="btn btn-purple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Remove Friend">
+                            <!-- https://icons.getbootstrap.com/icons/person-dash-fill/ -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
+                              <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                            </svg>
+                          </button>
+                        </h4>
+                      </div>
+                    </form>
                   </div>
 
                   <div class="col-2" style="text-align: right;">   

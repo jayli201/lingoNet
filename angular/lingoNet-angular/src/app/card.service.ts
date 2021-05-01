@@ -31,4 +31,12 @@ export class CardService {
   getMoreInfo(data: any): Observable<any> {
     return this.http.get<any>(this.baseUrl + '/request_more_info.php?cardEmail=' + data);
   }
+
+  acceptFriend(data: any): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/request_accept_friend.php?friendEmail=' + data);
+  }
+
+  removeFriend(data: any): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/request_remove_friend.php?friendEmail=' + data);
+  }
 }
