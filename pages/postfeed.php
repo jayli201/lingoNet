@@ -215,7 +215,7 @@ if (isset($_GET['email'])) {
     </div>
 
     <br />
-    <div id="footer"></div>
+    <?php include("../layout/footer.html") ?>
   </div>
   </div>
 

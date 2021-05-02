@@ -112,7 +112,7 @@ if (isset($_POST['deleteTarget'])) {
       </div>
 
       <br />
-      <div id="footer"></div>
+      <?php include("../layout/footer.html") ?>
 
     </div>
   </div>

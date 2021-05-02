@@ -23,12 +23,12 @@ export class FriendsComponent implements OnInit {
   }
         
   ngOnInit() {
-    this.getAllCards();
-
     // https://stackoverflow.com/questions/45184969/get-current-url-in-angular
     this.href = window.location.href;
     this.email = this.href.slice(29,);
     console.log(this.email);
+
+    this.getAllCards();
   }
 
   getAllCards(): void {
@@ -73,8 +73,9 @@ export class FriendsComponent implements OnInit {
 
   onAcceptFriend(form: any): void {
     console.log('You submitted:', form);
+    var data = {'friendEmail': form, 'email': this.email};
 
-    this.cardService.acceptFriend(form)
+    this.cardService.acceptFriend(data)
     .subscribe((response) => {
       console.log('Response:', response);
     }, (error_in_comm) => {
@@ -84,8 +85,9 @@ export class FriendsComponent implements OnInit {
 
   onRemoveFriend(form: any): void {
     console.log('You submitted:', form);
+    var data = {'friendEmail': form, 'email': this.email};
 
-    this.cardService.removeFriend(form)
+    this.cardService.removeFriend(data)
     .subscribe((response) => {
       console.log('Response:', response);
     }, (error_in_comm) => {
