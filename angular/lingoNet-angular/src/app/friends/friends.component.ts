@@ -63,21 +63,12 @@ export class FriendsComponent implements OnInit {
     });
   }
 
-  card = new Card("", "", "", "", "", "", null, null);
-
   onAcceptFriend(form: any): void {
     console.log('You submitted:', form);
 
     this.cardService.acceptFriend(form)
     .subscribe((response) => {
       console.log('Response:', response);
-      console.log("here");
-      if (response.length  == 0) {
-        this.card = this.card;
-      } else {
-        this.card = new Card(response[0].firstName, response[0].lastName, response[0].email, response[0].friendEmail, response[0].cardEmail, response[0].phone, response[0].natives, response[0].targets);
-      }
-      console.log('Card:', this.card);
     }, (error_in_comm) => {
       console.log('Error:', error_in_comm);
     });
@@ -89,7 +80,6 @@ export class FriendsComponent implements OnInit {
     this.cardService.removeFriend(form)
     .subscribe((response) => {
       console.log('Response:', response);
-      console.log("here");
     }, (error_in_comm) => {
       console.log('Error:', error_in_comm);
     });
