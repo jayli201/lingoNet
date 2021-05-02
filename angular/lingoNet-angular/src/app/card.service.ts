@@ -16,16 +16,16 @@ export class CardService {
 
   constructor(private http: HttpClient) { this.cards=[]; }
 
-  getAllPending(): Observable<any[]> {
-    return this.http.get<any>(this.baseUrl + '/request_pending.php');
+  getAllPending(data: any): Observable<any[]> {
+    return this.http.get<any>(this.baseUrl + '/request_pending.php?email=' + data);
   }
 
-  getAllIncoming(): Observable<any[]> {
-    return this.http.get<any>(this.baseUrl + '/request_incoming.php');
+  getAllIncoming(data: any): Observable<any[]> {
+    return this.http.get<any>(this.baseUrl + '/request_incoming.php?email=' + data);
   }
 
-  getAllAccepted(): Observable<any[]> {
-    return this.http.get<any>(this.baseUrl + '/request_accepted.php');
+  getAllAccepted(data: any): Observable<any[]> {
+    return this.http.get<any>(this.baseUrl + '/request_accepted.php?email=' + data);
   }
 
   getMoreInfo(data: any): Observable<any> {

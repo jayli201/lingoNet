@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Card } from '../card';
 import { Info } from '../info';
 import { CardService } from '../card.service';
@@ -15,28 +16,35 @@ export class FriendsComponent implements OnInit {
   pendingCards: Array<Card> = [];
   incomingCards: Array<Card> = [];
   acceptedCards: Array<Card> = [];
+  href: string = "";
+  email: string = "";
 
   constructor(private cardService: CardService) {
   }
         
   ngOnInit() {
     this.getAllCards();
+
+    // https://stackoverflow.com/questions/45184969/get-current-url-in-angular
+    this.href = window.location.href;
+    this.email = this.href.slice(29,);
+    console.log(this.email);
   }
 
   getAllCards(): void {
-    this.cardService.getAllPending().subscribe(
+    this.cardService.getAllPending(this.email).subscribe(
       (res: Card[]) => {
         console.log("pending", res);
         this.pendingCards = res;
       }
     );
-    this.cardService.getAllIncoming().subscribe(
+    this.cardService.getAllIncoming(this.email).subscribe(
       (res: Card[]) => {
         console.log("incoming", res);
         this.incomingCards = res;
       }
     );
-    this.cardService.getAllAccepted().subscribe(
+    this.cardService.getAllAccepted(this.email).subscribe(
       (res: Card[]) => {
         console.log("accepted", res);
         this.acceptedCards = res;

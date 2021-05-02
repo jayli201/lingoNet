@@ -14,4 +14,5 @@ header('Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE, PUT');
 // connect to friends_sql.php, which connects to db
 require("friends_sql.php");
 
-$pendingFriends = getPendingFriends("test@gmail.com");
+// $pendingFriends = getPendingFriends("test@gmail.com");
+$pendingFriends = getPendingFriends($_GET['email']);
