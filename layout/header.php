@@ -44,7 +44,7 @@ if (!isset($_SESSION)) {
           </li>
           <li class="nav-item">
             <!-- <a class="nav-link" href="friends.php" style="color: #6b359d;">Friends</a> -->
-            <a class="nav-link" href="http://localhost:4200" style="color: #6b359d;">Friends</a>
+            <a class="nav-link" href="http://localhost:4200?email=<?php echo $_SESSION['email'] ?>" style="color: #6b359d;">Friends</a>
             <input type="hidden" ng-init="email='<?php echo $_SESSION['email']; ?>'">
           </li>
           <li class="nav-item">

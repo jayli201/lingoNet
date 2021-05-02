@@ -16,16 +16,16 @@ export class CardService {
 
   constructor(private http: HttpClient) { this.cards=[]; }
 
-  getAllPending(): Observable<any[]> {
-    return this.http.get<any>(this.baseUrl + '/request_pending.php');
+  getAllPending(data: any): Observable<any[]> {
+    return this.http.post<any>(this.baseUrl + '/request_pending.php', data);
   }
 
-  getAllIncoming(): Observable<any[]> {
-    return this.http.get<any>(this.baseUrl + '/request_incoming.php');
+  getAllIncoming(data: any): Observable<any[]> {
+    return this.http.post<any>(this.baseUrl + '/request_incoming.php', data);
   }
 
-  getAllAccepted(): Observable<any[]> {
-    return this.http.get<any>(this.baseUrl + '/request_accepted.php');
+  getAllAccepted(data: any): Observable<any[]> {
+    return this.http.post<any>(this.baseUrl + '/request_accepted.php', data);
   }
 
   getMoreInfo(data: any): Observable<any> {
@@ -33,10 +33,11 @@ export class CardService {
   }
 
   acceptFriend(data: any): Observable<any> {
-    return this.http.get<any>(this.baseUrl + '/request_accept_friend.php?friendEmail=' + data);
+    return this.http.post<any>(this.baseUrl + '/request_accept_friend.php', {email: data.email, friendEmail: data.friendEmail});
   }
 
   removeFriend(data: any): Observable<any> {
-    return this.http.get<any>(this.baseUrl + '/request_remove_friend.php?friendEmail=' + data);
+    console.log('data', data);
+    return this.http.post<any>(this.baseUrl + '/request_remove_friend.php', {email: data.email, friendEmail: data.friendEmail});
   }
 }

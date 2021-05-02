@@ -3,6 +3,6 @@ export class Info {
       public email: string,
       public introduction: string,
       public whyYou: string,
-      public lookingFor: string,
+      public lookingFor: string
    ){}
 }

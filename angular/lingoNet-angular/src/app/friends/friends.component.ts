@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Card } from '../card';
 import { Info } from '../info';
 import { CardService } from '../card.service';
@@ -15,28 +16,35 @@ export class FriendsComponent implements OnInit {
   pendingCards: Array<Card> = [];
   incomingCards: Array<Card> = [];
   acceptedCards: Array<Card> = [];
+  href: string = "";
+  email: string = "";
 
   constructor(private cardService: CardService) {
   }
         
   ngOnInit() {
+    // https://stackoverflow.com/questions/45184969/get-current-url-in-angular
+    this.href = window.location.href;
+    this.email = this.href.slice(29,);
+    console.log(this.email);
+
     this.getAllCards();
   }
 
   getAllCards(): void {
-    this.cardService.getAllPending().subscribe(
+    this.cardService.getAllPending(this.email).subscribe(
       (res: Card[]) => {
         console.log("pending", res);
         this.pendingCards = res;
       }
     );
-    this.cardService.getAllIncoming().subscribe(
+    this.cardService.getAllIncoming(this.email).subscribe(
       (res: Card[]) => {
         console.log("incoming", res);
         this.incomingCards = res;
       }
     );
-    this.cardService.getAllAccepted().subscribe(
+    this.cardService.getAllAccepted(this.email).subscribe(
       (res: Card[]) => {
         console.log("accepted", res);
         this.acceptedCards = res;
@@ -63,21 +71,13 @@ export class FriendsComponent implements OnInit {
     });
   }
 
-  card = new Card("", "", "", "", "", "", null, null);
-
   onAcceptFriend(form: any): void {
     console.log('You submitted:', form);
+    var data = {'friendEmail': form, 'email': this.email};
 
-    this.cardService.acceptFriend(form)
+    this.cardService.acceptFriend(data)
     .subscribe((response) => {
       console.log('Response:', response);
-      console.log("here");
-      if (response.length  == 0) {
-        this.card = this.card;
-      } else {
-        this.card = new Card(response[0].firstName, response[0].lastName, response[0].email, response[0].friendEmail, response[0].cardEmail, response[0].phone, response[0].natives, response[0].targets);
-      }
-      console.log('Card:', this.card);
     }, (error_in_comm) => {
       console.log('Error:', error_in_comm);
     });
@@ -85,11 +85,11 @@ export class FriendsComponent implements OnInit {
 
   onRemoveFriend(form: any): void {
     console.log('You submitted:', form);
+    var data = {'friendEmail': form, 'email': this.email};
 
-    this.cardService.removeFriend(form)
+    this.cardService.removeFriend(data)
     .subscribe((response) => {
       console.log('Response:', response);
-      console.log("here");
     }, (error_in_comm) => {
       console.log('Error:', error_in_comm);
     });

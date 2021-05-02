@@ -173,9 +173,6 @@ function acceptFriendRequest($email, $friendEmail)
 
   $stmt1->close();
   $stmt2->close();
-
-  // go back to friends page
-  header("Location: ../pages/friends.php");
 }
 
 function removeFriend($email, $friendEmail)
@@ -195,7 +192,4 @@ function removeFriend($email, $friendEmail)
 
   $stmt1->close();
   $stmt2->close();
-
-  // go back to friends page
-  header("Location: ../pages/friends.php");
 }

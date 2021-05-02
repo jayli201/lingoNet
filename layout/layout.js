@@ -5,4 +5,4 @@ $(document).ready(function () {
 })
 
 // $("#header").load("header.php");
-$("#footer").load("footer.html");
+// $("#footer").load("footer.html");
